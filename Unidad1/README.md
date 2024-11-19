@@ -36,5 +36,5 @@
 
 ## Notas
 
- 
+**_"Docendo discimus"_** (Enseñando, aprendemos).
 

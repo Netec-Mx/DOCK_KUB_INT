@@ -10,13 +10,13 @@ Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para 
 
 #### 1. **Preparación del entorno**
 
--Asegúrate de tener Docker Desktop instalado y corriendo.
+- Asegúrate de tener Docker Desktop instalado y corriendo.
 
 - Verifica que no haya contenedores ni voúmenes activos que puedan interferir usando:
 
     ```cmd
-    docker ps -a
-    docker volume ls
+    docker ps -a | findstr dki
+    docker volume ls | findstr dki
     ```
 <br/>
 
@@ -99,7 +99,10 @@ docker ps -a
 - Crea un nuevo contenedor y monta nuevamente el volumen
 
     ```cmd
-    docker run -d --name nuevo_nginx -v dk_volume:/usr/share/nginx/html -p 9999:80 nginx
+    docker run -d --name nuevo_nginx -v dki_volume:/usr/share/nginx/html -p 9999:80 nginx
+
+    # Verifica
+    docker ps 
 
     ```
 
@@ -138,8 +141,32 @@ docker logs <nombre_contenedor>
 
 ## Resultado Esperado
 
-- Captura de pantalla que muestra 
+- Captura de pantalla que muestra la creación del volumen, la creación del contenedor Docker y altera el valor de un archivo.
 
-![docker]()
+![docker](../images/u1_3_1.png)
+
+<br/>
+
+- Captura de pantalla que muestra la salida en el navegador del archivo `index.html` en el contenedor
+
+![docker](../images/u1_3_2.png)
+
+<br/>
+
+- Captura de pantalla que muestra la creación de un nuevo contenedor con el volumen previamente creado. No se muestra la eliminación del contenedor inicial.
+
+![docker](../images/u1_3_3.png)
+
+<br/>
+
+- Captura de pantalla que muestra la verificación del archivo alterado en el primer contenedor eliminado.
+
+![docker](../images/u1_3_4.png)
+
+<br/>
+
+- Captura de pantalla que muestra labores de limpieza al eliminar el nuevo contenedor y el primer volumen creado.
+
+![docker](../images/u1_3_5.png)
 
 <br/>
