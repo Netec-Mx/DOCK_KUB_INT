@@ -345,7 +345,7 @@ cd <carpeta del proyecto ms-productos>
 
 - Agrega las dependencias: Spring Web, Spring Boot OpenFeign
 
-![Spring Boot](../images/u1_5_6,png)
+![Spring Boot](../images/u1_5_6.png)
 
 
 <br/>
@@ -671,11 +671,15 @@ cd <carpeta del proyecto ms-deseos>
 
 - Hasta este momento solo tenemos los JAR de dos microservcios (ms-productos & ms-deseos).
 
-- Si tuvieramos una instancia de Oracle Database local y las propiedades del proyecto ms-productos apuntando correctamente, podríamos probar el microservcio ms-productos.
+- Si tuvieramos una instancia de Oracle Database local y las propiedades del proyecto ms-productos apuntando correctamente, podríamos probar el microservcio ms-productos y en consecuencia también toda la funcionalidad del microservicio ms-deseos.
 
 - No se recomienda desplegar cosas a producción sin haber pasado por un estricto control de pruebas.
 
 - En el servicio ms-deseos se agregó la dependencia a JPA y H2, pero no se usa se mantienen los productos deseados en memoria.
+
+<br/>
+
+<br/>
 
 ## Resultado Esperado
 
