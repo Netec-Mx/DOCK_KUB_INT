@@ -9,7 +9,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 ## Instrucciones
 
-1. Revisar las redes existentes en Docker.
+#### 1. Revisar las redes existentes en Docker.
 
     Ejecuta el siguiente comando para listar las redes actuales
 
@@ -19,7 +19,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-2. Crear una red personalizada de tipo `bridge`
+#### 2. Crear una red personalizada de tipo `bridge`
 
     Usa el siguiente comando para crear una red personalizada:
 
@@ -29,7 +29,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-3. Verificar que la red se haya creado:
+#### 3. Verificar que la red se haya creado:
 
     Lista las redes nuevamente para confirmar la creación:
 
@@ -39,7 +39,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-4. Crar dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
+#### 4. Crar dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
 
     ```cmd
     docker run -dit --name container1 --network ms-curso alpine sh
@@ -48,15 +48,16 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-5. Inspeccionar la red creada
+#### 5. Inspeccionar la red creada
 
     - Usa el comando para inspeccionar detalles de la red ms-curso y verificar sy configuración
 
     ```cmd
     docker network inspect ms-curso
     ``` 
+<br/>
 
-6. Probar la comunicación entre los contenedores
+#### 6. Probar la comunicación entre los contenedores
 
     - Accede al contenedor container1
 
@@ -72,7 +73,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-7. Desconectar un contenedor de la red
+#### 7. Desconectar un contenedor de la red
 
     - Para desconectar un conetenedor de la red
 
@@ -82,7 +83,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-8. Verificar que el contenedor ya no puede comunicarse:
+#### 8. Verificar que el contenedor ya no puede comunicarse:
 
     - Intenta hacer un ping desde container1 a container2 nuevamente
 
@@ -92,7 +93,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-9. Reconectar el contenedor a la red
+#### 9. Reconectar el contenedor a la red
 
     Reconecta `container1` a la red
 
@@ -102,7 +103,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-10. Limpiar los recursos creados
+#### 10. Limpiar los recursos creados
 
     Detén y elimina los contenedores y la red creada
 
@@ -114,9 +115,9 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 <br/>
 
-11. Conclusión
+#### 11. Conclusión
 
-    Al completar esta práctica, habrás aprendido a crear, administrar y verificar redes en Docker, además de probar comunicación entre contenedores.
+- Al completar esta práctica, habrás aprendido a crear, administrar y verificar redes en Docker, además de probar comunicación entre contenedores.
 
 <br/>
 
