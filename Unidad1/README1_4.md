@@ -49,7 +49,7 @@ docker volume create dki-volume
 Verifica las imagenes que aparacen en tu entorno de curso, y utiliza la imagen Orace que tienes en tu ambbiente para crear un contenedor Oracle Database.
 
 ```cdm
-docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --volume dki-volumen:/opt/oracle/oradata -p 521:1521 -p 5500:5500 container-registry.oracle.com/database/enterprise:19.3.0
+docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --volume dki-volume:/opt/oracle/oradata -p 1521:1521 -p 5500:5500 container-registry.oracle.com/database/express:21.3.0-xe
 ```
 
 <br/>

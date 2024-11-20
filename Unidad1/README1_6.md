@@ -67,6 +67,8 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
 ```cmd
 docker build -t ms-productos:1.0 .
+
+# docker image ls
 ```
 
 3. Navega al directorio donde se encuentra el `Dockerfile` del microservicio `ms-deseos`.
@@ -75,6 +77,9 @@ docker build -t ms-productos:1.0 .
 
 ```cmd
 docker build -t ms-deseos:1.0 .
+
+# Verifica
+docker images
 ```
 
 <br/>
