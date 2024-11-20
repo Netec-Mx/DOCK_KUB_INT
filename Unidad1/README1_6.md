@@ -89,13 +89,13 @@ docker images
 1. Crea el contenedor para `ms-productos` y conéctalo a la red dki-network.
 
 ```cmd
-docker run -d --name ms-productos --network dki-network -p 8081:8081 ms-productos:1.0
+docker run -d --name ms-productos --network dki-network -p 9081:9081 ms-productos:1.0
 ```
 
 2. Crea el contenedro para ms-deseos y conéctalo a la red dki-network
 
 ```cmd
-docker run -d --name ms-deseos --network dki-network -p 8084:8084 ms-deseos:1.0
+docker run -d --name ms-deseos --network dki-network -p 9084:9084 ms-deseos:1.0
 ```
 <br/>
 
