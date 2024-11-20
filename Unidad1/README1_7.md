@@ -107,6 +107,8 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 - Verifica que las operaciones cumplan con los objetivos definidos para la práctica.
  
+<br/>
+
 
 ### 7. Listar todos los deseos
 
@@ -151,6 +153,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
     - Verifica que las operaciones cumplan con los objetivos definidos para la práctica.
 
+<br/>
 
 ### 11. Notas adicionales
 
