@@ -128,7 +128,7 @@ SELECT count(*) from dkuser.productos;
 exit
 ```
 
-### Nota
+### Notas
 
 - Si necesitas un alias para simplificar la conexión con sqlplus, puedes configurarlo en el archivo **tnsnames.ora**. Esto puede hacerse en un paso avanzado si decides persistir la configuración del contenedor utilitario.
 
@@ -162,12 +162,6 @@ exit
 
 <br/>
 
-- Captura de pantalla que muestra cómo, al cambiar al contexto de la base de datos XEPDB1, se verifica la existencia del usuario dkuser y las tablas asociadas a su esquema.
-
-![cmd](../images/u1_8_5.png)
-
-<br/>
-
 - Captura de pantalla que muestra la creación de un conetenedor utilitario con SQL*Plus, al que se cambia de base de datos XEPDB, verifica la existencia del usuario dkuser, así como las tablas asociadas a su esquema.
 
 ![cmd](../images/u1_8_6.png)
@@ -176,6 +170,6 @@ exit
 
 - Captura de pantalla que muestra la estructura de la tabla Productos, verificando y contabilizando los registros existentes en la misma.
 
-![cmd](../images/u1_8_6.png)
+![cmd](../images/u1_8_7.png)
 
 <br/>
