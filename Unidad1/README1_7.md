@@ -50,14 +50,8 @@ Envía una solicitud para crear un nuevo producto.
 
 ```cmd
  
-curl -X POST http://localhost:9081/productos \
--H "Content-Type: application/json" \
--d '{
-  "nombre": "Laptop Dell XPS 15",
-  "descripcion": "Laptop de alta gama con procesador Intel Core i7, 16GB RAM y 512GB SSD.",
-  "precio": 1500.99,
-  "stock": 10
-}'
+curl -X POST http://localhost:9081/productos -H "Content-Type: application/json" -d '{ "nombre": "Laptop Dell XPS 15",
+  "descripcion": "Laptop de alta gama con procesador Intel Core i7, 16GB RAM y 512GB SSD.", "precio": 1500.99, "stock": 10 }'
 
 ```
 - Verifica que el producto se crea correctamente y que se retorna el producto creado con un ID generado.
@@ -70,15 +64,8 @@ Actualiza los datos de un producto existente.
 
 ```cmd
  
-curl -X PUT http://localhost:9081/productos/{id} \
--H "Content-Type: application/json" \
--d {
-  "nombre": "Laptop Dell XPS 15",
-  "descripcion": "Laptop de alta gama con procesador Intel Core i9, 32GB RAM y 2TB SSD.",
-  "precio": 150000.99,
-  "stock": 5
-}
-'
+curl -X PUT http://localhost:9081/productos/{id} -H "Content-Type: application/json" -d {
+  "nombre": "Laptop Dell XPS 15", "descripcion": "Laptop de alta gama con procesador Intel Core i9, 32GB RAM y 2TB SSD." , "precio": 150000.99, "stock": 5 }'
 ```
 
 **Nota**: Reemplaza {id} con el ID de un producto existente.
