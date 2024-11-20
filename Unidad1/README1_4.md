@@ -247,24 +247,24 @@ Una vez realizados los pasos anteriores, tendrás:
 - Captura de pantalla que muestra la verificación de la red, la creación y verificación del volumen. Además muestra la creación del contenedor con el servidor de base de datos Oracle.
 
 
-![docker](../images/u1_4_.png)
+![docker](../images/u1_4_4.png)
 
 <br/>
 
 - Captura de pantalla que muestra la verificación del contenedor Oracle Database y el estado del puerto `1521`.
 
-![netstat -ano](../images/u1_5_.png)
+![netstat -ano](../images/u1_4_5.png)
 
 <br/>
 
 - Captura de pantalla que muestra que inicialmente el usuario `dkuser` con contraseña `dkpassword` se puede conectar al servidor de base de datos, pero no tiene ninguna tabla en su esquema.
 
-![SQL Developer](../images/u1_6_.png)
+![SQL Developer](../images/u1_4_6.png)
 
 <br/>
 
 
 - Captura de pantalla que muestra como en la red `dki-network` se encuentra el contenedor de base de datos Oracle.
-![SQL Developer](../images/u1_7_.png)
+![SQL Developer](../images/u1_4_7.png)
 
 <br/>
