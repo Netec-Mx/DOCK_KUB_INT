@@ -157,7 +157,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 ### 11. Notas adicionales
 
--La lista de deseos no tiene persistencia; los datos se manejan en memoria. Por lo tanto, al reiniciar el microservicio, los datos se perderán.
+- La lista de deseos no tiene persistencia; los datos se manejan en memoria. Por lo tanto, al reiniciar el microservicio, los datos se perderán.
 
 - Asegúrate de que los IDs de productos utilizados para agregar o eliminar existan en el microservicio ms-productos (en el puerto 9081).
 
