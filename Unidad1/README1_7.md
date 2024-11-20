@@ -166,3 +166,81 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 <br/>
 
 ## Resultado Esperado
+
+- Captura de pantalla que muestra los contenedores involucrados en la preparación de la prática 1.7
+
+![Postman](../images/u1_7_0.png)
+
+<br/>
+
+- Captura de pantalla que muestra el consumo inicial de productos disponibles, HTTP 200 OK
+
+![Postman](../images/u1_7_1.png)
+
+<br/>
+
+- Captura de pantalla que muestra el consumo de un producto que no existe, HTTP 404 Not Found 
+
+![Postman](../images/u1_7_2.png)
+
+<br/>
+
+- Captura de pantalla que muestra la inserción de un producto, HTTP 200 OK
+
+![Postman](../images/u1_7_3.png)
+
+<br/>
+
+- Captura de pantalla que muestra la actualización de un producto, HTTP 200 OK
+
+![Postman](../images/u1_7_4.png)
+
+<br/>
+
+
+- Captura de pantalla que muestra la eliminación de un producto, HTTP 204 No Content
+
+![Postman](../images/u1_7_5.png)
+
+<br/>
+
+
+- Captura de pantalla que muestra la lista de los productos, HTTP 200 OK
+
+![Postman](../images/u1_7_6.png)
+
+<br/>
+
+
+- Captura de pantalla que muestra la lista de deseos, HTTP 200 OK
+
+![Postman](../images/u1_7_7.png)
+
+<br/>
+
+
+- Captura de pantalla que muestra la agregación de un deseo, HTTP 200 OK
+
+![Postman](../images/u1_7_8.png)
+
+<br/>
+
+
+
+- Captura de pantalla que muestra la lista de deseos, HTTP 200 OK
+
+![Postman](../images/u1_7_9.png)
+
+<br/>
+
+- Captura de pantalla que muestra la eliminación de un deseo, HTTP 204 No Content
+
+![Postman](../images/u1_7_10.png)
+
+<br/>
+
+- Captura de pantalla que muestra el estado actual de la lista de deseos, HTTP 200 OK
+
+![Postman](../images/u1_7_11.png)
+
+<br/>

@@ -315,7 +315,7 @@ public class ProductoController {
 ```
 <br/>
 
-### Paso 7. Complila y empaqueta (JAR)
+### Paso 7. Compila y empaqueta (JAR)
 
 1. Empaqueta la aplicación usando lo siguiente:
 
@@ -440,7 +440,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 // Observa como la url apunta ya al microservicio contenedorizado
-@FeignClient(name = "ms-productos", url = "http://ms-producto:9081")
+@FeignClient(name = "ms-productos", url = "http://ms-productos:9081")
 public interface ProductoFeignClient {
 
 	@GetMapping("/productos/{id}")
