@@ -31,7 +31,7 @@ Vamos a usar una imagen ligera de Oracle Instant Client para conectarnos a la ba
 
 ```cmd
 docker run -it --rm --network=dki-network ghcr.io/oracle/oraclelinux8-instantclient:19 sqlplus SYSTEM/Netec_123@//dki-oradb:1521/XE
-``
+```
 
 **Nota**: La opción `--network host`  asegura que el contenedor utilitario pueda comunicarse con el contenedor de Oracle Database si estás en un entorno local. Si estás en otro entorno de red, ajusta las configuraciones de red según sea necesario.
 
