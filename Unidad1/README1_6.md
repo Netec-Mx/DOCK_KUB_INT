@@ -185,3 +185,9 @@ docker logs <nombre_del_contenedor>
 ![cmd](../images/u1_6_11.png)
 
 <br/>
+
+- Captura de pantalla que muesta algunos reportes y verificaciones adicionales sobre la práctica.
+
+![cmd](../images/u1_6_12.png)
+
+<br/>
