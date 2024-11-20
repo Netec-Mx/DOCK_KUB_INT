@@ -147,11 +147,11 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 ### 10. Validación del microservcio ms-deseos
 
-    - Prueba cada uno de los endpoints utilizando Postman.
+- Prueba cada uno de los endpoints utilizando Postman.
 
-    - Documenta las respuestas obtenidas, incluyendo los códigos de estado HTTP (200, 201, 204, 404, etc.).
+- Documenta las respuestas obtenidas, incluyendo los códigos de estado HTTP (200, 201, 204, 404, etc.).
 
-    - Verifica que las operaciones cumplan con los objetivos definidos para la práctica.
+- Verifica que las operaciones cumplan con los objetivos definidos para la práctica.
 
 <br/>
 
