@@ -24,7 +24,6 @@ docker network create dki-network
 # Una forma más explicita de creación, esta forma es opcional, solo queda así para documentación.
 # bridge es el valor predeterminado, es buena práctica especificar el tipo para mayor claridad en
 # configuraciones más complejas.
-
 docker network create --driver bridge dk-network
 
 # Verificar la creación
@@ -150,9 +149,9 @@ SELECT NAME FROM V$SERVICES;
 
 ```
 
-2. Ejecuta el script en SQL Developer.
+2. Ejecutar el script en SQL Developer.
 
-    - Corre el script del punto 1.
+    - Corre el script instrucción por instrucción o todas las instrucciones. 
 
 3. Analiza la salida de la ejecución de las instrucciones SQL, para asegurarte que no haya errores en la ejecución.
 
@@ -174,7 +173,7 @@ SELECT NAME FROM V$SERVICES;
 
 Si a conexión es exitosa, guárdala y conectate a una hoja de trabajo.
 
-![sqldeveloper](../image/u1_4_3.png)
+![sqldeveloper](../images/u1_4_3.png)
 
 <br/>
 
