@@ -45,12 +45,12 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 - Cuerpo (Body):
     - Selecciona el tipo JSON y utiliza el siguiente ejemplo:
     ```json
-{
-  "nombre": "Producto A",
-  "descripcion": "Descripción del Producto A",
-  "precio": 100.0,
-  "stock": 50
-}
+    {
+    "nombre": "Producto A",
+    "descripcion": "Descripción del Producto A",
+    "precio": 100.0,
+    "stock": 50
+    }
     ```
 
 - Descripción: Agrega un nuevo producto a la base de datos.
