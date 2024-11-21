@@ -209,8 +209,9 @@ docker-compose down --volumes
 - Capacidad para conectarte al contenedor y realizar consultas básicas en la base de datos.
 
 <br/>
+<br/>
 
-___
+### Imágenes
 
 - Captura de pantalla que muestra la salida del comando `docker-compose config`, evidenciando la configuración detallada del archivo `docker-compose.yml`, como los servicios, volúmenes, redes y demás parámetros definidos.
 
