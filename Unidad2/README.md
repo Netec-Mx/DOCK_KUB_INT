@@ -7,3 +7,7 @@
 [Práctica 2.2 Creación de un Archivo Docker Compose](./README2_2.md)
 
 - Al finalizar esta práctica, serás capaz de crear un archivo docker-compose.yml de nivel intermedio que defina dos contenedores.
+
+[Práctica 2.3 Práctica 2.3 Configuración de un Contenedor Oracle DB con Docker Compose.](./README2_3.md)
+
+- Al finalizar esta práctica, serás capaz de definir un contenedor de Oracle Database en un archivo docker-compose.yml, configurando variables de entorno, volúmenes y red.
