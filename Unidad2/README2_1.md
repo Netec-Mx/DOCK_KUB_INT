@@ -155,6 +155,11 @@ show tables;
  
 ```cmd 
 docker-compose down
+
+# Eliminar al mismo tiempo los volúmenes
+docker-compose down --volumes
+
+
 ```
 
 7. Verifica los contenedores, volumenes, y red se eliminaron
@@ -173,9 +178,74 @@ docker network ls
 
 ## Resultado Esperado
 
-- La siguente captura de pantalla muestra  
+- La siguente captura de pantalla muestra el uso básico de docker-compose (la versión, ayuda, etc.)
 
 ![cmd](../images/u2_1_1.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra parte de la ayuda del comando: `docker-compose up`
+
+![cmd](../images/u2_1_2.png)
+
+- ¿Cuál es el uso de la opción `--dry-run` y/o `config`?
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la ayuda del comando `docker-compose build`
+
+![cmd](../images/u2_1_3.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la ejecución de `docker-compose up`
+
+![cmd](../images/u2_1_4.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la verificación de los recursos creados en el `docker-compose.yml`.
+
+![cmd](../images/u2_1_5.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la salida del comando `docker network inspect`, los dos contenedores definidos en el `docker-compose.yml`.
+
+![cmd](../images/u2_1_6.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la bitácora del contenedor de la base de datos MySQL.
+
+![cmd](../images/u2_1_7.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra como se ingresa al contenedor de la base de datos y de ahí al servidor de base de datos MySQL. Además verificamos la creación de la base de datos `dki-database`.
+
+![cmd](../images/u2_1_8.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra la salida del comando `docker down --volumes`, además de la verificación de recursos eliminados.
+
+![cmd](../images/u2_1_9.png)
+
+
+<br/>
+
+- La siguente captura de pantalla muestra el contenido del archivo `docker-compose.yml`.
+
+![cmd](../images/u2_1_10.png)
 
 
 <br/>
