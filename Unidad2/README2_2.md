@@ -41,6 +41,8 @@ cd practica_2_3
 touch docker-compose.yml
 ```
 
+<br/>
+
 ### Paso 2. Escribe el contenido del archivo `docker-compose.yml`
 
 Abre el archivo en tu editor de texto de preferencia y escribe las instrucciones necesarias que debe de contener el archivo YAML.
@@ -103,7 +105,7 @@ docker network ls
     mongosh --host localhost --port 27017
     ```
 
-    - Ejecuta el comando 
+    - Opcionalmente ejecuta los comandos siguientes
 
     ```javascript
 
