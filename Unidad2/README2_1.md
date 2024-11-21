@@ -80,19 +80,19 @@ networks:
 
 3. Identifica y comprende las secciones principales
 
-- **version**: Especifica la versión de Docker Compose utilizada
+  - **version**: Especifica la versión de Docker Compose utilizada
 
-- **services**: Lista los contenedores definidos:
+  - **services**: Lista los contenedores definidos:
 
-    - Servicio `web` que usa la imagen `nginx:latest` y expone el puerto `8888`.
+      - Servicio `web` que usa la imagen `nginx:latest` y expone el puerto `8888`.
 
-    - Servicio `db` que usa la imagen `mysql:5.7` y configura un volumen y variables de entorno.
+      - Servicio `db` que usa la imagen `mysql:5.7` y configura un volumen y variables de entorno.
 
-- **volumes**: Define un volumen persistente llamado `dki-db-volume`.
+  - **volumes**: Define un volumen persistente llamado `dki-db-volume`.
 
-- **networks**: Configura una red para que los servicios se comuniquen entre sí.
+  - **networks**: Configura una red para que los servicios se comuniquen entre sí.
 
-- Recuerda que es importante mantener la indentación correcta en cada nivel.
+  - Recuerda que es importante mantener la indentación correcta en cada nivel.
 
 <br/>
 
