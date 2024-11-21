@@ -158,3 +158,7 @@ docker network ls
 - MongoDB funcionando con persistencia de datos en el volumen `mongo-data`.
 
 - Conocimiento práctico sobre cómo definir servicios, volúmenes y redes en Docker Compose.
+
+- Captura de imagen que muestra la conexión a MongoDB, además de la iliminación de los contenedores creados en esta práctica.
+
+![mongosh](../images/u2_2_1.png)
