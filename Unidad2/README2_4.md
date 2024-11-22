@@ -29,11 +29,11 @@ Al finalizar esta práctica, serás capaz de añadir los microservicios del caso
 
 ### 1. Crear la carpeta de trabajo para esta práctica
 
-- Abre una terminal o consola y navega al directorio de las práctica del curso.
+- Abre una terminal o consola y navega al directorio de las prácticas del curso.
 
 - Crea una nueva carpeta llamada practica_2_4 y copia el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
 
-- **Nota**: También puedes ir al README2_3 y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
+
 
 ```cmd
 mkdir practica_2_4
@@ -41,10 +41,12 @@ cp practica_2_3/docker-compose.yml practica_2_4/
 cd practica_2_4
 ```
 
+- **Nota**: También puedes ir al README2_3 y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
+
 <br/>
 
 
-### 2. Creacar Scripts SQL
+### 2. Crear la estructura para los scripts de Oracle
 
 - Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo ```docker-compose.yml``` y coloca ahí el archivo ```init_schema.sql```:
 
@@ -59,7 +61,7 @@ code init_schema.sql
 
 
 ### 3. Crear Scripts de Oracle para inicialización.
-Configura un usuario llamado kuser con la contraseña dkpassword en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
+Configura un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
 - Establecer conexiones a la base de datos.
 
@@ -68,6 +70,7 @@ Configura un usuario llamado kuser con la contraseña dkpassword en la base de d
 - Insertar y modificar registros en las tablas.
 
 - Utilizar espacio en el tablespace asignado.
+
 
 ```sql
 -- Cambiamos de sesión
@@ -183,6 +186,11 @@ Ejemplo para verificar ms-deseos:
 ```cmd
 curl http://localhost:9084/api/deseos
 ```
+
+
+**Nota**:
+- Recuerda que la primera vez que usas los microservicios no se tiene información.
+
 
 ### 8. Detener los contenedores:
 
