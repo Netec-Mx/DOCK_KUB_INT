@@ -170,11 +170,18 @@ networks:
 
 ### 6. Levantar los contenedores con Docker Compose
 
+- Ejecuta el siguiente comando para verificar tu configuración
+
+```cmd
+docker-compose config
+```
+
 - Ejecuta el siguiente comando para desplegar los contenedores
 
 ```cmd
 docker-compose up -d
 ```
+<br/>
 
 ### 7. Verificar que los contenedores están funcionando correctamente:
 
