@@ -4,13 +4,19 @@
 
 Al finalizar esta práctica, serás capaz de añadir los microservicios del caso de estudio al archivo `docker-compose.yml`, conectándolos a la base de datos Oracle y definiendo redes para la comunicación entre ellos
 
+<br/>
+
 ## Objetivo Visual
 
 ![Microservicios Caso Estudio](../images/u2_4_1.png)
 
+<br/>
+
 ## Solicitudes HTTP
 
 ![Consumos Caso Estudio](../images/u2_4_2.png)
+
+<br/>
 
 ## Duración
 
