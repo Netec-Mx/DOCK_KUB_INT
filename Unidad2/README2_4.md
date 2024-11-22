@@ -194,6 +194,10 @@ docker volume ls
 docker network ls
 ```
 
+- Usa el comando `docker logs <nombre_contenedor>` por si tienes problemas.
+
+<br/>
+
 ### 8. Probar la conexión entre los servicios:
 
 - Usa una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
