@@ -1,4 +1,4 @@
-# Práctica 2.3 Creación de un Archivo Docker Compose Intermedio
+# Práctica 2.2 Creación de un Archivo Docker Compose Intermedio
 
 ## Objetivo
 
