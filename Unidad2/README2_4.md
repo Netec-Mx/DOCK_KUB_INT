@@ -52,7 +52,7 @@ docker rm -f ms-productos ms-deseos oracle-db
 
 ```cmd
 mkdir practica_2_4
-cp practica_2_3/docker-compose.yml practica_2_4/
+cp practica_2_3\docker-compose.yml practica_2_4
 cd practica_2_4
 ```
 
