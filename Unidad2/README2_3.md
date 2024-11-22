@@ -28,8 +28,8 @@ Al finalizar esta práctica, serás capaz de definir un contenedor de Oracle Dat
 1. Crea un directorio de trabajo para esta práctica:
 
 ```cmd
-mkdir practica_2_3_oracle
-cd practica_2_3_oracle
+mkdir practica_2_3
+cd practica_2_3
 ```
 
 2. Crea un archivo vacío llamado `docker-compose.yml`:
