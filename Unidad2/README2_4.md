@@ -27,7 +27,22 @@ Al finalizar esta práctica, serás capaz de añadir los microservicios del caso
 
 ## Instrucciones
 
-### 1. Crear la carpeta de trabajo para esta práctica
+### 1. Verificar contenedores existentes
+
+- Verifica los contenedores que actualmente tienes configurados
+
+```cmd
+docker ps
+docker ps -a
+```
+
+- Elimina los contenedores ms-productos, ms-deseos y oracle-db si es que existen.
+
+```cmd
+docker rm -f ms-productos ms-deseos oracle-db
+```
+
+### 2. Crear la carpeta de trabajo para esta práctica
 
 - Abre una terminal o consola y navega al directorio de las prácticas del curso.
 
@@ -46,7 +61,7 @@ cd practica_2_4
 <br/>
 
 
-### 2. Crear la estructura para los scripts de Oracle
+### 3. Crear la estructura para los scripts de Oracle
 
 - Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo ```docker-compose.yml``` y coloca ahí el archivo ```init_schema.sql```:
 
@@ -60,7 +75,7 @@ code init_schema.sql
 <br/>
 
 
-### 3. Crear Scripts de Oracle para inicialización.
+### 4. Crear Scripts de Oracle para inicialización.
 Configura un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
 - Establecer conexiones a la base de datos.
@@ -88,7 +103,7 @@ ALTER USER dkuser QUOTA UNLIMITED ON users;
 <br/>
 
 
-### 4. Actualizar el archivo docker-compose.yml para incluir los microservicios:
+### 5. Actualizar el archivo docker-compose.yml para incluir los microservicios:
 
 - Añade los servicios `ms-productos` y `ms-deseos` al archivo. Asegúrate de que cada servicio esté conectado a la red `dki-network` y que utilicen variables de entorno para la conexión con la base de datos Oracle.
 
@@ -152,7 +167,7 @@ networks:
 
 <br/>
 
-### 5. Levantar los contenedores con Docker Compose
+### 6. Levantar los contenedores con Docker Compose
 
 - Ejecuta el siguiente comando para desplegar los contenedores
 
@@ -160,7 +175,7 @@ networks:
 docker-compose up -d
 ```
 
-### 6. Verificar que los contenedores están funcionando correctamente:
+### 7. Verificar que los contenedores están funcionando correctamente:
 
 - Usa el comando `docker ps` para listar los contenedores en ejecución.
 
@@ -171,7 +186,7 @@ docker volume ls
 docker network ls
 ```
 
-### 7. Probar la conexión entre los servicios:
+### 8. Probar la conexión entre los servicios:
 
 - Usa una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
 
@@ -192,13 +207,14 @@ curl http://localhost:9084/api/deseos
 - Recuerda que la primera vez que usas los microservicios no se tiene información.
 
 
-### 8. Detener los contenedores:
+### 9. Detener los contenedores:
 
 - Cuando termines, detén y elimina los contenedores ejecutando:
 
 ```cmd
-docker-compose down --volums
+docker-compose down --volumes
 ```
+
 <br/>
 <br/>
 
