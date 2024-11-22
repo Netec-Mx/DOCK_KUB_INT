@@ -1,4 +1,4 @@
-# Práctica 2.1 - Explorando Docker Compose
+# Práctica 2.1 Explorando Docker Compose
 
 ## Objetivo
 

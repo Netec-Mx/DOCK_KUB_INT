@@ -11,3 +11,9 @@
 [Práctica 2.3 Práctica 2.3 Configuración de un Contenedor Oracle DB con Docker Compose.](./README2_3.md)
 
 - Al finalizar esta práctica, serás capaz de definir un contenedor de Oracle Database en un archivo docker-compose.yml, configurando variables de entorno, volúmenes y red.
+
+
+[Práctica 2.3 Práctica 2.4 Integración de Microservicios en Docker Compose](./README2_4.md)
+
+- Al finalizar la actividad serás capaz de integrar múltiples contenedores (base de datos y microservicios) en un único archivo Docker Compose.
+
