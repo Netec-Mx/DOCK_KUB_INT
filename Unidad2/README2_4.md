@@ -161,12 +161,12 @@ docker network create dki-network
         ```
 
 
-    - **ms-deseos**: Revisa su archivo `application.properties`.
+      - **ms-deseos**: Revisa su archivo `application.properties`.
 
-        ```text
-        spring.application.name=ms-deseos
-        server.port=9084
-        ```
+          ```text
+          spring.application.name=ms-deseos
+          server.port=9084
+          ```
 
 
 <br/>
@@ -194,7 +194,7 @@ docker network create dki-network
 
 3. Verifica los **Dockerfiles**:
 
-    - Asegúrate de que ambos Dockerfile incluyen la etapa para instalar curl en las imágenes de los microservicios.
+    - Asegúrate de que ambos **Dockerfile incluyen la etapa para instalar curl** en las imágenes de los microservicios.
 
     - Microservicios:
 
@@ -394,4 +394,27 @@ docker-compose down --volumes
 
 ## Resultado Esperado:
 
-Los microservicios `ms-productos` y `ms-deseos` deben estar funcionando correctamente, conectados entre sí y a la base de datos Oracle, a través de la red `dki-network`.
+- Los microservicios `ms-productos` y `ms-deseos` deben estar funcionando correctamente, conectados entre sí y a la base de datos Oracle, a través de la red `dki-network`.
+
+- Captura de pantalla que muestre la salida del comando `docker-compose up -d`. Nota que, aunque el estado de salud de uno de los microservicios inicialmente mostró un **Error**, en la siguiente ejecución del comando su estado cambió a **'Healthy'**. Observa cómo, en cada ejecución, se registran los estados `'Created'`, `'Started'` y `'Running'` para el microservicio **ms-deseos**. Finalmente, se verifica que los tres contenedores/servicios se encuentran en estado 'Healthy' al concluir.
+
+![docker-compose](../images/u2_4_3.png)
+
+- Captura de pantalla que muestra la salida del comando `docker-compose down --volumes`, junto con la verificación de que los contenedores y los recursos asociados (volúmenes) han sido eliminados. Ten en cuenta que la red utilizada es externa y no forma parte del archivo `docker-compose.yml`
+
+![docker-compose](../images/u2_4_1.png)
+
+- Captura de pantalla que muestra la salida del comando `docker logs dki-oradb`
+
+![docker-compose](../images/u2_4_4.png)
+
+- Captura de pantalla que muestre la salida del comando `docker-compose ps`, verificando que los contenedores y recursos definidos en el archivo `docker-compose.yml` se hayan creado correctamente y estén en ejecución según lo esperado.
+
+
+![docker-compose](../images/u2_4_5.png)
+
+
+- Captura de pantalla que muestre parte de la salida del comando `docker network inspect dki-network`. Observa que en la sección Containers se pueden visualizar los tres contenedores configurados en el archivo `docker-compose.yml`.
+
+
+![docker-compose](../images/u2_4_6.png)
