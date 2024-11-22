@@ -2,19 +2,19 @@
 
 ## Objetivo
 
-Al finalizar esta práctica, serás capaz de añadir los microservicios del caso de estudio al archivo `docker-compose.yml`, conectándolos a la base de datos Oracle y definiendo redes para la comunicación entre ellos
+Al finalizar esta práctica, serás capaz de añadir los microservicios del caso de estudio al archivo `docker-compose.yml`, conectándolos a la base de datos Oracle y definiendo redes para la comunicación entre ellos.
 
 <br/>
 
 ## Objetivo Visual
 
-![Microservicios Caso Estudio](../images/u2_4_1.png)
+![Microservicios Caso Estudio](../images/u2_4_7.png)
 
 <br/>
 
 ## Solicitudes HTTP
 
-![Consumos Caso Estudio](../images/u2_4_2.png)
+![Consumos Caso Estudio](../images/u2_4_8.png)
 
 <br/>
 
@@ -29,18 +29,23 @@ Al finalizar esta práctica, serás capaz de añadir los microservicios del caso
 
 ### 1. Verificar contenedores existentes
 
-- Verifica los contenedores que actualmente tienes configurados
+- Verifica los contenedores y recursos actualmente configurados
 
 ```cmd
 docker ps
 docker ps -a
+docker images
+docker volume ls
+docker network ls
 ```
 
-- Elimina los contenedores ms-productos, ms-deseos y oracle-db si es que existen.
+- Elimina los contenedores ms-productos, ms-deseos y dki-oradb si es que existen, pues usarás los mismos nombres.
 
 ```cmd
 docker rm -f ms-productos ms-deseos oracle-db
 ```
+
+<br/>
 
 ### 2. Crear la carpeta de trabajo para esta práctica
 
@@ -49,13 +54,11 @@ docker rm -f ms-productos ms-deseos oracle-db
 - Crea una nueva carpeta llamada practica_2_4 y copia el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
 
 
-
 ```cmd
 mkdir practica_2_4
 cp practica_2_3\docker-compose.yml practica_2_4
 cd practica_2_4
 ```
-
 
 - **Nota**: También puedes ir al README2_3 y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
 
@@ -64,7 +67,9 @@ cd practica_2_4
 
 ### 3. Crear la estructura para los scripts de Oracle
 
-- Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo ```docker-compose.yml``` y coloca ahí el archivo ```init_schema.sql```:
+- Los scripts deben de ejecutarse después del **setup** de Oracle Database.
+
+- Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo `docker-compose.yml` y coloca ahí el archivo `init_schema.sql`:
 
 ```cmd
 mkdir scripts
@@ -77,26 +82,29 @@ code init_schema.sql
 
 
 ### 4. Crear Scripts de Oracle para inicialización.
-Configura un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
-- Establecer conexiones a la base de datos.
+- Configura un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
-- Crear tablas dentro de su esquema.
+  - Establecer conexiones a la base de datos.
 
-- Insertar y modificar registros en las tablas.
+  - Crear tablas dentro de su esquema.
 
-- Utilizar espacio en el tablespace asignado.
+  - Insertar y modificar registros en las tablas.
 
+  - Utilizar espacio en el tablespace asignado.
+
+- Puedes usar el siguiente contenido en SQL para realizar la configuración:
 
 ```sql
--- Cambiamos de sesión
+
+-- Cambiamos de sesión a la PDB
 ALTER SESSION SET CONTAINER = XEPDB1;
 
--- Crear un esquema y asignar permisos
+-- Crear el usuario y asignar permisos
 CREATE USER dkuser IDENTIFIED BY dkpassword;
 GRANT CONNECT, RESOURCE TO dkuser;
 
--- Espacio ilimitado en el tablespace users.
+-- Establecer el espacio ilimitado en el tablespace users.
 ALTER USER dkuser QUOTA UNLIMITED ON users;
 
 ```
@@ -104,63 +112,216 @@ ALTER USER dkuser QUOTA UNLIMITED ON users;
 <br/>
 
 
-### 5. Actualizar el archivo docker-compose.yml para incluir los microservicios:
+### 5. Verificar y Crear la Red Externa dki-network
+
+Antes de ejecutar tu configuración con Docker Compose, asegúrate de que la red externa dki-network esté creada. Sigue estos pasos:
+
+- Verifica si la red ya existe: Ejecuta el siguiente comando para listar las redes existentes en Docker:
+
+```cmd
+docker network ls
+
+```
+
+- Crea la red si no existe: Si no encuentras dki-network en la lista, puedes crearla con el siguiente comando:
+
+
+```cmd
+docker network create dki-network
+```
+ 
+**Nota**: Esto creará una red de tipo bridge (predeterminada) para ser utilizada como red externa.
+
+<br/>
+
+### 6. Configurar y Verificar los Microservicios
+
+1. Verifica las propiedades de configuración de los microservicios:
+
+    - Asegúrate de que los archivos `application.properties` contengan las configuraciones necesarias para cada microservicio.
+
+    - Microservicios:
+
+      - **ms-productos**: Revisa su archivo `application.properties`.
+
+        ```text
+        spring.application.name=ms-productos
+        server.port=9081
+
+        # Configuracion de la base de datos
+        spring.datasource.url=jdbc:oracle:thin:@dki-oradb:1521/XEPDB1
+        spring.datasource.username=dkuser
+        spring.datasource.password=dkpassword
+        spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+        # Configuracion de JPA e Hibernate
+        spring.jpa.hibernate.ddl-auto=update
+        spring.jpa.show-sql=true
+        spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
+        ```
+
+
+    - **ms-deseos**: Revisa su archivo `application.properties`.
+
+        ```text
+        spring.application.name=ms-deseos
+        server.port=9084
+        ```
+
+
+<br/>
+
+2. Genera los archivos JAR:
+
+    - Si los JAR generados no corresponden con las versiones esperadas, compila los proyectos nuevamente.
+
+    - Comando para compilar:
+
+      ```cmd
+      .\mvnw clean package --Dmaven.test.skip=true
+      ```
+
+    - Ubicación del JAR generado:
+
+      - Para **ms-productos**: target/ms-productos-<version>.jar
+
+      - Para **ms-deseos**: target/ms-deseos-<version>.jar
+
+      - **Nota**: Haste este momento la versión podría ser `0.0.1-SNAPSHOT.jar`
+
+
+<br/>
+
+3. Verifica los **Dockerfiles**:
+
+    - Asegúrate de que ambos Dockerfile incluyen la etapa para instalar curl en las imágenes de los microservicios.
+
+    - Microservicios:
+
+      - **ms-productos**: Revisa el contenido del Dockerfile.
+
+      ```dockerfile
+        FROM openjdk:21-jdk-slim
+        WORKDIR /app
+        COPY target/ms-productos-0.0.1-SNAPSHOT.jar app.jar
+        EXPOSE 9081
+        RUN apt-get update && apt-get install -y curl
+        ENTRYPOINT ["java", "-jar", "app.jar"]
+      ```
+
+      - **ms-deseos**: Revisa el contenido del Dockerfile.
+
+      ```dockerfile
+        FROM openjdk:21-jdk-slim
+        WORKDIR /app
+        COPY target/ms-deseos-0.0.1-SNAPSHOT.jar app.jar
+        EXPOSE 9084
+        RUN apt-get update && apt-get install -y curl
+        ENTRYPOINT ["java", "-jar", "app.jar"]
+      ```
+
+<br/>
+
+4. Genera las imágenes Docker:
+
+    - Crea las imágenes para cada microservicio utilizando sus respectivos Dockerfile.
+
+    - Comandos para generar las imágenes:
+
+      - Para ms-productos:
+
+        ```cmd
+        docker build -t ms-productos:<version> .
+        ```
+
+      - Para ms-deseos:
+        ```cmd
+        docker build -t ms-deseos:<version> .
+        ```
+
+      - Reemplaza <version> con el número de versión correspondiente
+
+<br/>
+
+5. Confirma las versiones en el archivo `docker-compose.yml`:
+
+  - Asegúrate de que las versiones de las imágenes generadas sean las mismas especificadas en el archivo `docker-compose.yml`. Si no coinciden, actualiza el archivo `docker-compose.yml` con las versiones correctas.
+
+<br/>
+
+### 7. Actualizar el archivo docker-compose.yml para incluir los microservicios:
 
 - Añade los servicios `ms-productos` y `ms-deseos` al archivo. Asegúrate de que cada servicio esté conectado a la red `dki-network` y que utilicen variables de entorno para la conexión con la base de datos Oracle.
 
 ```yaml
-version: "3.9"
-
 services:
-  dki-oracle-db:
-    container_name: oracle-db   
-    image: container-registry.oracle.com/database/express:21.3.0-xe   
+  dki-oradb:
+    container_name: dki-oradb
+    image: container-registry.oracle.com/database/express:21.3.0-xe
     environment:
-      ORACLE_PWD: Netec_123 
+      ORACLE_PWD: Netec_123
       ORACLE_SID: XE
       ORACLE_PDB: XEPDB1
       ORACLE_CHARACTERSET: AL32UTF8
     ports:
-      - "1521:1521"  
-      - "5500:5500"   
+      - "1521:1521"
+      - "5500:5500"
     volumes:
-      - dki-oracle-data:/opt/oracle/oradata   
-      - ./scripts:/opt/oracle/scripts/startup  # Montar el directorio de scripts
+      - dki-volume:/opt/oracle/oradata
+      - ./scripts:/opt/oracle/scripts/startup
     networks:
-      - dki-network   
-volumes:
-  dki-oracle-data:   
-networks:
-  dki-network:   
-     driver: bridge
+      - dki-network
+    healthcheck:
+      test: ["CMD", "sh", "-c", "echo 'SELECT 1 FROM DUAL;' | sqlplus system/Netec_123@localhost:1521/XE"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
 
   ms-productos:
-    image: ms-productos:1.0
+    image: ms-productos:1.2  
     container_name: ms-productos
     ports:
       - "9081:9081"
     environment:
-      USER_DEMO : Netec
+      USER_DEMO: Netec
     networks:
       - dki-network
     depends_on:
-      - oracle-db
+      dki-oradb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9081/productos"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
 
   ms-deseos:
-    image: ms-deseos:1.0
+    image: ms-deseos:1.1
     container_name: ms-deseos
     ports:
       - "9084:9084"
     environment:
-      MS_PRODUCTOS_URL: http://ms-productos:9081/api/productos
+      MS_PRODUCTOS_URL: http://ms-productos:9081/productos
     networks:
       - dki-network
     depends_on:
-      - ms-productos
+      ms-productos:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:9084/deseos"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  dki-volume:
 
 networks:
   dki-network:
-    driver: bridge
+    external: true
 
 ```
 
@@ -168,7 +329,7 @@ networks:
 
 <br/>
 
-### 6. Levantar los contenedores con Docker Compose
+### 8. Levantar los contenedores con Docker Compose
 
 - Ejecuta el siguiente comando para verificar tu configuración
 
@@ -183,7 +344,7 @@ docker-compose up -d
 ```
 <br/>
 
-### 7. Verificar que los contenedores están funcionando correctamente:
+### 9. Verificar que los contenedores están funcionando correctamente:
 
 - Usa el comando `docker ps` para listar los contenedores en ejecución.
 
@@ -198,7 +359,7 @@ docker network ls
 
 <br/>
 
-### 8. Probar la conexión entre los servicios:
+### 10. Probar la conexión entre los servicios:
 
 - Usa una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
 
@@ -219,7 +380,7 @@ curl http://localhost:9084/api/deseos
 - Recuerda que la primera vez que usas los microservicios no se tiene información.
 
 
-### 9. Detener los contenedores:
+### 11. Detener los contenedores:
 
 - Cuando termines, detén y elimina los contenedores ejecutando:
 
@@ -229,6 +390,7 @@ docker-compose down --volumes
 
 <br/>
 <br/>
+
 
 ## Resultado Esperado:
 
