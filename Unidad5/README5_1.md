@@ -1,11 +1,12 @@
-# Práctica 4.1 Spring Cloud Kubernetes
+# Práctica 5.1 Spring Cloud Gateway
 
 ## Objetivo
 
+ 
 
 ## Duración
 
-90 minutos
+60 minutos
 
 <br/>
 

@@ -3,15 +3,12 @@
 
 <br/>
 
----
- 
 [Práctica 3.1 Validación del Clúster de Kubernetes](./README3_1.md)
 
 - Esta práctica consiste en realizar pruebas estructuradas para verificar el correcto funcionamiento del clúster, asegurándote de que puede manejar recursos básicos y responder adecuadamente a comandos administrativos.
 
 <br/>
 
----
 
 [Práctica 3.2 Customización de Propiedades](./README3_2.md)
 
@@ -19,7 +16,6 @@
 
 <br/>
 
----
 
 [Práctica 3.3 Docker Registry](./README3_3.md)
 
@@ -27,7 +23,6 @@
 
 <br/>
 
----
 
 [Práctica 3.4 Configuración con ConfigMaps y Secrets](./README3_4.md)
 

@@ -6,7 +6,7 @@
 
 ## Duración
 
-25 minutos
+20 minutos
 
 <br/>
 
