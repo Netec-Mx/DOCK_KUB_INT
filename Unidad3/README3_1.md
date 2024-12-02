@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de realizar una validación completa d
 
 ## Duración
 
-20 minutos
+25 minutos
 
 <br/>
 
