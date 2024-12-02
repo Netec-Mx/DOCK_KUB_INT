@@ -6,6 +6,11 @@ Al finalizar esta práctica, serás capaz de implementar y consumir microservici
 ## Duración
 30 minutos
 
+## Objetivo Visual
+
+![Microservicio Caso de Estudio ](../images/u1_5_8.png)
+<br/>
+
 ## Pasos sugeridos para la implementación
 
 1. **Crear el microservicio**:  `ms-productos`:
