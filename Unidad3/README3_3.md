@@ -4,6 +4,10 @@
 
 - Al finalizar esta práctica, serás capaz de crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
 
+### Objetivo Visual
+
+![Docker Image](../images/u3_3_3.png)
+
 ## Duración
 
 25 minutos
@@ -197,3 +201,12 @@ Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
 - Este artículo aborda la implementación del versionado semántico en arquitecturas de microservicios, destacando su importancia para la gestión de dependencias y la compatibilidad entre servicios.
 
     [Mejores Prácticas de Versionado Semático para Microservicios](https://peerdh.com/es/blogs/programming-insights/semantic-versioning-best-practices-for-microservices)
+
+
+<br/>
+<br/>
+
+## Resultado Esperado
+
+- Captura de pantalla que muestra si Docker esta corriendo correctamente
+
