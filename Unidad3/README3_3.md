@@ -18,18 +18,9 @@
 
 <br/>
 
+## Instrucciones
 
-### Práctica 3.3 Docker Registry
-
-#### Objetivo
-- Al finalizar esta práctica, serás capaz de crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
-
-
-<br/>
-
-### Instrucciones
-
-#### **1. Verificar el estado del Docker Daemon**
+### **1. Verificar el estado del Docker Daemon**
 Asegúrate de que Docker esté ejecutándose en tu máquina de desarrollo Windows, en el entorno de curso.
 
 ```bash
@@ -39,7 +30,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 <br/>
 
-#### **2. Construir la imagen del microservicio**
+### **2. Construir la imagen del microservicio**
 
 1. Accede al directorio de cada microservicio (por ejemplo, `ms-productos`).
 
@@ -72,7 +63,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 <br/>
 
-#### **3. Verificar las imágenes construidas**
+### **3. Verificar las imágenes construidas**
 
 Lista las imágenes locales para confirmar que las imágenes han sido creadas correctamente:
 
@@ -90,7 +81,7 @@ ms-deseos        1.0       <IMAGE_ID>     X seconds ago    X MB
 <br/>
 
 
-#### **4. Iniciar sesión en Docker Hub**
+### **4. Iniciar sesión en Docker Hub**
 
 Inicia sesión con tu cuenta de Docker Hub:
 ```bash
@@ -105,7 +96,7 @@ Login Succeeded
 
 <br/>
 
-#### **5. Etiquetar las imágenes para Docker Hub**
+### **5. Etiquetar las imágenes para Docker Hub**
 
 Asigna etiquetas a las imágenes con el formato adecuado para Docker Hub. Reemplaza `TU_USUARIO` por tu nombre de usuario en Docker Hub.
 
@@ -123,7 +114,7 @@ Asigna etiquetas a las imágenes con el formato adecuado para Docker Hub. Reempl
 
 <br/>
 
-#### **6. Publicar las imágenes en Docker Hub**
+### **6. Publicar las imágenes en Docker Hub**
 
 Sube las imágenes al Docker Registry:
 
@@ -154,7 +145,7 @@ Sube las imágenes al Docker Registry:
 
 <br/>
 
-#### **7. Verificar las imágenes en Docker Hub**
+### **7. Verificar las imágenes en Docker Hub**
 
 Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
 
@@ -212,5 +203,7 @@ Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
 
 ## Resultado Esperado
 
-- Captura de pantalla que muestra si Docker esta corriendo correctamente
+- Captura de pantalla que muestra si Docker esta corriendo correctamente.
+
+![](../images/u3_3_1.png)
 
