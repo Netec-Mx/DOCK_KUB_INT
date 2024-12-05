@@ -16,7 +16,6 @@ Al finalizar esta práctica, serás capaz de retomar los microservicios desarrol
 
 ## Instrucciones
 
----
 
 ### 1. **Preparación del Entorno**  
 
