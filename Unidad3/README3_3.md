@@ -5,6 +5,7 @@
 - Al finalizar esta práctica, serás capaz de crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
 
 <br/>
+
 ## Objetivo Visual
 
 ![Docker Image](../images/u3_3_3.png)
