@@ -175,6 +175,7 @@ Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
    ```
 
 <br/>
+<br/>
 
 ### Recomendadiones
 
@@ -184,6 +185,8 @@ Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
 
 3. Documenta los pasos realizados y los comandos utilizados en un archivo `README` en los repositorios de los microservicios.
 
+<br/>
+<br/>
 
 ### Referencias
 
