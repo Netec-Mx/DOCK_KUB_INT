@@ -314,12 +314,6 @@ kubectl get pods -o wide
 
 ### **5. Probar el despliegue con `curl` o Postman**
 
-Con el cambio al tipo `NodePort`, las instrucciones deben ajustarse para aprovechar la exposición del servicio a través de los puertos del nodo:
-
-
-<br/>
-
-
 1. **Verificar los servicios están expuestos correctamente:**
 
    ```bash
@@ -362,6 +356,51 @@ Esto mostrará los servicios con sus puertos configurados, incluyendo los `NodeP
 
    Configura los métodos HTTP, encabezados y payload según los endpoints definidos en tus microservicios.
 
----
 
-Con estas modificaciones, ahora aprovecharás el tipo `NodePort` para acceder directamente a los servicios a través de la IP del nodo y los puertos expuestos.
+<br/>
+<br/>
+
+## Resultado Esperado
+
+Aquí tienes una tabla que resume los endpoints de cada microservicio (`ms-productos` y `ms-deseos`) con detalles sobre sus métodos HTTP, rutas, y descripciones.
+
+<br/>
+
+### **Endpoints de `ms-productos`**
+
+| Método HTTP | Endpoint               | Descripción                                                 | Ejemplo de uso                        |
+|-------------|------------------------|-------------------------------------------------------------|---------------------------------------|
+| GET         | `/productos`           | Lista todos los productos.                                  | `curl http://<IP>:30081/productos`    |
+| GET         | `/productos/{id}`      | Obtiene un producto por su ID.                              | `curl http://<IP>:30081/productos/1`  |
+| POST        | `/productos`           | Crea un nuevo producto.                                     | `curl -X POST -H "Content-Type: application/json" -d '{"nombre":"Producto 1","descripcion":"Desc 1","precio":100.0,"stock":10}' http://<IP>:30081/productos` |
+| PUT         | `/productos/{id}`      | Actualiza un producto existente por su ID.                  | `curl -X PUT -H "Content-Type: application/json" -d '{"nombre":"Producto Actualizado","descripcion":"Nueva Desc","precio":150.0,"stock":20}' http://<IP>:30081/productos/1` |
+| DELETE      | `/productos/{id}`      | Elimina un producto por su ID.                              | `curl -X DELETE http://<IP>:30081/productos/1` |
+
+
+<br/>
+
+
+### **Endpoints de `ms-deseos`**
+
+| Método HTTP | Endpoint               | Descripción                                                 | Ejemplo de uso                        |
+|-------------|------------------------|-------------------------------------------------------------|---------------------------------------|
+| GET         | `/deseos`              | Lista todos los deseos actuales.                           | `curl http://<IP>:30084/deseos`       |
+| POST        | `/deseos/{idProducto}` | Agrega un producto a la lista de deseos por su ID.         | `curl -X POST http://<IP>:30084/deseos/1` |
+| DELETE      | `/deseos/{idProducto}` | Elimina un producto de la lista de deseos por su ID.       | `curl -X DELETE http://<IP>:30084/deseos/1` |
+
+
+<br/>
+
+### **Notas importantes:**
+
+1. **IP y Puertos:** 
+   - Reemplaza `<IP>` con la IP del nodo del clúster.
+   - `30081` es el puerto NodePort para `ms-productos`.
+   - `30084` es el puerto NodePort para `ms-deseos`.
+
+2. **Formato del payload:** Asegúrate de enviar el JSON correcto para las operaciones `POST` y `PUT`. 
+   - Para `ms-productos`, usa el esquema de la entidad `Producto` para las solicitudes.
+
+3. **Pruebas:** Puedes usar `curl` o Postman para probar los endpoints con los ejemplos proporcionados.
+
+
