@@ -8,6 +8,11 @@
 
 30 minutos
 
+
+## Objetivo Visual
+
+![Caso de Estudio](../images/u3_2_1.png)
+
 <br/>
 
 ## Instrucciones
