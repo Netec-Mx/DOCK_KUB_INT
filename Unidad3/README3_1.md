@@ -354,7 +354,20 @@ Estas instrucciones te ayudarán a verificar que el usuario `dkuser` puede reali
 ![kubectl](../images/u3_1_6.png)
 
  
- <br/>
+<br/>
+
+- Captura de pantalla que muestra la instancia de Oracle Database está desplegada correctamente en el clúster de Kubernetes:
+
+    - El Pod está corriendo sin problemas.
+    - El servicio está configurado y accesible a través del puerto `30011`.
+    - El almacenamiento persistente está enlazado correctamente con un PVC y un PV.
+    - Los ConfigMaps y Secrets están disponibles para la configuración y credenciales de la base de datos.
+    - Los logs confirman que la instancia está operativa y funcional.
+
+Esto indica que todos los recursos necesarios para el funcionamiento de Oracle Database en Kubernetes están configurados y operativos.
+
+
+![kubectl](../images/u3_1_10.png)
 
  <br/>
 
