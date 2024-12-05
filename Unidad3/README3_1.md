@@ -371,6 +371,20 @@ Esto indica que todos los recursos necesarios para el funcionamiento de Oracle D
 
  <br/>
 
+- Captura de pantalla que muestra el estado del Worker Node
+
+1. **Imagen de Oracle Database**:
+   - La imagen está correctamente descargada y almacenada en el nodo, con un tamaño de 3.75GB.
+   - Está identificada como `21.3.0-xe`.
+
+2. **Contenedor en Ejecución**:
+   - Un contenedor basado en esta imagen está en ejecución, asociado con el nombre `oracle-db-cbf654876-z5kx9`.
+   - Este contenedor está en estado `Running`, indicando que la base de datos Oracle está operativa.
+
+![crictl](../images/u3_1_11.png)
+
+ <br/>
+
 - Captura de pantalla que muestra la configuración de una conexión en SQL Developer para el usuario `dkuser`, utilizando el servicio `XEPDB1`, alojado en el host `192.168.0.79` y el puerto `30011`. El estado de la conexión confirma que está configurada correctamente y es funcional. Es importante tener en cuenta que tanto la dirección IP como el puerto pueden variar, aunque en un entorno Kubernetes, el puerto generalmente estará dentro del rango de los treinta mil.
 
 ![kubectl](../images/u3_1_7.png)
