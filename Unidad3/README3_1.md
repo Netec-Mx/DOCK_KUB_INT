@@ -205,6 +205,8 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    - **Puerto**: `1521`.
 
 
+<br/>
+
 #### Paso 1. Iniciar SQL Developer
 1. Abre SQL Developer.
 
@@ -294,7 +296,7 @@ Realiza una consulta para verificar que el registro fue insertado:
 SELECT * FROM TEST_TABLE;
 ```
 
----
+<br/>
 
 ##### 5. **Eliminar la Tabla**
 
