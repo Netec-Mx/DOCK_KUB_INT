@@ -135,13 +135,13 @@ Genera los archivos JAR para cada microservicio ejecutando los siguientes comand
 - Si estás utilizando Maven:
  
   ```bash
-  mvn clean package -DskipTests
+  mvn clean package -Dmaven.test.skip=true
   ```
 
 - Si estás utilizando el wrapper de Maven:
  
   ```bash
-  ./mvnw clean package -DskipTests
+  ./mvnw clean package -Dmaven.test.skip=true
   ```
 
 El argumento `-Dmaven.test.skip=true` permite omitir la ejecución de pruebas unitarias para acelerar el proceso de construcción.
