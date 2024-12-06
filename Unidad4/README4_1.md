@@ -51,11 +51,11 @@
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
 
-    Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para habilitar la capacidad de descubrimiento en Kubernetes.
+Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para habilitar la capacidad de descubrimiento en Kubernetes.
 
-        - Abre el archivo de la clase principal de la aplicación, llamados `MsProductosApplication` y `MsDeseosApplication`.
+- Abre el archivo de la clase principal de la aplicación, llamados `MsProductosApplication` y `MsDeseosApplication`.
 
-        - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
+- Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
     ```java
     import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -73,9 +73,9 @@
 
 <br/>
 
-        - **Archivo**: `MsDeseosApplication.java`
+- **Archivo**: `MsDeseosApplication.java`
 
-   ```java
+    ```java
     package com.example.msdeseos;
 
     import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -96,13 +96,13 @@
 
 3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
  
-    Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
+Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
 
-        - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
+- Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
-        - Elimina la referencia el atributo url en la anotación `@FeignClient`.
+    - Elimina la referencia el atributo url en la anotación `@FeignClient`.
 
-        - **Archivo: `ProductoFeignClient.java`**
+    - **Archivo: `ProductoFeignClient.java`**
 
     ```java
     package com.netec.app.feign;
