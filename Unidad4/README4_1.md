@@ -308,6 +308,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
         ```
 
 <br/>
+<br/>
 
 ### **Paso 3: Verificar los Secrets**
 
@@ -322,6 +323,8 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
    - `kubectl get secrets`  
    - `kubectl describe secrets <nombre-del-secret>`
 
+<br/>
+<br/>
 
 ### **Paso 4: Configurar los Deployments de Kubernetes**
 
@@ -363,6 +366,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
    ```
 
 <br/>
+<br/>
 
 
 ### **Paso 5: Configurar los Services Kubernetes**
@@ -386,6 +390,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
    ```
 
 <br/>
+<br/>
 
 ### **Paso 6: Validación Final con Postman o curl**
 
@@ -396,6 +401,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 2. **Valida las respuestas y el comportamiento del balanceador**:
    - Observa los cambios en las respuestas para diferentes Pods (metadata de Pods, nombres).
 
+<br/>
 <br/>
 
 ### **Paso 7: Observación de Pods y Logs**
