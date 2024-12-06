@@ -31,20 +31,18 @@
    - Spring Cloud Kubernetes Client LoadBalancer
    - Spring Boot Starter Actuator
 
+   **Notas:**
 
-   **Notas:** 
+   1. Usa las versiones compatibles con Spring Boot y Kubernetes. Consulta las [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
 
-    1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
+   2. En la elaboración del material de curso (Nov/2024) se usó la versión 3.1.2 con Spring Boot 3.3.5.
 
-    2. En la elaboración del material de curso (Nov/2024) se uso la versión 3.1.2 con Spring Boot 3.3.5
+   3. Para sincronizar las dependencias del proyecto y asegurarte de que las configuraciones del archivo `pom.xml` sean reconocidas en tu entorno de desarrollo, sigue estos pasos:
 
-    3. Para sincronizar las dependencias del proyecto y asegurarte de que las configuraciones del archivo `pom.xml` sean reconocidas en tu entorno de desarrollo, sigue estos pasos:
+      a. Abre el archivo `pom.xml` del proyecto en tu IDE.  
+      b. Presiona la combinación de teclas **[Alt] + [F5]** para iniciar la actualización del proyecto Maven.  
+      c. En el cuadro de diálogo "Update Maven Project", verifica las opciones necesarias y confirma presionando el botón **OK**.
 
-        a. Abre el archivo `pom.xml` del proyecto en tu IDE.  
-        b. Presiona la combinación de teclas **[Alt] + [F5]** para iniciar la actualización del proyecto Maven.  
-        c. En el cuadro de diálogo "Update Maven Project", verifica las opciones necesarias y confirma presionando el botón **OK**.  
-
- 
 <br/>
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
@@ -258,7 +256,7 @@ Agrega las propiedades necesarias para habilitar la integración con Spring Clou
 
     - Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
 
-    - **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio.
+    - **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio deplegado en Kubernetes
 
 <br/>
 
