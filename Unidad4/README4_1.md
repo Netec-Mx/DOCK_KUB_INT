@@ -70,7 +70,7 @@
  
    - Modifica la clase `ProductoClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
-   - Elimina la referencia a la propiedad `ms-peliculas.url` en la anotación `@FeignClient`.
+   - Elimina la referencia el atributo url en la anotación `@FeignClient`.
 
 **Archivo: `ProductoFeignClient.java`**
 
