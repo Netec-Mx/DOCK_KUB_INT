@@ -26,28 +26,34 @@
 
 1. **Agrega las dependencias necesarias en el archivo `pom.xml`** para cada microservicio:
 
-   - Spring Boot Starter Actuator.
-   - Spring Cloud Kubernetes Config.
-   - Spring Cloud Kubernetes Discovery.
    - Spring Cloud Kubernetes Client
    - Spring Cloud Kubernetes Client Config
    - Spring Cloud Kubernetes Client LoadBalancer
-   
+
+   - Spring Boot Starter Actuator.
+   - Spring Cloud Kubernetes Config.
+   - Spring Cloud Kubernetes Discovery.
 
    
    **Notas:** 
 
-   1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
+    1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
 
     2. En la elaboración del material de curso (Nov/2024) se uso la versión 3.1.2 con Spring Boot 3.3.5
+
+    3. Para asegurarte de que las nuevas dependencias y configuraciones del archivo `pom.xml` sean reconocidas en tu entorno de desarrollo, sigue estos pasos:
+
+        - Abre el archivo `pom.xml` del proyecto en tu IDE.
+        - Presiona la combinación de teclas **[Alt] + [F5]** para actualizar el proyecto Maven. Esto sincronizará las dependencias y configuraciones con tu entorno de desarrollo.
+
 
 <br/>
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
 
-    Anota la clase principal de cada aplicación con @EnableDiscoveryClient para habilitar la capacidad de descubrimiento en Kubernetes.
+    Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para habilitar la capacidad de descubrimiento en Kubernetes.
 
-        - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` y `MsDeseosApplication`.
+        - Abre el archivo de la clase principal de la aplicación, llamados `MsProductosApplication` y `MsDeseosApplication`.
 
         - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
@@ -67,7 +73,7 @@
 
 <br/>
 
-    **Archivo**: `MsDeseosApplication.java`
+        - **Archivo**: `MsDeseosApplication.java`
 
    ```java
     package com.example.msdeseos;
@@ -92,11 +98,11 @@
  
     Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
 
-    - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
+        - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
-    - Elimina la referencia el atributo url en la anotación `@FeignClient`.
+        - Elimina la referencia el atributo url en la anotación `@FeignClient`.
 
-    **Archivo: `ProductoFeignClient.java`**
+        - **Archivo: `ProductoFeignClient.java`**
 
     ```java
     package com.netec.app.feign;
@@ -150,11 +156,17 @@
             this.productoService = peliculaService;
         }
 
+        /*
+        POD_NAME: Obtiene el nombre del Pod desde la metadata.
+        POD_ID: Obtiene la IP del Pod desde el estado.
+       */
+
         @GetMapping
         public Map<String, Object> listarTodos() {
             return Map.of(
                 "POD_NAME", environment.getProperty("POD_NAME", "Unknown"),   
                 "POD_ID", environment.getProperty("POD_ID", "Unkown"), 
+                "SALUDO", enritonment.getProperty("config.saludo", "Unknown"),
                 "productos", pproductoService.listarTodos());
         }
         // Líneas omitidas
@@ -166,11 +178,9 @@
 
 5. **Configura los archivos `application.properties` o `application.yml`**:
 
-    - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
+    - Agrega las propiedades necesarias para habilitar la integración con Spring Cloud Kubernetes y Actuator
 
-    - **Nota**: Algunas propiedades ya se configuraron en las prácticas de la Unidad 3, solo verifica que se encuentren y agrega las necesarias para Spring Cloud Kubernetes
-
-
+ 
     ```properties
 
     # Spring Cloud Kubernetes
@@ -221,7 +231,7 @@
     - **Nota:** Recuerda utilizar tu nombre de usuario de Docker Hub al etiquetar las imágenes.
 
 <br/>
-
+<br/>
 
 ### **Paso 2: Crear ConfigMaps para las Configuraciones de los Microservicios**
 
@@ -231,7 +241,8 @@
 
     **Elementos a incluir en el ConfigMap:**
     - Nombre del ConfigMap.
-    - Clave-valor de las propiedades (`app.name`, `app.environment`).
+    - Clave-valor de las propiedades (`app.name`, `app.environment`, etc.).
+    - No olvides a config.saludo : Bienvenido <tu-nombre> al curso Docker Kubernetes Intermedio
    
     **Comando para crear el ConfigMap:**
 
@@ -240,63 +251,73 @@
     kubectl apply -f ms-deseos-configmap.yml
     ```
    
-   **Salida esperada:**
-  
-    ```
-    configmap/ms-productos-config creado
-    configmap/ms-deseos-config creado
-    ```
 
+    - **Notas**:
+      - Dado que ambos microservicios están, por defecto, en el espacio de nombres `default`, puedes utilizar `oracle-db` como identificador. Sin embargo, para mayor claridad y especificidad, puedes usar una URL completa como: 
+
+        ```plaintext
+        DB_URL: jdbc:oracle:thin:@oracle-db.default.svc.cluster.local:1521/XEPDB1
+        ```
 
 <br/>
 
+### **Paso 3: Verificar los Secrets**
 
-### **Paso 3: Configurar Liveness y Readiness Probes**
+1. Asegúrate de tener configurados los **Secrets** que contienen el usuario y la contraseña de la base de datos, ambos codificados en **Base64**.  
 
-1. **Codifica un YAML para los Pods de los microservicios**:
-   - Define las `probes` en la especificación del contenedor:
-     - **Liveness Probe**: Utiliza el endpoint `/actuator/health/liveness`.
-     - **Readiness Probe**: Utiliza el endpoint `/actuator/health/readiness`.
-   
-   - Configura el tiempo de inicio, período de sondeo y tiempo de espera.
+2. Los valores para el usuario y la contraseña son:  
+   - **Usuario:** `dkuser`  
+   - **Contraseña:** `dkpassword`  
 
-   **Comando para aplicar el archivo de despliegue:**
+3. Utiliza los siguientes comandos para verificar la existencia y contenido de los **Secrets**:  
+
+   - `kubectl get secrets`  
+   - `kubectl describe secrets <nombre-del-secret>`
+
+
+### **Paso 4: Configurar los Deployments de Kubernetes**
+
+#### Instrucciones para configurar el Deployment de los microservicios
+
+1. **Especifica las `Liveness Probe` y `Readiness Probe`:**
+   - Define las `probes` en la especificación del contenedor dentro del archivo YAML del Deployment:
+     - **Liveness Probe**: Configura el endpoint `/actuator/health/liveness`.
+     - **Readiness Probe**: Configura el endpoint `/actuator/health/readiness`.
+   - Asegúrate de incluir los tiempos de inicio (`initialDelaySeconds`), períodos de sondeo (`periodSeconds`) y tiempos de espera (`timeoutSeconds`).
+
+2. **Configura el número de réplicas:**
+   - Especifica que el **Deployment** de `ms-productos` debe tener **dos réplicas** del contenedor para garantizar alta disponibilidad y balanceo de carga. Esto se logra ajustando el valor del atributo `replicas` en la definición del Deployment.
+
+3. **Usa las imágenes Docker registradas:**
+   - Asegúrate de utilizar las imágenes Docker creadas y registradas previamente en el Paso 1 en la configuración del contenedor dentro del Deployment.
+
+4. **Configura las variables de entorno `POD_NAME` y `POD_ID`:**
+   - Agrega las siguientes variables de entorno para que los contenedores obtengan automáticamente datos del Pod:
+     1. **`POD_NAME`**: Configúrala para obtener el nombre del Pod desde `metadata.name`.
+     2. **`POD_ID`**: Configúrala para obtener la IP del Pod desde `status.podIP`.
+   - Utiliza la sección `env` en la especificación del contenedor para definir estas variables, haciendo referencia a los campos correspondientes mediante `fieldRef`.
+
+5. **Establece recursos para el contenedor:**
+   - Configura límites (`limits`) y solicitudes (`requests`) de recursos en la especificación del contenedor:
+     - **Requests**:
+       - CPU: `100m`.
+       - Memoria: `256Mi`.
+     - **Limits**:
+       - CPU: `500m`.
+       - Memoria: `512Mi`.
+
+6. **Aplica el archivo YAML:**
+   - Una vez completado el archivo YAML del Deployment, aplica la configuración en el clúster con los siguientes comandos:
+
    ```bash
    kubectl apply -f ms-productos-deployment.yml
    kubectl apply -f ms-deseos-deployment.yml
    ```
 
-
-   **Salida esperada:**
-   ```
-   deployment.apps/ms-productos creado
-   deployment.apps/ms-deseos creado
-   ```
-
 <br/>
 
 
-### **Paso 4: Ajustar Recursos para los Contenedores**
-
-1. **Configura los recursos del contenedor en los YAML de despliegue**:
-   
-   - **Request**:
-     - CPU: `100m`.
-     - Memoria: `256Mi`.
-   - **Limit**:
-     - CPU: `500m`.
-     - Memoria: `512Mi`.
-
-2. **Verifica los límites aplicados:**
-
-   ```bash
-   kubectl describe pod <nombre-del-pod>
-   ```
-
-<br/>
-
-
-### **Paso 5: Configurar y Probar el Balanceador de Carga**
+### **Paso 5: Configurar los Services Kubernetes**
 
 1. **Codifica el YAML para el servicio de tipo LoadBalancer**:
    
@@ -310,27 +331,15 @@
    kubectl apply -f ms-deseos-service.yml
    ```
 
-   **Salida esperada:**
-   ```
-   service/ms-productos creado
-   service/ms-deseos creado
-   ```
-
+ 
 2. **Verifica la dirección IP asignada:**
    ```bash
    kubectl get services
    ```
-   
-   **Salida esperada:**
-   ```
-   NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-   ms-productos     LoadBalancer   10.96.123.45     35.227.145.1  8080:31234/TCP   2m
-   ms-deseos        LoadBalancer   10.96.123.46     35.227.145.2  8081:31235/TCP   2m
-   ```
 
 <br/>
 
-### **Paso 6: Validación Final con Postman**
+### **Paso 6: Validación Final con Postman o curl**
 
 1. **Realiza las pruebas en Postman**:
 
@@ -352,12 +361,6 @@
    ```bash
    kubectl logs <nombre-del-pod>
    ```
-
-   **Salida esperada:**
-   ```
-   2024-12-05 12:34:56 INFO  com.example.Application - Started Application in 5.23 seconds
-   ```
-
 
 <br/>
 <br/>
