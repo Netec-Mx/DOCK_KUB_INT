@@ -84,71 +84,72 @@
 
    - Elimina la referencia a la propiedad `ms-peliculas.url` en la anotación `@FeignClient`.
 
-   **Archivo: `ProductoFeignClient.java`**
-   ```java
-   package com.netec.app.feign;
+**Archivo: `ProductoFeignClient.java`**
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+```java
+    package com.netec.app.feign;
 
-@FeignClient(name = "ms-productos")
-public interface ProductoFeignClient {
+    import org.springframework.cloud.openfeign.FeignClient;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.PathVariable;
 
-	@GetMapping("/productos/{id}")
-	Producto obtenerProductoPorId(@PathVariable Long id);
+    @FeignClient(name = "ms-productos")
+    public interface ProductoFeignClient {
 
-	class Producto {
-		private Long id;
-		private String nombre;
-		private String descripcion;
-		private Double precio;
-		private Integer stock;
+        @GetMapping("/productos/{id}")
+        Producto obtenerProductoPorId(@PathVariable Long id);
 
-		// Getters y Setters
-		public Long getId() {
-			return id;
-		}
+        class Producto {
+            private Long id;
+            private String nombre;
+            private String descripcion;
+            private Double precio;
+            private Integer stock;
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+            // Getters y Setters
+            public Long getId() {
+                return id;
+            }
 
-		public String getNombre() {
-			return nombre;
-		}
+            public void setId(Long id) {
+                this.id = id;
+            }
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+            public String getNombre() {
+                return nombre;
+            }
 
-		public String getDescripcion() {
-			return descripcion;
-		}
+            public void setNombre(String nombre) {
+                this.nombre = nombre;
+            }
 
-		public void setDescripcion(String descripcion) {
-			this.descripcion = descripcion;
-		}
+            public String getDescripcion() {
+                return descripcion;
+            }
 
-		public Double getPrecio() {
-			return precio;
-		}
+            public void setDescripcion(String descripcion) {
+                this.descripcion = descripcion;
+            }
 
-		public void setPrecio(Double precio) {
-			this.precio = precio;
-		}
+            public Double getPrecio() {
+                return precio;
+            }
 
-		public Integer getStock() {
-			return stock;
-		}
+            public void setPrecio(Double precio) {
+                this.precio = precio;
+            }
 
-		public void setStock(Integer stock) {
-			this.stock = stock;
-		}
-	}
-}
+            public Integer getStock() {
+                return stock;
+            }
 
-   ```
+            public void setStock(Integer stock) {
+                this.stock = stock;
+            }
+        }
+    }
+
+```
  
 <br/>
 
