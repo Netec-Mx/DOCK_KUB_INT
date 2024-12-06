@@ -24,7 +24,8 @@
 
 ### **Paso 1: Configuración de Spring Cloud Kubernetes en los Microservicios**
 
-1. **Agrega las dependencias necesarias en el archivo `pom.xml`**:
+1. **Agrega las dependencias necesarias en el archivo `pom.xml`** para cada microservicio:
+
    - Spring Boot Starter Actuator.
    - Spring Cloud Kubernetes Config.
    - Spring Cloud Kubernetes Discovery.
@@ -35,13 +36,15 @@
 
    
    **Notas:** 
-   1. Usa las versiones compatibles con Spring Boot y Kubernetes. [Versiones](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
+   1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
 
-    2. En la elaboración del material de curso se uso la versión 3.1.2 con Spring Boot 3.3.5
+    2. En la elaboración del material de curso (Nov/2024) se uso la versión 3.1.2 con Spring Boot 3.3.5
 
 <br/>
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
+
+Anota la clase principal de cada aplicación con @EnableDiscoveryClient para habilitar la capacidad de descubrimiento en Kubernetes.
 
    - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` y `MsDeseosApplication`.
 
@@ -61,13 +64,31 @@
    }
    ```
 
-   **Nota:** Repite esta configuración para ambos microservicios (`ms-productos` y `ms-deseos`). 
+   **Archivo**: `MsDeseosApplication.java`
+
+   ```java
+    package com.example.msdeseos;
+
+    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+    @SpringBootApplication
+    @EnableDiscoveryClient
+    public class MsDeseosApplication {
+        public static void main(String[] args) {
+            SpringApplication.run(MsDeseosApplication.class, args);
+        }
+    }
+   ```
 
 <br/>
 
 
 3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
  
+ Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
+
    - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
    - Elimina la referencia el atributo url en la anotación `@FeignClient`.
@@ -95,45 +116,7 @@
             private Integer stock;
 
             // Getters y Setters
-            public Long getId() {
-                return id;
-            }
-
-            public void setId(Long id) {
-                this.id = id;
-            }
-
-            public String getNombre() {
-                return nombre;
-            }
-
-            public void setNombre(String nombre) {
-                this.nombre = nombre;
-            }
-
-            public String getDescripcion() {
-                return descripcion;
-            }
-
-            public void setDescripcion(String descripcion) {
-                this.descripcion = descripcion;
-            }
-
-            public Double getPrecio() {
-                return precio;
-            }
-
-            public void setPrecio(Double precio) {
-                this.precio = precio;
-            }
-
-            public Integer getStock() {
-                return stock;
-            }
-
-            public void setStock(Integer stock) {
-                this.stock = stock;
-            }
+           
         }
     }
 
@@ -141,12 +124,16 @@
  
 <br/>
 
-4. **Configura tu microservicio de Productos** 
+4. **Modifcar el controlador para incluir metadatos del Pod** 
 
 - Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
+- **Archivo**: `ProductoController.java`
+
 ```java
  
+ // Package & Imports omitidos
+
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -174,13 +161,9 @@ public class ProductoController {
 
 5. **Configura los archivos `application.properties` o `application.yml`**:
 
-   - Define los valores para:
-     - `spring.application.name` con el nombre del microservicio.
-     - Puerto en el que correrá el microservicio.
+- Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
 
-   - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
-   
-   - **Nota**: Ya se realizó en las prácticas de la Unidad 3, solo verifica que se encuentren.
+- **Nota**: Algunas propiedades ya se configuraron en las prácticas de la Unidad 3, solo verifica que se encuentren y agrega las necesarias para Spring Cloud Kubernetes
 
 
 ```properties
@@ -190,9 +173,6 @@ spring.cloud.kubernetes.disovery.enabled=true
 spring.cloud.kubernetes.secrets.enable-api=true
 spring.cloud.kubernetes.discovery.all-namespaces=true
 
-# Perfiles  OJO
-spring.profiles.active=dev
-
 # Spring Boot Actuator
 management.endpoints.web.exposure.include=*
 management.endpoint.health.show-details=always
@@ -200,49 +180,39 @@ management.endpoint.health.probes.enabled=true
 management.health.livenessstate.enabled=true
 management.health.readinessstate.enabled=true
 
+# Perfiles
+spring.profiles.active=dev
+
 ```
 <br/>
 
 
 
-5. **Verifica que los endpoints de Actuator estén habilitados**:
-   - Configura los endpoints necesarios en `application.properties` o `application.yml`:
-
-     ```properties
- 
-
-     
-     ```
-   - Esto permite que Kubernetes pueda consultar los estados de `liveness` y `readiness`.
-
-<br/>
-
-
 6. **Crear los artefactos para cada microservicio**
 
-    1. Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
+- Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
 
-    2. Usa tu herramienta de construcción (Maven) para compilar el proyecto y generar los artefactos JAR correspondientes.
+- Usa tu herramienta de construcción (Maven) para compilar el proyecto y generar los artefactos JAR correspondientes.
 
-    3. Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como `ms-productos-<versión>.jar` y `ms-deseos-<versión>.jar`.
+- Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como `ms-productos-<versión>.jar` y `ms-deseos-<versión>.jar`.
 
-    4. Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
+- Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
 
-    **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio.
+- **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio.
 
 <br/>
 
 7. **Registra las nuevas imagenes en Docker Hub**
 
-    1. Inicia sesión en Docker Hub desde la terminal para autenticarte con tu cuenta.
+- Inicia sesión en Docker Hub desde la terminal para autenticarte con tu cuenta.
    
-    2. Etiqueta las imágenes locales para asociarlas a tu repositorio en Docker Hub.
+- Etiqueta las imágenes locales para asociarlas a tu repositorio en Docker Hub.
 
-    3. Sube las imágenes etiquetadas a tu repositorio en Docker Hub.
+- Sube las imágenes etiquetadas a tu repositorio en Docker Hub.
 
-    4. Verifica en la plataforma de Docker Hub que las imágenes `ms-productos` y `ms-deseos` se hayan registrado correctamente en tu cuenta.
+- Verifica en la plataforma de Docker Hub que las imágenes `ms-productos` y `ms-deseos` se hayan registrado correctamente en tu cuenta.
 
-    **Nota:** Recuerda utilizar tu nombre de usuario de Docker Hub al etiquetar las imágenes.
+- **Nota:** Recuerda utilizar tu nombre de usuario de Docker Hub al etiquetar las imágenes.
 
 <br/>
 
@@ -251,13 +221,14 @@ management.health.readinessstate.enabled=true
 
 1. **Codifica un archivo YAML para ConfigMap**:
    
-   - Define un ConfigMap para cada microservicio (`ms-productos` y `ms-deseos`) que incluya configuraciones personalizadas, como propiedades específicas del entorno.
+- Define un ConfigMap para cada microservicio (`ms-productos` y `ms-deseos`) que incluya configuraciones personalizadas, como propiedades específicas del entorno.
 
-   **Elementos a incluir en el ConfigMap:**
-   - Nombre del ConfigMap.
-   - Clave-valor de las propiedades (`app.name`, `app.environment`).
+**Elementos a incluir en el ConfigMap:**
+    - Nombre del ConfigMap.
+    - Clave-valor de las propiedades (`app.name`, `app.environment`).
    
-   **Comando para crear el ConfigMap:**
+**Comando para crear el ConfigMap:**
+
    ```bash
    kubectl apply -f ms-productos-configmap.yml
    kubectl apply -f ms-deseos-configmap.yml
@@ -279,6 +250,7 @@ management.health.readinessstate.enabled=true
    - Define las `probes` en la especificación del contenedor:
      - **Liveness Probe**: Utiliza el endpoint `/actuator/health/liveness`.
      - **Readiness Probe**: Utiliza el endpoint `/actuator/health/readiness`.
+   
    - Configura el tiempo de inicio, período de sondeo y tiempo de espera.
 
    **Comando para aplicar el archivo de despliegue:**
@@ -299,6 +271,7 @@ management.health.readinessstate.enabled=true
 ### **Paso 4: Ajustar Recursos para los Contenedores**
 
 1. **Configura los recursos del contenedor en los YAML de despliegue**:
+   
    - **Request**:
      - CPU: `100m`.
      - Memoria: `256Mi`.
