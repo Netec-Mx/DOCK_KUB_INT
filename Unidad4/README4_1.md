@@ -245,20 +245,21 @@ Agrega las propiedades necesarias para habilitar la integración con Spring Clou
 <br/>
 
 
-
 6. **Crear los artefactos para cada microservicio**
 
-    - Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
+- Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
 
-    - Usa tu herramienta de construcción (Maven) para compilar el proyecto y generar los artefactos JAR correspondientes.
+- Usa tu herramienta de construcción (**Maven**) para compilar el proyecto y generar los artefactos JAR correspondientes.
 
-    - Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como `ms-productos-<versión>.jar` y `ms-deseos-<versión>.jar`.
+- Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como:
 
-    - Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
+  - `ms-productos-<versión>.jar`
+  - `ms-deseos-<versión>.jar`
 
-    - **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio deplegado en Kubernetes
+- Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
 
-<br/>
+> **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio desplegado en Kubernetes.
+
 
 
 7. **Registra las nuevas imagenes en Docker Hub**
