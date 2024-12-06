@@ -264,7 +264,7 @@ ALTER PLUGGABLE DATABASE XEPDB2 OPEN;
 <br/>
 <br/>
 
-## Resultados Esperados
+## **Resultados Esperados**
 
 - Captura de pantalla que muestra los archivos y script creados.
 
@@ -291,3 +291,15 @@ ALTER PLUGGABLE DATABASE XEPDB2 OPEN;
 
 <br/>
 
+
+- Captura de pantalla que muestra la configuración de la conexión a Oracle Database 21, desplegado como un servicio en el clúster de Kubernetes. La conexión se realizó desde SQL Developer en una máquina con Windows, utilizando el usuario `sys` y la contraseña `dkpassword`.
+
+![K8s](../images/u3_o_5.png)
+
+<br/>
+
+- Captura de pantalla que muestra la configuración de la conexión a Oracle Database 21, desplegado como un servicio en el clúster de Kubernetes. La conexión se realizó desde SQL Developer en una máquina con Windows, utilizando el usuario `dkuser` y la contraseña `dkpassword`.
+
+![K8s](../images/u3_o_6.png)
+
+<br/>

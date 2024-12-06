@@ -27,3 +27,9 @@
 [Práctica 3.4 Configuración con ConfigMaps y Secrets](./README3_4.md)
 
 - Esta práctica aborda el manejo seguro y eficiente de configuraciones en Kubernetes. Crearás ConfigMaps para almacenar configuraciones generales y Secrets para datos sensibles. También desplegarás los microservicios del caso de estudio, comprobando que estos objetos Kubernetes son aplicados correctamente y cumplen su propósito.
+
+<br/>
+
+- Guía de instalación de Oracle 21c en Kubernetes
+
+[Guía Oracle/Kubernetes](../Oralce-Kubertenes-Guide.md)
