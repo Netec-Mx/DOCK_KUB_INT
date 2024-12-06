@@ -28,21 +28,23 @@
    - Spring Boot Starter Actuator.
    - Spring Cloud Kubernetes Config.
    - Spring Cloud Kubernetes Discovery.
+   - Spring Cloud Kubernetes Client
+   - Spring Cloud Kubernetes Client Config
+   - Spring Cloud Kubernetes Client LoadBalancer
    
-   **Nota:** Usa las versiones compatibles con Spring Boot y Kubernetes.
+
+   
+   **Notas:** 
+   1. Usa las versiones compatibles con Spring Boot y Kubernetes. [Versiones](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
+
+    2. En la elaboración del material de curso se uso la versión 3.1.2 con Spring Boot 3.3.5
 
 <br/>
 
-2. **Configura los archivos `application.properties` o `application.yml`**:
-   - Define los valores para:
-     - `spring.application.name` con el nombre del microservicio.
-     - Puerto en el que correrá el microservicio.
-   - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
+2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
 
-<br/>
+   - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` y `MsDeseosApplication`.
 
-3. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
-   - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` o `MsDeseosApplication`.
    - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
    ```java
@@ -63,23 +65,9 @@
 
 <br/>
 
-4. **Verifica que los endpoints de Actuator estén habilitados**:
-   - Configura los endpoints necesarios en `application.properties` o `application.yml`:
-     ```properties
-     management.endpoints.web.exposure.include=*
-     management.endpoint.health.show-details=always
 
-     # Configuracion para Kubernetes DNS
-     spring.cloud.kubernetes.discovery.enabled=true
-     spring.cloud.kubernetes.secrets.enable-api=true
-     spring.cloud.kubernetes.discovery.all-namespaces=true
-     
-     ```
-   - Esto permite que Kubernetes pueda consultar los estados de `liveness` y `readiness`.
-
-<br/>
-
-5. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
+3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
+ 
    - Modifica la clase `ProductoClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
    - Elimina la referencia a la propiedad `ms-peliculas.url` en la anotación `@FeignClient`.
@@ -152,6 +140,82 @@
 ```
  
 <br/>
+
+4. **Configura tu microservicio de Productos** 
+
+    - Cambia el controlador de tu microservicio para que veas el nombre e IP del Pod que atiende tu solicitud
+
+```java
+ 
+
+@RestController
+@RequestMapping("/productos")
+public class ProductoController {
+
+	private final IProductoService productoService;
+
+    @Autowired
+    private Environment environment;
+
+    public ProductoController(ProductoServiceImpl productoService) {
+        this.productoService = peliculaService;
+    }
+
+    @GetMapping
+    public Map<String, Object> listarTodos() {
+        return Map.of(
+            "POD_NAME", environment.getProperty("POD_NAME", "Unknown"),   
+            "POD_ID", environment.getProperty("POD_ID", "Unkown"), 
+            "productos", pproductoService.listarTodos());
+    }
+    // Líneas omitidas
+}
+
+```
+
+5. **Configura los archivos `application.properties` o `application.yml`**:
+
+   - Define los valores para:
+     - `spring.application.name` con el nombre del microservicio.
+     - Puerto en el que correrá el microservicio.
+   - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
+   - **Nota**: Ya se realizó en las prácticas de la Unidad 3, solo verifica que se encuentren.
+
+
+```properties
+
+# Spring Cloud Kubernetes
+spring.cloud.kubernetes.disovery.enabled=true
+spring.cloud.kubernetes.secrets.enable-api=true
+spring.cloud.kubernetes.discovery.all-namespaces=true
+
+# Perfiles  OJO
+spring.profiles.active=dev
+
+# Spring Boot Actuator
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+management.endpoint.health.probes.enabled=true
+management.health.livenessstate.enabled=true
+management.health.readinessstate.enabled=true
+
+```
+<br/>
+
+
+
+5. **Verifica que los endpoints de Actuator estén habilitados**:
+   - Configura los endpoints necesarios en `application.properties` o `application.yml`:
+
+     ```properties
+ 
+
+     
+     ```
+   - Esto permite que Kubernetes pueda consultar los estados de `liveness` y `readiness`.
+
+<br/>
+
 
 6. **Crear los artefactos para cada microservicio**
 
@@ -312,3 +376,22 @@
    2024-12-05 12:34:56 INFO  com.example.Application - Started Application in 5.23 seconds
    ```
 
+
+<br/>
+<br/>
+
+## **Resultados Esperados**
+
+1. Visualización de los ConfigMaps y Secrets configurados para los microservicios en el clúster de Kubernetes.
+
+2. Visualización clara y organizada de los Deployments y Pods, confirmando que están desplegados correctamente.
+
+3. Visualización de los Services creados, verificando sus tipos, puertos y conectividad.
+
+4. Validación del balanceo de carga al enviar solicitudes al servicio de productos, distribuyendo las peticiones entre las réplicas configuradas.
+
+5. Acceso y validación de los endpoints de Actuator en cualquiera de los microservicios, confirmando el correcto funcionamiento de los probes y métricas.
+
+6. Ejecución y respuesta adecuada al consumir los endpoints estándar de Actuator (`/health`, `/metrics`, etc.).
+
+7. Consumo exitoso de los endpoints principales ("normales") de los microservicios, confirmando que responden de manera correcta y esperada.
