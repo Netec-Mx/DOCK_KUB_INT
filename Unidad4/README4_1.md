@@ -49,11 +49,11 @@
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
 
-Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para habilitar la capacidad de descubrimiento en Kubernetes.
+    Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para habilitar la capacidad de descubrimiento en Kubernetes.
 
-- Abre el archivo de la clase principal de la aplicación, llamados `MsProductosApplication` y `MsDeseosApplication`.
+    - Abre el archivo de la clase principal de la aplicación, llamados `MsProductosApplication` y `MsDeseosApplication`.
 
-- Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
+    - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
     ```java
     import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -74,20 +74,46 @@ Anota la clase principal de cada aplicación con `@EnableDiscoveryClient` para h
 - **Archivo**: `MsDeseosApplication.java`
 
     ```java
-    package com.example.msdeseos;
+    package com.netec.app;
 
-    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
     import org.springframework.boot.SpringApplication;
     import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+    import org.springframework.cloud.openfeign.EnableFeignClients;
 
-    @SpringBootApplication
     @EnableDiscoveryClient
+    @EnableFeignClients
+    @SpringBootApplication
     public class MsDeseosApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(MsDeseosApplication.class, args);
         }
+
     }
    ```
+
+
+- **Archivo**: `MsProductosApplication.java`
+
+    ```java
+        package com.netec.app;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+    @EnableDiscoveryClient
+    @SpringBootApplication
+    public class MsProductosApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(MsProductosApplication.class, args);
+        }
+
+    }
+   ```
+
 
 <br/>
 
