@@ -144,7 +144,8 @@
 
 Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
-    - **Archivo**: `ProductoController.java`
+- **Archivo**: `ProductoController.java`
+
 
     ```java
     
@@ -184,7 +185,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
         /*
         POD_NAME: Obtiene el nombre del Pod desde la metadata.
         POD_ID: Obtiene la IP del Pod desde el estado.
-    */
+       */
 
         @GetMapping
         public Map<String, Object> listarTodos() {
