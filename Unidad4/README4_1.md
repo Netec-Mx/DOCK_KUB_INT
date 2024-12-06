@@ -111,7 +111,7 @@
     - **Archivo: `ProductoFeignClient.java`**
 
     ```java
-        package com.netec.app.feign;
+    package com.netec.app.feign;
 
     import org.springframework.cloud.openfeign.FeignClient;
     import org.springframework.web.bind.annotation.GetMapping;
@@ -140,7 +140,7 @@
  
 <br/>
 
-4. **Modifcar el controlador para incluir metadatos del Pod** 
+4. **Modificar el controlador de ms-productos para incluir metadatos del Pod** 
 
     - Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
