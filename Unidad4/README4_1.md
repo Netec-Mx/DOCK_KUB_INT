@@ -221,13 +221,13 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 
 5. **Configura los archivos `application.properties` o `application.yml`**:
 
-Agrega las propiedades necesarias para habilitar la integración con Spring Cloud Kubernetes y Actuator, en ambos microservicios.
+- Agrega las propiedades necesarias para habilitar la integración con Spring Cloud Kubernetes y Actuator, en ambos microservicios.
 
  
     ```properties
 
     # Spring Cloud Kubernetes
-    spring.cloud.kubernetes.disovery.enabled=true
+    spring.cloud.kubernetes.discovery.enabled=true
     spring.cloud.kubernetes.secrets.enable-api=true
     spring.cloud.kubernetes.discovery.all-namespaces=true
 
@@ -242,6 +242,9 @@ Agrega las propiedades necesarias para habilitar la integración con Spring Clou
     spring.profiles.active=dev
 
     ```
+
+- **Nota:** Evita incluir caracteres especiales, como acentos, incluso en los comentarios del archivo `properties`, ya que esto podría provocar la excepción `MalformedInputException` durante el proceso de empaquetado.
+
 <br/>
 
 
@@ -261,6 +264,7 @@ Agrega las propiedades necesarias para habilitar la integración con Spring Clou
 > **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio desplegado en Kubernetes.
 
 
+<br/>
 
 7. **Registra las nuevas imagenes en Docker Hub**
 
