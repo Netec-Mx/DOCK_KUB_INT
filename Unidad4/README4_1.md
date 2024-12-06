@@ -36,6 +36,7 @@
 
    
    **Notas:** 
+
    1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
 
     2. En la elaboración del material de curso (Nov/2024) se uso la versión 3.1.2 con Spring Boot 3.3.5
@@ -44,27 +45,29 @@
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
 
-Anota la clase principal de cada aplicación con @EnableDiscoveryClient para habilitar la capacidad de descubrimiento en Kubernetes.
+    Anota la clase principal de cada aplicación con @EnableDiscoveryClient para habilitar la capacidad de descubrimiento en Kubernetes.
 
-   - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` y `MsDeseosApplication`.
+        - Abre el archivo de la clase principal de la aplicación, generalmente llamado `MsProductosApplication` y `MsDeseosApplication`.
 
-   - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
+        - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
-   ```java
-   import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-   import org.springframework.boot.SpringApplication;
-   import org.springframework.boot.autoconfigure.SpringBootApplication;
+    ```java
+    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-   @SpringBootApplication
-   @EnableDiscoveryClient
-   public class MsProductosApplication {
-       public static void main(String[] args) {
-           SpringApplication.run(MsProductosApplication.class, args);
-       }
-   }
+    @SpringBootApplication
+    @EnableDiscoveryClient
+    public class MsProductosApplication {
+        public static void main(String[] args) {
+            SpringApplication.run(MsProductosApplication.class, args);
+        }
+    }
    ```
 
-   **Archivo**: `MsDeseosApplication.java`
+<br/>
+
+    **Archivo**: `MsDeseosApplication.java`
 
    ```java
     package com.example.msdeseos;
@@ -87,15 +90,15 @@ Anota la clase principal de cada aplicación con @EnableDiscoveryClient para hab
 
 3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
  
- Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
+    Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
 
-   - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
+    - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
-   - Elimina la referencia el atributo url en la anotación `@FeignClient`.
+    - Elimina la referencia el atributo url en la anotación `@FeignClient`.
 
-**Archivo: `ProductoFeignClient.java`**
+    **Archivo: `ProductoFeignClient.java`**
 
-```java
+    ```java
     package com.netec.app.feign;
 
     import org.springframework.cloud.openfeign.FeignClient;
@@ -120,99 +123,102 @@ Anota la clase principal de cada aplicación con @EnableDiscoveryClient para hab
         }
     }
 
-```
+    ```
  
 <br/>
 
 4. **Modifcar el controlador para incluir metadatos del Pod** 
 
-- Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
+    - Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
-- **Archivo**: `ProductoController.java`
+    - **Archivo**: `ProductoController.java`
 
-```java
- 
- // Package & Imports omitidos
+    ```java
+    
+    // Package & Imports omitidos
 
-@RestController
-@RequestMapping("/productos")
-public class ProductoController {
+    @RestController
+    @RequestMapping("/productos")
+    public class ProductoController {
 
-	private final IProductoService productoService;
+        private final IProductoService productoService;
 
-    @Autowired
-    private Environment environment;
+        @Autowired
+        private Environment environment;
 
-    public ProductoController(ProductoServiceImpl productoService) {
-        this.productoService = peliculaService;
+        public ProductoController(ProductoServiceImpl productoService) {
+            this.productoService = peliculaService;
+        }
+
+        @GetMapping
+        public Map<String, Object> listarTodos() {
+            return Map.of(
+                "POD_NAME", environment.getProperty("POD_NAME", "Unknown"),   
+                "POD_ID", environment.getProperty("POD_ID", "Unkown"), 
+                "productos", pproductoService.listarTodos());
+        }
+        // Líneas omitidas
     }
 
-    @GetMapping
-    public Map<String, Object> listarTodos() {
-        return Map.of(
-            "POD_NAME", environment.getProperty("POD_NAME", "Unknown"),   
-            "POD_ID", environment.getProperty("POD_ID", "Unkown"), 
-            "productos", pproductoService.listarTodos());
-    }
-    // Líneas omitidas
-}
+    ```
 
-```
+<br/>
 
 5. **Configura los archivos `application.properties` o `application.yml`**:
 
-- Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
+    - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
 
-- **Nota**: Algunas propiedades ya se configuraron en las prácticas de la Unidad 3, solo verifica que se encuentren y agrega las necesarias para Spring Cloud Kubernetes
+    - **Nota**: Algunas propiedades ya se configuraron en las prácticas de la Unidad 3, solo verifica que se encuentren y agrega las necesarias para Spring Cloud Kubernetes
 
 
-```properties
+    ```properties
 
-# Spring Cloud Kubernetes
-spring.cloud.kubernetes.disovery.enabled=true
-spring.cloud.kubernetes.secrets.enable-api=true
-spring.cloud.kubernetes.discovery.all-namespaces=true
+    # Spring Cloud Kubernetes
+    spring.cloud.kubernetes.disovery.enabled=true
+    spring.cloud.kubernetes.secrets.enable-api=true
+    spring.cloud.kubernetes.discovery.all-namespaces=true
 
-# Spring Boot Actuator
-management.endpoints.web.exposure.include=*
-management.endpoint.health.show-details=always
-management.endpoint.health.probes.enabled=true
-management.health.livenessstate.enabled=true
-management.health.readinessstate.enabled=true
+    # Spring Boot Actuator
+    management.endpoints.web.exposure.include=*
+    management.endpoint.health.show-details=always
+    management.endpoint.health.probes.enabled=true
+    management.health.livenessstate.enabled=true
+    management.health.readinessstate.enabled=true
 
-# Perfiles
-spring.profiles.active=dev
+    # Perfiles
+    spring.profiles.active=dev
 
-```
+    ```
 <br/>
 
 
 
 6. **Crear los artefactos para cada microservicio**
 
-- Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
+    - Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en tu entorno de desarrollo.
 
-- Usa tu herramienta de construcción (Maven) para compilar el proyecto y generar los artefactos JAR correspondientes.
+    - Usa tu herramienta de construcción (Maven) para compilar el proyecto y generar los artefactos JAR correspondientes.
 
-- Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como `ms-productos-<versión>.jar` y `ms-deseos-<versión>.jar`.
+    - Verifica que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como `ms-productos-<versión>.jar` y `ms-deseos-<versión>.jar`.
 
-- Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
+    - Asegúrate de que los artefactos cumplen con los requisitos funcionales y de configuración antes de continuar con los siguientes pasos del despliegue.
 
-- **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio.
+    - **Nota:** Estos artefactos serán usados en la construcción de imágenes Docker para cada microservicio.
 
 <br/>
 
+
 7. **Registra las nuevas imagenes en Docker Hub**
 
-- Inicia sesión en Docker Hub desde la terminal para autenticarte con tu cuenta.
+    - Inicia sesión en Docker Hub desde la terminal para autenticarte con tu cuenta.
    
-- Etiqueta las imágenes locales para asociarlas a tu repositorio en Docker Hub.
+    - Etiqueta las imágenes locales para asociarlas a tu repositorio en Docker Hub.
 
-- Sube las imágenes etiquetadas a tu repositorio en Docker Hub.
+    - Sube las imágenes etiquetadas a tu repositorio en Docker Hub.
 
-- Verifica en la plataforma de Docker Hub que las imágenes `ms-productos` y `ms-deseos` se hayan registrado correctamente en tu cuenta.
+    - Verifica en la plataforma de Docker Hub que las imágenes `ms-productos` y `ms-deseos` se hayan registrado correctamente en tu cuenta.
 
-- **Nota:** Recuerda utilizar tu nombre de usuario de Docker Hub al etiquetar las imágenes.
+    - **Nota:** Recuerda utilizar tu nombre de usuario de Docker Hub al etiquetar las imágenes.
 
 <br/>
 
@@ -221,24 +227,25 @@ spring.profiles.active=dev
 
 1. **Codifica un archivo YAML para ConfigMap**:
    
-- Define un ConfigMap para cada microservicio (`ms-productos` y `ms-deseos`) que incluya configuraciones personalizadas, como propiedades específicas del entorno.
+    - Define un ConfigMap para cada microservicio (`ms-productos` y `ms-deseos`) que incluya configuraciones personalizadas, como propiedades específicas del entorno.
 
-**Elementos a incluir en el ConfigMap:**
+    **Elementos a incluir en el ConfigMap:**
     - Nombre del ConfigMap.
     - Clave-valor de las propiedades (`app.name`, `app.environment`).
    
-**Comando para crear el ConfigMap:**
+    **Comando para crear el ConfigMap:**
 
-   ```bash
-   kubectl apply -f ms-productos-configmap.yml
-   kubectl apply -f ms-deseos-configmap.yml
-   ```
+    ```bash
+    kubectl apply -f ms-productos-configmap.yml
+    kubectl apply -f ms-deseos-configmap.yml
+    ```
    
    **Salida esperada:**
-   ```
-   configmap/ms-productos-config creado
-   configmap/ms-deseos-config creado
-   ```
+  
+    ```
+    configmap/ms-productos-config creado
+    configmap/ms-deseos-config creado
+    ```
 
 
 <br/>
@@ -267,6 +274,7 @@ spring.profiles.active=dev
    ```
 
 <br/>
+
 
 ### **Paso 4: Ajustar Recursos para los Contenedores**
 
