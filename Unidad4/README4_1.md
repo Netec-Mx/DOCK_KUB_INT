@@ -55,17 +55,23 @@
 
     - Agrega la anotación `@EnableDiscoveryClient` para permitir que los microservicios se registren y descubran en Kubernetes.
 
+   - **Archivo**: `MsProductosApplication.java`
+
     ```java
-    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+    package com.netec.app;
+
     import org.springframework.boot.SpringApplication;
     import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-    @SpringBootApplication
     @EnableDiscoveryClient
+    @SpringBootApplication
     public class MsProductosApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(MsProductosApplication.class, args);
         }
+
     }
    ```
 
@@ -92,28 +98,6 @@
 
     }
    ```
-
-
-- **Archivo**: `MsProductosApplication.java`
-
-    ```java
-        package com.netec.app;
-
-    import org.springframework.boot.SpringApplication;
-    import org.springframework.boot.autoconfigure.SpringBootApplication;
-    import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
-    @EnableDiscoveryClient
-    @SpringBootApplication
-    public class MsProductosApplication {
-
-        public static void main(String[] args) {
-            SpringApplication.run(MsProductosApplication.class, args);
-        }
-
-    }
-   ```
-
 
 <br/>
 
