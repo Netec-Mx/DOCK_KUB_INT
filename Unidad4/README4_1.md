@@ -29,12 +29,9 @@
    - Spring Cloud Kubernetes Client
    - Spring Cloud Kubernetes Client Config
    - Spring Cloud Kubernetes Client LoadBalancer
+   - Spring Boot Starter Actuator
 
-   - Spring Boot Starter Actuator.
-   - Spring Cloud Kubernetes Config.
-   - Spring Cloud Kubernetes Discovery.
 
-   
    **Notas:** 
 
     1. Usa las versiones compatibles con Spring Boot y Kubernetes [Versiones Soportadas](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions).
