@@ -142,7 +142,7 @@
 
 4. **Modificar el controlador de ms-productos para incluir metadatos del Pod** 
 
-    - Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
+Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
     - **Archivo**: `ProductoController.java`
 
@@ -222,7 +222,7 @@
 
 5. **Configura los archivos `application.properties` o `application.yml`**:
 
-    - Agrega las propiedades necesarias para habilitar la integración con Spring Cloud Kubernetes y Actuator
+Agrega las propiedades necesarias para habilitar la integración con Spring Cloud Kubernetes y Actuator, en ambos microservicios.
 
  
     ```properties
