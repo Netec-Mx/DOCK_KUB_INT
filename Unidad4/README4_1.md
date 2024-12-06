@@ -104,8 +104,6 @@
 
 3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
  
-Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrimiento en lugar de una URL estática
-
 - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
     - Elimina la referencia el atributo url en la anotación `@FeignClient`.
@@ -113,12 +111,13 @@ Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrim
     - **Archivo: `ProductoFeignClient.java`**
 
     ```java
-    package com.netec.app.feign;
+        package com.netec.app.feign;
 
     import org.springframework.cloud.openfeign.FeignClient;
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.PathVariable;
 
+    //@FeignClient(name = "ms-productos", url = "http://ms-productos:9081")
     @FeignClient(name = "ms-productos")
     public interface ProductoFeignClient {
 
@@ -133,7 +132,7 @@ Modifica el cliente Feign ProductoFeignClient para usar el servicio de descubrim
             private Integer stock;
 
             // Getters y Setters
-           
+            // Líneas omitidas
         }
     }
 
