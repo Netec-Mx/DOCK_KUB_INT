@@ -41,12 +41,13 @@
 
     2. En la elaboración del material de curso (Nov/2024) se uso la versión 3.1.2 con Spring Boot 3.3.5
 
-    3. Para asegurarte de que las nuevas dependencias y configuraciones del archivo `pom.xml` sean reconocidas en tu entorno de desarrollo, sigue estos pasos:
+    3. Para sincronizar las dependencias del proyecto y asegurarte de que las configuraciones del archivo `pom.xml` sean reconocidas en tu entorno de desarrollo, sigue estos pasos:
 
-        - Abre el archivo `pom.xml` del proyecto en tu IDE.
-        - Presiona la combinación de teclas **[Alt] + [F5]** para actualizar el proyecto Maven. Esto sincronizará las dependencias y configuraciones con tu entorno de desarrollo.
+        a. Abre el archivo `pom.xml` del proyecto en tu IDE.  
+        b. Presiona la combinación de teclas **[Alt] + [F5]** para iniciar la actualización del proyecto Maven.  
+        c. En el cuadro de diálogo "Update Maven Project", verifica las opciones necesarias y confirma presionando el botón **OK**.  
 
-
+ 
 <br/>
 
 2. **Anota la clase principal de cada microservicio con `@EnableDiscoveryClient`**:
