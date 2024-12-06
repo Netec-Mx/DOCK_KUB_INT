@@ -68,7 +68,7 @@
 
 3. **Actualizar el cliente Feign en el microservicio `ms-deseos`:**
  
-   - Modifica la clase `ProductoClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
+   - Modifica la clase `ProductoFeignClient` para usar el servicio de descubrimiento en lugar de una URL estática. 
 
    - Elimina la referencia el atributo url en la anotación `@FeignClient`.
 
@@ -143,11 +143,10 @@
 
 4. **Configura tu microservicio de Productos** 
 
-    - Cambia el controlador de tu microservicio para que veas el nombre e IP del Pod que atiende tu solicitud
+- Modifica el controlador de tu microservicio para incluir en la respuesta el nombre y la dirección IP del Pod que procesa la solicitud.
 
 ```java
  
-
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -178,7 +177,9 @@ public class ProductoController {
    - Define los valores para:
      - `spring.application.name` con el nombre del microservicio.
      - Puerto en el que correrá el microservicio.
+
    - Agrega las propiedades necesarias para habilitar la integración con Kubernetes ConfigMaps y los endpoints de Actuator.
+   
    - **Nota**: Ya se realizó en las prácticas de la Unidad 3, solo verifica que se encuentren.
 
 
