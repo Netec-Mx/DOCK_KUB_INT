@@ -281,7 +281,38 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 <br/>
 <br/>
 
-### **Paso 2: Crear ConfigMaps para las Configuraciones de los Microservicios**
+
+### **Paso 2: Crear Role & RoleBinding**
+
+1. Codificar un archivo YAML para configurar un Role**
+
+- Crea un archivo YAML llamado `role.yml`.
+
+- Define un Role que permita al ServiceAccount acceder al recurso `pods` dentro del namespace `default`.
+
+- Asegúrate de especificar los permisos mínimos necesarios:
+  - `apiGroups`: Configura el grupo de API como vacío (`""`) para recursos básicos como `pods`.
+  - `resources`: Especifica `pods`.
+  - `verbs`: Incluye los permisos requeridos, como `get` y `list`.
+
+- Crea un archivo YAML llamado `rolebinding.yml`.
+
+- Configura un RoleBinding que enlace el Role creado anteriormente al ServiceAccount que usará el microservicio.
+
+- Especifica:
+  - `subjects`: Define el ServiceAccount `default` en el namespace `default`, o un ServiceAccount dedicado si ya lo has creado.
+  - `roleRef`: Haz referencia al Role definido en el archivo `role-pod-reader.yml`.
+
+- Guarda ambos archivos (`role-pod-reader.yml` y `rolebinding-pod-reader.yml`).
+
+- Aplica las configuraciones usando los siguientes comandos:
+
+   ```bash
+   kubectl apply -f role.yml
+   kubectl apply -f rolebinding.yml
+   ```
+
+### **Paso 3: Crear ConfigMaps para las Configuraciones de los Microservicios**
 
 1. **Codifica un archivo YAML para ConfigMap**:
    
@@ -310,7 +341,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 <br/>
 <br/>
 
-### **Paso 3: Verificar los Secrets**
+### **Paso 4: Verificar los Secrets**
 
 1. Asegúrate de tener configurados los **Secrets** que contienen el usuario y la contraseña de la base de datos, ambos codificados en **Base64**.  
 
@@ -326,9 +357,9 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 <br/>
 <br/>
 
-### **Paso 4: Configurar los Deployments de Kubernetes**
+### **Paso 5: Configurar los Deployments de Kubernetes**
 
-#### Instrucciones para configurar el Deployment de los microservicios
+Crea el YAML para los Deployments de cada microservicio que cumpla lo siguiente:
 
 1. **Especifica las `Liveness Probe` y `Readiness Probe`:**
    - Define las `probes` en la especificación del contenedor dentro del archivo YAML del Deployment:
@@ -351,11 +382,11 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 5. **Establece recursos para el contenedor:**
    - Configura límites (`limits`) y solicitudes (`requests`) de recursos en la especificación del contenedor:
      - **Requests**:
-       - CPU: `100m`.
+       - CPU: `500m`.
        - Memoria: `256Mi`.
      - **Limits**:
-       - CPU: `500m`.
-       - Memoria: `512Mi`.
+       - CPU: `800m`.
+       - Memoria: `800Mi`.
 
 6. **Aplica el archivo YAML:**
    - Una vez completado el archivo YAML del Deployment, aplica la configuración en el clúster con los siguientes comandos:
@@ -364,12 +395,49 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
    kubectl apply -f ms-productos-deployment.yml
    kubectl apply -f ms-deseos-deployment.yml
    ```
+<br/>
+
+### **7. Verifica el estado de los Pods**
+
+1. Asegúrate de que los **Pods del microservicio `ms-productos`** estén en el estado correcto:
+
+   - Deberían haber **dos Pods** para `ms-productos`, ambos con el estado **`Running`**.
+
+   - La columna **`READY`** debe mostrar **`1/1`**, indicando que cada Pod está listo y funcionando correctamente.
+
+   ```bash
+   kubectl get pods -l app=ms-productos
+   ```
+
+   Observa la salida y confirma que los Pods cumplen con los criterios mencionados.
+
+2. Verifica el estado del **Pod del microservicio `ms-deseos`**:
+
+   - Debería haber **un único Pod** con el estado **`Running`**.
+
+   - La columna **`READY`** debe mostrar **`1/1`**, indicando que el Pod está operativo y listo para manejar solicitudes.
+
+   ```bash
+   kubectl get pods -l app=ms-deseos
+   ```
+
+3. Si encuentras algún Pod en estado diferente a **`Running`**, usa el siguiente comando para inspeccionar detalles y diagnosticar posibles problemas:
+
+   ```bash
+   kubectl describe pod <pod-name>
+   ```
+
+4. Para logs específicos de un Pod en particular, ejecuta:
+
+   ```bash
+   kubectl logs <pod-name>
+   ```
 
 <br/>
 <br/>
 
 
-### **Paso 5: Configurar los Services Kubernetes**
+### **Paso 6: Configurar los Services Kubernetes**
 
 1. **Codifica el YAML para el servicio de tipo LoadBalancer**:
    
@@ -392,7 +460,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 <br/>
 <br/>
 
-### **Paso 6: Validación Final con Postman o curl**
+### **Paso 7: Validación Final con Postman o curl**
 
 1. **Realiza las pruebas en Postman**:
 
@@ -404,7 +472,7 @@ Modifica el controlador de tu microservicio para incluir en la respuesta el nomb
 <br/>
 <br/>
 
-### **Paso 7: Observación de Pods y Logs**
+### **Paso 8: Observación de Pods y Logs**
 
 1. **Monitorea los Pods en ejecución**:
    ```bash
