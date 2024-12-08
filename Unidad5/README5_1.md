@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-- Al finalizar esta práctica, serás capaz de implementar y configurar un servicio de Spring Cloud Gateway en un clúster de Kubernetes. Esto incluye la creación y configuración del servicio, el enrutamiento de microservicios a través del Gateway utilizando `application.properties` y `application.yml`, la dockerización del Gateway, y el despliegue mediante Deployment y Service en Kubernetes, verificando su funcionalidad a través de Postman.
+- Al finalizar esta práctica, serás capaz de implementar y configurar un servicio de Spring Cloud Gateway en un clúster de Kubernetes. Esto incluye la creación y configuración del servicio, el enrutamiento de microservicios a través del Gateway utilizando `application.properties` y `application.yml`, la dockerización del Gateway, y el despliegue mediante Deployment y Service en Kubernetes, verificando su funcionalidad a través de Curl o Postman.
  
 
 ## Duración
@@ -23,7 +23,9 @@
 ### Paso 1. Crear el nuevo microservicio ms-gateway
 
 #### 1. Crear el proyecto en Spring Tool Suite (STS)
+
 - Crea un nuevo proyecto Maven llamado **ms-gateway**.
+
 - Configura las opciones:
   - Lenguaje: Java 21.
   - Tipo de empaquetado: JAR.
@@ -38,6 +40,7 @@
 <br/>
 
 #### 3. Añadir inicializadores necesarios al archivo `pom.xml`
+
 - Agrega las siguientes dependencias en el `pom.xml`:
 
 ```xml
@@ -66,6 +69,7 @@
 <br/>
 
 #### 4. Habilitar cliente de descubrimiento
+
 - En la clase principal `MsGatewayApplication`, añade la anotación `@EnableDiscoveryClient`:
 
 ```java
@@ -82,6 +86,7 @@ public class MsGatewayApplication {
     }
 }
 ```
+
 <br/>
 
 #### 5. Configurar el archivo `application.properties`
@@ -121,11 +126,13 @@ spring:
 <br/>
 
 #### 7. Decidir el formato de configuración
+
 - Decide si prefieres utilizar únicamente `application.properties` o `application.yml` para todas las configuraciones del proyecto. Elimina el archivo que no se usará para evitar conflictos.
 
 <br/>
 
 #### 8. Crear el artefacto JAR
+
 - Genera el artefacto JAR del microservicio ejecutando el siguiente comando en la raíz del proyecto:
 
 ```bash
@@ -155,6 +162,8 @@ EXPOSE 9099
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
+- **Nota**: Asegúrate de que el nombre de tu artefacto coincida exactamente con el especificado en el Dockerfile proporcionado.
+
 <br/>
 
 #### 10. Construir, etiquetar y registrar la imagen Docker
@@ -173,27 +182,40 @@ docker tag ms-gateway:<version> <tu_usuario_dockerhub>/ms-gateway:<tu_version>
 docker push <tu_usuario_dockerhub>/ms-gateway:<tu_version>
 ```
 
+- **Nota**: Esta imagen registrada en Docker Hub será la que deberás especificar en el manifiesto YAML del deployment del microservicio en el clúster de Kubernetes.
+
+
+<br/>
+
 #### 11. Verificar el registro de la imagen
+
 - Asegúrate de que la imagen se encuentra registrada correctamente en Docker Hub ejecutando:
 
 ```bash
 docker pull <tu_usuario_dockerhub>/ms-gateway:<tu_version>
 ``` 
 
-Con estos pasos finalizados, tendrás tu microservicio **ms-gateway** listo para desplegar en Kubernetes.
+Con estos paso finalizado, tendrás tu microservicio **ms-gateway** listo para desplegar en Kubernetes.
 
 <br/>
 <br/>
+
 
 ### Paso 2. Desplegar el microservicio ms-gateway en el clúster de Kubernetes
 
 #### 1. Crear el manifiesto YAML para el despliegue del microservicio
+
 - Escribe un manifiesto YAML que incluya:
+
   - Un **Deployment** que utilice la imagen Docker creada en el Paso 1 como base para el contenedor.
+
   - Configura un número adecuado de réplicas según las necesidades del servicio.
-  - Define las siguientes características opcionales (recomendadas):
+
+  - Opcionalemente define las siguientes características opcionales (recomendadas):
     - **Resources**: límites y solicitudes de CPU y memoria para optimizar el uso de recursos del clúster.
     - **Probes**: añade `livenessProbe` y `readinessProbe` para garantizar la disponibilidad del servicio y evitar tráfico hacia Pods no saludables.
+    - Recuerda que, si utilizas **Probes**, es importante añadir `livenessProbe` y `readinessProbe` para garantizar la disponibilidad del servicio y evitar el enrutamiento de tráfico hacia Pods no saludables. Asegúrate de que tu imagen registrada en Docker Hub esté configurada correctamente para los actuators necesarios.
+ 
   - Asegúrate de incluir los puertos necesarios para el contenedor.
 
 <br/>
@@ -223,8 +245,8 @@ kubectl apply -f <nombre-del-archivo-service>.yaml
 
 ```bash
 kubectl get pods
-kubectl get deployment ms-gateway
-kubectl get service ms-gateway
+kubectl get deployment ms-gateway 
+kubectl get service ms-gateway -o wide 
 ```
 
 - Asegúrate de que los Pods estén en estado `Running` y que el Service tenga una dirección IP asignada (si usas `LoadBalancer`).
@@ -256,6 +278,7 @@ kubectl get service ms-gateway
 
     ```bash
     kubectl get pods
+    kubectl get services -o wide
     ```
 
 - Realiza una prueba básica para cada microservicio directamente, usando **Postman** o `curl`, para confirmar que están respondiendo correctamente.
@@ -268,6 +291,7 @@ kubectl get service ms-gateway
 
     ```bash
     curl http://<IP_DEL_GATEWAY>:<PUERTO>/api1/productos
+    curl http://<IP_DEL_GATEWAY>:<PUERTO>/api2/deseos
     ```
 
 - Asegúrate de que los datos de **ms-productos** se obtienen correctamente a través de **ms-gateway**.
@@ -291,7 +315,7 @@ kubectl get service ms-gateway
 
     ```
 
-- Confirma que la solicitud fue aceptada y que el producto fue creado correctamente.
+- Confirma que la solicitud fue aceptada.
 
 <br/>
 
@@ -303,19 +327,12 @@ kubectl get service ms-gateway
     curl http://<IP_DEL_GATEWAY>:<PUERTO>/api/productos
     ```
 
-- Valida que el producto agregado esté presente en la respuesta.
-
-
-- Usa la ruta de consulta configurada en **ms-gateway** para verificar que el nuevo producto aparece en la lista de productos de **ms-productos**:
-
-    ```bash
-    curl http://<IP_DEL_GATEWAY>:<PUERTO>/api/productos
-    ```
-
 - Usa la ruta de consulta configurada en **ms-gateway** para verificar que el puedes consumir el nuevo producto desde **ms-deseos**:
 
     ```bash
     curl -s -X POST http://<IP_DEL_GATEWAY>:<PUERTO>/api/deseos/2
+
+    curl -s -X GET http://<IP_DEL_GATEWAY>:<PUERTO>/api/deseos
     ```
 <br/>
 
@@ -326,4 +343,125 @@ Con estos pasos, habrás comprobado la funcionalidad del **ms-gateway**, la inte
 
 ## Resultados Esperados
 
+Al finalizar la práctica, se espera que el participante haya logrado:
 
+1. **Implementación del Gateway**: 
+   - Crear y configurar un microservicio **ms-gateway** utilizando Spring Cloud Gateway.
+   - Configurar rutas de enrutamiento dinámico para microservicios dependientes (**ms-productos** y **ms-deseos**) utilizando `application.yml`.
+
+2. **Dockerización**:
+   - Crear un artefacto JAR para el microservicio **ms-gateway**.
+   - Construir y registrar una imagen Docker del Gateway en Docker Hub, asegurándose de que esté disponible para su uso en el clúster.
+
+3. **Despliegue en Kubernetes**:
+   - Desplegar el microservicio **ms-gateway** en Kubernetes utilizando un Deployment y un Service.
+   - Configurar correctamente los manifiestos YAML para incluir recursos, probes (`livenessProbe` y `readinessProbe`), y un Service de tipo `LoadBalancer` para exponer el Gateway externamente.
+
+4. **Verificación de Componentes**:
+   - Validar que los Pods asociados al Deployment estén en estado `Running`.
+   - Verificar que el Service de Kubernetes expone correctamente el microservicio, obteniendo la dirección IP y el puerto asignados.
+
+5. **Consumo de Microservicios a través del Gateway**:
+   - Realizar pruebas exitosas con **Postman** o `curl` para:
+     - Consultar datos de **ms-productos** a través de las rutas configuradas en **ms-gateway**.
+     - Agregar nuevos productos a **ms-productos** mediante el Gateway.
+     - Consumir datos de la lista de deseos de **ms-deseos** y verificar su interacción con **ms-productos**.
+
+6. **Pruebas de Integración**:
+   - Confirmar que las solicitudes se enrutan correctamente desde el Gateway hacia los microservicios dependientes.
+   - Verificar que las respuestas obtenidas a través del Gateway son consistentes con las respuestas directas de los microservicios.
+
+<br/>
+<br/>
+
+## Resultados Esperados - Visualmente
+
+1. Captura de pantalla que evidencia el registro exitoso de la imagen `1.0.0` en Docker Hub. Durante el despliegue, se presentó un inconveniente debido a la omisión del archivo YAML que define las rutas necesarias, lo que impidió el correcto enrutamiento inicial.
+
+![docker](../images/u5_1_2.png)
+
+<br/>
+
+
+2. Captura de pantalla que muestra el manifiesto YAML utilizado para resolver esta práctica. El objetivo principal es que puedas crear tus propios manifiestos: uno para el **Deployment** y otro para el **Service**. 
+
+En la captura se evidencia que, inicialmente, no hay ningún objeto asociado al espacio de nombres predeterminado (`default`) relacionado con **ms-gateway**. Tras aplicar el manifiesto, se observa la creación y asociación de los siguientes componentes: un **Pod**, un **Deployment**, un **Service**, y un **ReplicaSet**, demostrando la correcta implementación del Gateway en el clúster de Kubernetes.
+
+![docker](../images/u5_1_3.png)
+
+<br/>
+
+3. Captura de pantalla que evidencia el registro exitoso de la imagen `1.0.1` en Docker Hub, la cual incluye las configuraciones corregidas para las rutas. Esta actualización asegura el funcionamiento adecuado del enrutamiento en el despliegue del microservicio.
+
+![docker](../images/u5_1_4.png)
+
+<br/>
+
+
+4. Captura de pantalla que muestra el estado del Pod en `ContainerCreating`, confirmando que está utilizando la nueva versión de la imagen Docker `1.0.1`. En el manifiesto YAML se configuró la cláusula que garantiza la actualización automática de la imagen asociada al contenedor. Además, se verifica que el servicio **ms-gateway** ha sido aplicado correctamente, asegurando que el despliegue esté sincronizado con las últimas configuraciones.
+
+![docker](../images/u5_1_5.png)
+
+<br/>
+
+5. Captura de pantalla que muestra el consumo exitoso de los microservicios **ms-productos** y **ms-deseos** a través de sus Pods desplegados, confirmando que los servicios están funcionando correctamente en el clúster de Kubernetes.
+
+
+![docker](../images/u5_1_6.png)
+
+<br/>
+
+6. Captura de pantalla que evidencia el consumo exitoso de los microservicios **ms-productos** y **ms-deseos** a través de las rutas configuradas en **ms-gateway**, verificando que el enrutamiento definido en el Gateway está funcionando correctamente y redirige las solicitudes a los servicios correspondientes.
+
+![docker](../images/u5_1_7.png)
+
+<br/>
+
+7. Captura de pantalla que muestra los **Pods**, el **Deployment** y el **Service** de Kubernetes asociados a la práctica, confirmando que los componentes relacionados con **ms-gateway** están desplegados correctamente y operativos en el clúster.
+
+![docker](../images/u5_1_8.png)
+
+<br/>
+
+
+
+8. Captura de pantalla que muestra el ingreso de un producto con `id:1` a través de un consumo exitoso usando `curl` en línea de comandos con una solicitud **POST**. Sin embargo, este proceso resultó en la actualización del producto existente con `id:1` en lugar de agregar un nuevo producto. Al consultar nuevamente la lista de productos, se observa un solo producto con información actualizada en nombre, descripción, precio y stock. Esto evidencia cómo el uso de `curl` puede llevar fácilmente a errores si no se validan correctamente los datos enviados en la solicitud.
+
+![docker](../images/u5_1_9.png)
+
+<br/>
+
+
+9. Captura de pantalla que muestra el ingreso exitoso de un producto con el aparente `id:2` a través de una solicitud **POST** utilizando `curl` en línea de comandos, confirmando que el servicio procesó correctamente los datos enviados y añadió el nuevo producto a la lista.
+
+![docker](../images/u5_1_10.png)
+
+<br/>
+
+
+
+10. Captura de pantalla que muestra el resultado de la consulta de todos los productos, donde se observa un producto con `id:1` y otro con `id:22`, en lugar del esperado `id:2`. 
+
+Esto podría deberse a uno de los siguientes motivos:
+
+1. **Datos mal formateados en la solicitud POST**: Es posible que el ID enviado en la solicitud no se haya especificado correctamente o se haya modificado de alguna manera durante el envío.
+
+2. **Lógica interna del microservicio**: Si el microservicio genera automáticamente los IDs basándose en alguna lógica, podría haber asignado un ID distinto del esperado.
+
+3. **Persistencia inconsistente**: Si el backend realiza validaciones o transformaciones en los datos antes de guardarlos, esto podría haber resultado en un ID diferente al proporcionado.
+
+4. **Error humano o de sistema en el uso de `curl`**: Una solicitud previa mal configurada podría haber afectado la forma en que se interpretó o procesó esta nueva solicitud.
+
+Estos resultados resaltan la importancia de validar cuidadosamente tanto los datos enviados como la respuesta del servicio para evitar discrepancias inesperadas.
+
+
+![docker](../images/u5_1_11.png)
+
+<br/>
+
+
+11. Captura de pantalla que evidencia el consumo exitoso de **ms-deseos** a través de **ms-gateway**, donde se agrega a la lista de deseos el producto con `id:22`. Esto confirma que el enrutamiento configurado en el Gateway funciona correctamente y que **ms-deseos** puede interactuar con los productos gestionados por **ms-productos** a través del Gateway.
+
+![docker](../images/u5_1_12.png)
+
+<br/>
