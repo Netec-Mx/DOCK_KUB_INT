@@ -20,7 +20,7 @@
 
 ## Instrucciones
 
-### Paso 1. Crear un nuevo microservicio ms-gateway
+### Paso 1. Crear el nuevo microservicio ms-gateway
 
 #### 1. Crear el proyecto en Spring Tool Suite (STS)
 - Crea un nuevo proyecto Maven llamado **ms-gateway**.
@@ -41,7 +41,7 @@
 - Agrega las siguientes dependencias en el `pom.xml`:
 
 ```xml
-<dependencies>
+
     <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -58,7 +58,7 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-kubernetes-client-loadbalancer</artifactId>
     </dependency>
-</dependencies>
+
 ```
 
 - **Nota:** Verifica la compatibilidad de las versiones de Spring Cloud con la versión de Spring Boot de tu proyecto. Consulta [Spring Cloud Compatibility Matrix](https://spring.io/projects/spring-cloud#overview).
@@ -129,7 +129,7 @@ spring:
 - Genera el artefacto JAR del microservicio ejecutando el siguiente comando en la raíz del proyecto:
 
 ```bash
-.\mvnw clean package -Dmaven.test.skip=true
+.\mvnw clean package
 ```
 
 <br/>
@@ -282,7 +282,7 @@ kubectl get service ms-gateway
   curl -X POST http://<IP_DEL_GATEWAY>:<PUERTO>/productos \
      -H "Content-Type: application/json" \
      -d '{
-          "id": 1,
+          "id": 2,
           "nombre": "Producto B",
           "descripcion": "Descripción del Producto B",
           "precio": 200.5,
