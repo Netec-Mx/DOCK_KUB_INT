@@ -5,7 +5,7 @@ Al finalizar esta práctica, serás capaz de crear y utilizar un contenedor Dock
 
 ## Duración
 
-15 minutos
+25 minutos
 
 ## Instrucciones
 
