@@ -707,8 +707,3 @@ Con este último paso, garantizas que los microservicios y la infraestructura fu
 
 23. Captura de pantalla que muestra las imágenes de los microservicios del caso de estudio (`ms-productos` y `ms-deseos`) registradas en el **Docker Hub**. Estas imágenes están almacenadas en un repositorio público, por lo que puedes utilizarlas directamente y omitir el **Paso 1** del proceso. 
 
-
-![Docker Hub](../images/u4_1_23.png)
-
-
-- **Nota**: Lamentamos haber documentado esta información hasta este punto, ya que nuestra intención era que consolidaras tu aprendizaje a través de la repetición del proceso de creación y registro de imágenes. Este ejercicio te ayuda a interiorizar los pasos y a identificar oportunidades para optimizar y automatizar el flujo, ya sea mediante **scripts** en Bash o Python, o mediante herramientas de **CI/CD** como Jenkins. Ahora que comprendes este proceso, estás en posición de explorarlo de manera más eficiente y productiva. ¡Sigue adelante!
