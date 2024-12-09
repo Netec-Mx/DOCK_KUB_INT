@@ -32,4 +32,4 @@
 
 - Guía de instalación de Oracle 21c en Kubernetes
 
-[Guía Oracle/Kubernetes](../Oralce-Kubertenes-Guide.md)
+[Guía Oracle/Kubernetes](Oracle-Kubernetes-Guide.md)
