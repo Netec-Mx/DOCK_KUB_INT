@@ -4,7 +4,7 @@
 Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para gestionar datos persistentes, configurarlos en contenedores, y verificar que la información persiste aunque los contenedores sean eliminados.
 
 ## Duración
-20 minutos
+25 minutos
 
 ## Instrucciones
 

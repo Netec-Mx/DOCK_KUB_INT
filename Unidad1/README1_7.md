@@ -4,7 +4,7 @@
 Al finalizar esta práctica, serás capaz de consumir microservicios mediante el uso de herramientas como Postman o implementaciones en código.  
 
 ## Duración
-20 minutos
+25 minutos
 
 <br/>
 

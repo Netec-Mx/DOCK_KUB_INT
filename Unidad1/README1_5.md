@@ -4,7 +4,7 @@
 Al finalizar esta práctica, serás capaz de implementar y consumir microservicios en una arquitectura basada en comunicación HTTP, utilizando Spring Boot y Feign como cliente declarativo, para resolver casos de estudio prácticos. 
 
 ## Duración
-30 minutos
+80 minutos
 
 ## Objetivo Visual
 

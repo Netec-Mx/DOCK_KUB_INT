@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
 
 ## Duración
 
-15 minutos
+25 minutos
 
 
 ## Instrucciones

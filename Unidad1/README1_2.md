@@ -5,7 +5,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 ## Duración
 
-15 minutos
+25 minutos
 
 ## Instrucciones
 

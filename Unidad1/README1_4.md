@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de configurar y desplegar Oracle Datab
 
 ## Duración
 
-30 minutos
+25 minutos
 
 ## Instrucciones
 

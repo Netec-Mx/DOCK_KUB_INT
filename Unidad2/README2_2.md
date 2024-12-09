@@ -10,7 +10,7 @@ Al finalizar esta práctica, serás capaz de crear un archivo docker-compose.yml
 
 ## Duración
 
-20 minutos
+25 minutos
 
 
 ## Material Necesario

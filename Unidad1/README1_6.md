@@ -6,7 +6,7 @@ Al finalizar esta actividad, serás capaz de crear contenedores Docker para dos 
 
 ## Duración
 
-20 minutos 
+25 minutos 
 
 <br/>
 

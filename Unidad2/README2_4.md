@@ -20,7 +20,7 @@ Al finalizar esta práctica, serás capaz de añadir los microservicios del caso
 
 ## Duración
 
-40 minutos
+50 minutos
 
 
 <br/>

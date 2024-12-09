@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de analizar y comprender la estructura
 
 ## Duración
 
-20 minutos
+25 minutos
 
 ## Material Necesario
 
