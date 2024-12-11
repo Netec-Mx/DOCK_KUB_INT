@@ -1,17 +1,17 @@
-# Práctica 1.2 Docker Network
+# Práctica 1.2. Docker Network
 
-## Objetivo
-Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, permitiendo la comunicación eficiente entre contenedores para el correcto funcionamiento de aplicaciones distribuidas.
+## Objetivos de la práctica:
+Al finalizar la práctica serás capaz de:
+- Crear y configurar redes en Docker, permitiendo la comunicación eficiente entre contenedores para el correcto funcionamiento de aplicaciones distribuidas.
 
-## Duración
-
+## Duración aproximada:
 25 minutos
 
 ## Instrucciones
 
-#### 1. Revisar las redes existentes en Docker.
+#### 1. Revisar las redes existentes en Docker
 
-    Ejecuta el siguiente comando para listar las redes actuales
+    Ejecutar el siguiente comando para listar las redes actuales.
 
     ```cmd
     docker network ls
@@ -21,7 +21,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 2. Crear una red personalizada de tipo `bridge`
 
-    Usa el siguiente comando para crear una red personalizada:
+    Usar el siguiente comando para crear una red personalizada:
 
     ```cmd
     docker network create --driver bridge ms-curso
@@ -31,7 +31,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 3. Verificar que la red se haya creado:
 
-    Lista las redes nuevamente para confirmar la creación:
+    Listar las redes nuevamente para confirmar la creación:
 
     ```cmd
     docker network ls
@@ -50,7 +50,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 5. Inspeccionar la red creada
 
-    - Usa el comando para inspeccionar detalles de la red ms-curso y verificar sy configuración
+    - Usar el comando para inspeccionar detalles de la red ms-curso y verificar sy configuración.
 
     ```cmd
     docker network inspect ms-curso
@@ -59,13 +59,13 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 6. Probar la comunicación entre los contenedores
 
-    - Accede al contenedor container1
+    - Acceder al contenedor container1
 
     ```cmd
     docker exec -it container1 sh
     ```
 
-    - Dentro del contenedor, realiza un ping a `container2`
+    - Dentro del contenedor, realizar un ping a `container2`.
 
     ```sh
     ping container2
@@ -75,7 +75,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 7. Desconectar un contenedor de la red
 
-    - Para desconectar un conetenedor de la red
+    - Para desconectar un conetenedor de la red.
 
     ```cmd
     docker network disconnect ms-curso container1
@@ -85,7 +85,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 8. Verificar que el contenedor ya no puede comunicarse:
 
-    - Intenta hacer un ping desde container1 a container2 nuevamente
+    - Intentar hacer un ping desde container1 a container2 nuevamente.
 
     ```sh
     ping container2
@@ -95,7 +95,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 9. Reconectar el contenedor a la red
 
-    Reconecta `container1` a la red
+    Reconectar `container1` a la red.
 
     ```cmd
     docker network connect ms-curso container1
@@ -105,7 +105,7 @@ Al finalizar la práctica, serás capaz de crear y configurar redes en Docker, p
 
 #### 10. Limpiar los recursos creados
 
-    Detén y elimina los contenedores y la red creada
+    Detener y eliminar los contenedores y la red creada.
 
       ```cmd
     docker rm -f container1 container2
