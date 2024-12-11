@@ -6,7 +6,7 @@ Al finalizar la práctica serás capaz de:
 - Verificar y preparar el entorno necesario para el curso, asegurándote de que Docker y las herramientas complementarias estén correctamente instaladas y configuradas para el desarrollo de actividades posteriores.
 
 ## Duración aproximada:
-25 minutos.
+- 25 minutos.
 
 ## Instrucciones
 
@@ -14,7 +14,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-2. Verificar Docker CLI
+2. Verificar Docker CLI.
     Abre una terminal y ejecuta el comando siguiente:
 
     ```cmd
@@ -25,7 +25,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-3. Vericar Java SDK
+3. Vericar Java SDK.
 
     Ejecutar los siguiente comandos:
 
@@ -37,9 +37,9 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-4. Verificar Git
+4. Verificar Git.
 
-    En la terminal, ejecuta:
+    En la terminal, ejecutar:
 
     ```cmd
     git --version
@@ -47,7 +47,7 @@ Al finalizar la práctica serás capaz de:
     git config --global user.email "tu_correo"
     git config --list
     ```
-    La configuración de tu nombre y correo son opcionales, pero si tu instructor te solicita subir algo en algún repositorio, ahí cuando seran necesarias.
+    La configuración de tu nombre y correo son opcionales, pero si el instructor te solicita subir algo en algún repositorio, ahí es cuando seran necesarias.
 
 <br/>
 
@@ -101,7 +101,7 @@ Al finalizar la práctica serás capaz de:
 
 10. Registrar las IPs de los nodos:
 
-    Usar el comando siguiente en cada nodo para identificar su dirección IP
+    Usar el comando siguiente en cada nodo para identificar su dirección IP.
 
     ```bash
 
@@ -112,7 +112,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-11. Verificar Kubernetes (nodo maestro y worker)
+11. Verificar Kubernetes (nodo maestro y worker).
 
     - En la terminal del nodo maestro, ejecutar:
 
@@ -126,7 +126,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-12. Clonar el repositorio del curso
+12. Clonar el repositorio del curso.
 
     Clonar el repositorio proporcionado por el instructor para acceder a los archivos de práctica. Puedes hacerlo con:
 
@@ -138,7 +138,7 @@ Al finalizar la práctica serás capaz de:
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - La siguente captura de pantalla muestra solo algunas de las versiones de las herramientas usadas en el curso.
 
