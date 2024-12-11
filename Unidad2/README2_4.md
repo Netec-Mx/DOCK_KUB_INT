@@ -1,8 +1,11 @@
 # 2.4 Integración de Microservicios en Docker Compose
 
 ## Objetivo
+Al finalizar esta práctica, serás capaz de:
+- Añadir los microservicios del caso de estudio al archivo `docker-compose.yml`, conectándolos a la base de datos Oracle y definiendo redes para la comunicación entre ellos.
 
-Al finalizar esta práctica, serás capaz de añadir los microservicios del caso de estudio al archivo `docker-compose.yml`, conectándolos a la base de datos Oracle y definiendo redes para la comunicación entre ellos.
+## Duración aproximada:
+- 50 minutos.
 
 <br/>
 
@@ -18,18 +21,12 @@ Al finalizar esta práctica, serás capaz de añadir los microservicios del caso
 
 <br/>
 
-## Duración
-
-50 minutos
-
-
-<br/>
 
 ## Instrucciones
 
 ### 1. Verificar contenedores existentes
 
-- Verifica los contenedores y recursos actualmente configurados
+- Verificar los contenedores y recursos actualmente configurados.
 
 ```cmd
 docker ps
@@ -39,7 +36,7 @@ docker volume ls
 docker network ls
 ```
 
-- Elimina los contenedores ms-productos, ms-deseos y dki-oradb si es que existen, pues usarás los mismos nombres.
+- Eliminar los contenedores ms-productos, ms-deseos y dki-oradb si es que existen, pues usarás los mismos nombres.
 
 ```cmd
 docker rm -f ms-productos ms-deseos oracle-db
@@ -49,9 +46,9 @@ docker rm -f ms-productos ms-deseos oracle-db
 
 ### 2. Crear la carpeta de trabajo para esta práctica
 
-- Abre una terminal o consola y navega al directorio de las prácticas del curso.
+- Abrir una terminal o consola y navegar al directorio de las prácticas del curso.
 
-- Crea una nueva carpeta llamada practica_2_4 y copia el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
+- Crear una nueva carpeta llamada practica_2_4 y copia el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
 
 
 ```cmd
@@ -60,7 +57,7 @@ cp practica_2_3\docker-compose.yml practica_2_4
 cd practica_2_4
 ```
 
-- **Nota**: También puedes ir al README2_3 y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
+- **Nota**: También puedes ir al [README2_3.](./Unidad2/README2_3.md) y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
 
 <br/>
 
@@ -69,7 +66,7 @@ cd practica_2_4
 
 - Los scripts deben de ejecutarse después del **setup** de Oracle Database.
 
-- Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo `docker-compose.yml` y coloca ahí el archivo `init_schema.sql`:
+- Crear una carpeta local llamada `scripts` en el mismo directorio donde está el archivo `docker-compose.yml` y colocar ahí el archivo `init_schema.sql`:
 
 ```cmd
 mkdir scripts
@@ -83,7 +80,7 @@ code init_schema.sql
 
 ### 4. Crear Scripts de Oracle para inicialización.
 
-- Configura un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
+- Configurar un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
   - Establecer conexiones a la base de datos.
 
@@ -114,16 +111,16 @@ ALTER USER dkuser QUOTA UNLIMITED ON users;
 
 ### 5. Verificar y Crear la Red Externa dki-network
 
-Antes de ejecutar tu configuración con Docker Compose, asegúrate de que la red externa dki-network esté creada. Sigue estos pasos:
+Antes de ejecutar la configuración con Docker Compose, asegúrate de que la red externa dki-network esté creada. Sigue estos pasos:
 
-- Verifica si la red ya existe: Ejecuta el siguiente comando para listar las redes existentes en Docker:
+- Verificar si la red ya existe: Ejecutar el siguiente comando para listar las redes existentes en Docker:
 
 ```cmd
 docker network ls
 
 ```
 
-- Crea la red si no existe: Si no encuentras dki-network en la lista, puedes crearla con el siguiente comando:
+- Crear la red si no existe: Si no encuentras dki-network en la lista, puedes crearla con el siguiente comando:
 
 
 ```cmd
@@ -136,13 +133,13 @@ docker network create dki-network
 
 ### 6. Configurar y Verificar los Microservicios
 
-1. Verifica las propiedades de configuración de los microservicios:
+1. Verificar las propiedades de configuración de los microservicios:
 
     - Asegúrate de que los archivos `application.properties` contengan las configuraciones necesarias para cada microservicio.
 
     - Microservicios:
 
-      - **ms-productos**: Revisa su archivo `application.properties`.
+      - **ms-productos**: Revisar su archivo `application.properties`.
 
         ```text
         spring.application.name=ms-productos
@@ -161,7 +158,7 @@ docker network create dki-network
         ```
 
 
-      - **ms-deseos**: Revisa su archivo `application.properties`.
+      - **ms-deseos**: Revisar su archivo `application.properties`.
 
           ```text
           spring.application.name=ms-deseos
@@ -171,9 +168,9 @@ docker network create dki-network
 
 <br/>
 
-2. Genera los archivos JAR:
+2. Generar los archivos JAR:
 
-    - Si los JAR generados no corresponden con las versiones esperadas, compila los proyectos nuevamente.
+    - Si los JAR generados no corresponden con las versiones esperadas, compilar los proyectos nuevamente.
 
     - Comando para compilar:
 
@@ -192,13 +189,13 @@ docker network create dki-network
 
 <br/>
 
-3. Verifica los **Dockerfiles**:
+3. Verificar los **Dockerfiles**:
 
     - Asegúrate de que ambos **Dockerfile incluyen la etapa para instalar curl** en las imágenes de los microservicios.
 
     - Microservicios:
 
-      - **ms-productos**: Revisa el contenido del Dockerfile.
+      - **ms-productos**: Revisar el contenido del Dockerfile.
 
       ```dockerfile
         FROM openjdk:21-jdk-slim
@@ -209,7 +206,7 @@ docker network create dki-network
         ENTRYPOINT ["java", "-jar", "app.jar"]
       ```
 
-      - **ms-deseos**: Revisa el contenido del Dockerfile.
+      - **ms-deseos**: Revisar el contenido del Dockerfile.
 
       ```dockerfile
         FROM openjdk:21-jdk-slim
@@ -222,9 +219,9 @@ docker network create dki-network
 
 <br/>
 
-4. Genera las imágenes Docker:
+4. Generar las imágenes Docker:
 
-    - Crea las imágenes para cada microservicio utilizando sus respectivos Dockerfile.
+    - Crear las imágenes para cada microservicio utilizando sus respectivos Dockerfile.
 
     - Comandos para generar las imágenes:
 
@@ -239,19 +236,19 @@ docker network create dki-network
         docker build -t ms-deseos:<version> .
         ```
 
-      - Reemplaza <version> con el número de versión correspondiente
+      - Reemplazar <version> con el número de versión correspondiente
 
 <br/>
 
-5. Confirma las versiones en el archivo `docker-compose.yml`:
+5. Confirmar las versiones en el archivo `docker-compose.yml`:
 
-  - Asegúrate de que las versiones de las imágenes generadas sean las mismas especificadas en el archivo `docker-compose.yml`. Si no coinciden, actualiza el archivo `docker-compose.yml` con las versiones correctas.
+  - Asegúrate de que las versiones de las imágenes generadas sean las mismas especificadas en el archivo `docker-compose.yml`. Si no coinciden, actualizar el archivo `docker-compose.yml` con las versiones correctas.
 
 <br/>
 
 ### 7. Actualizar el archivo docker-compose.yml para incluir los microservicios:
 
-- Añade los servicios `ms-productos` y `ms-deseos` al archivo. Asegúrate de que cada servicio esté conectado a la red `dki-network` y que utilicen variables de entorno para la conexión con la base de datos Oracle.
+- Añadir los servicios `ms-productos` y `ms-deseos` al archivo. Asegúrate de que cada servicio esté conectado a la red `dki-network` y que utilicen variables de entorno para la conexión con la base de datos Oracle.
 
 ```yaml
 services:
@@ -325,19 +322,19 @@ networks:
 
 ```
 
-- Guarda los cambios en el archivo `docker-compose.yml`
+- Guardar los cambios en el archivo `docker-compose.yml`.
 
 <br/>
 
 ### 8. Levantar los contenedores con Docker Compose
 
-- Ejecuta el siguiente comando para verificar tu configuración
+- Ejecutar el siguiente comando para verificar la configuración.
 
 ```cmd
 docker-compose config
 ```
 
-- Ejecuta el siguiente comando para desplegar los contenedores
+- Ejecutar el siguiente comando para desplegar los contenedores.
 
 ```cmd
 docker-compose up -d
@@ -346,7 +343,7 @@ docker-compose up -d
 
 ### 9. Verificar que los contenedores están funcionando correctamente:
 
-- Usa el comando `docker ps` para listar los contenedores en ejecución.
+- Usar el comando `docker ps` para listar los contenedores en ejecución.
 
 ```cmd
 docker ps
@@ -355,13 +352,13 @@ docker volume ls
 docker network ls
 ```
 
-- Usa el comando `docker logs <nombre_contenedor>` por si tienes problemas.
+- Usar el comando `docker logs <nombre_contenedor>` por si tienes problemas.
 
 <br/>
 
 ### 10. Probar la conexión entre los servicios:
 
-- Usa una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
+- Usar una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
 
 Ejemplo para verificar `ms-productos`:
 
@@ -382,7 +379,7 @@ curl http://localhost:9084/api/deseos
 
 ### 11. Detener los contenedores:
 
-- Cuando termines, detén y elimina los contenedores ejecutando:
+- Cuando termines, detener y eliminar los contenedores ejecutando:
 
 ```cmd
 docker-compose down --volumes
@@ -400,11 +397,11 @@ docker-compose down --volumes
 
 ![docker-compose](../images/u2_4_3.png)
 
-- Captura de pantalla que muestra la salida del comando `docker-compose down --volumes`, junto con la verificación de que los contenedores y los recursos asociados (volúmenes) han sido eliminados. Ten en cuenta que la red utilizada es externa y no forma parte del archivo `docker-compose.yml`
+- Captura de pantalla que muestra la salida del comando `docker-compose down --volumes`, junto con la verificación de que los contenedores y los recursos asociados (volúmenes) han sido eliminados. Ten en cuenta que la red utilizada es externa y no forma parte del archivo `docker-compose.yml`.
 
 ![docker-compose](../images/u2_4_1.png)
 
-- Captura de pantalla que muestra la salida del comando `docker logs dki-oradb`
+- Captura de pantalla que muestra la salida del comando `docker logs dki-oradb`.
 
 ![docker-compose](../images/u2_4_4.png)
 
