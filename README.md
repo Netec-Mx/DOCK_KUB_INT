@@ -1,22 +1,22 @@
+#**Plataforma de Laboratorios**
 
-# Prácticas del curso Docker & Kubernetes Intemedio
+Bienvenido a la **Plataforma de Laboratorios** del curso **Docker y Kubernetes Intermedio**. Aquí podrás explorar diferentes tecnologías a través de prácticas guiadas. ¡Desarrolla tus habilidades y lleva tus conocimientos al siguiente nivel!
 
-### Unidad 1. Docker Networks: Comunicación entre contenedores.
+---
 
-#### [Prácticas de la Unidad 1](./Unidad1/README.md)
+## **Lista de Laboratorios**
 
-### Unidad 2. Docker Compose: Orquestador para definir y ejecutar multi-contenedores
+Cada uno de estos laboratorios está diseñado para ofrecerte una experiencia práctica. Haz clic en los enlaces para comenzar.
 
-#### [Prácticas de la Unidad 2](./Unidad2/README.md)
+---
+ 
+## Índice:
+ - [Prácticas de la Unidad 1. Docker Networks: Comunicación entre contenedores.](./Unidad1/README.md)
 
-### Unidad 3. Kubernetes: Configmap y secrets.
+ - [Prácticas de la Unidad 2. Docker Compose: Orquestador para definir y ejecutar multi-contenedores.](./Unidad2/README.md)
+   
+ - [Prácticas de la Unidad 3. Kubernetes: Configmap y Secrets.](./Unidad3/README.md)
+  
+ - [Práctica 4. Spring Cloud Kubernetes.](./Unidad4/README4_1.md)
 
-#### Prácticas de la Unidad 3](./Unidad3/README.md)
-
-### Unidad 4. Kubernetes: Spring Cloud Kubernetes
-
-#### [Prácticas de la Unidad 4](./Unidad4/README.md)
-
-### Unidad 5. Kubernetes: Spring Cloud Gateway
-
-#### [Prácticas de la Unidad 5](./Unidad5/README.md)
+ - [Práctica 5. Spring Cloud Gateway.](./Unidad5/README5_1.md)
