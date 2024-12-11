@@ -7,7 +7,7 @@ Al finalizar esta actividad, serás capaz de:
 - Configurar una red Docker para habilitar la comunicación entre ellos y utilizar la persistencia con Oracle DB mediante volúmenes Docker.
 
 ## Duración aproximada
-- 25 minutos 
+- 25 minutos. 
 
 <br/>
 
@@ -116,7 +116,7 @@ docker ps
 ```cmd
 docker volume inspect dki-volume
 
-# Muestra los contenedores que tiene el volumen especificado montado.
+# Mostrar los contenedores que tiene el volumen especificado montado.
 
 docker ps --filter volume=dki-volume
 
@@ -133,7 +133,7 @@ docker logs <nombre_del_contenedor>
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra:
 
