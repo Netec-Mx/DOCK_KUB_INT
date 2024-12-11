@@ -1,24 +1,25 @@
 # Práctica 1.4 Oracle Container
 
-## Objetivo
+## Objetivos de la práctica:
 
-Al finalizar esta práctica, serás capaz de configurar y desplegar Oracle Database en un contenedor Docker, utilizando redes y volúmenes para garantizar conectividad y persistencia. Además, validarás la correcta operación de la base de datos mediante SQL Developer, ejecutando scripts SQL para crear y analizar su estructura y verificando la integración del contenedor con la red configurada en Docker.
+Al finalizar la práctica, serás capaz de:
+- Configurar y desplegar Oracle Database en un contenedor Docker, utilizando redes y volúmenes para garantizar conectividad y persistencia.
+- Validar la correcta operación de la base de datos mediante SQL Developer, ejecutando scripts SQL para crear y analizar su estructura y verificando la integración del contenedor con la red configurada en Docker.
 
-## Duración
-
-25 minutos
+## Duración aproximada:
+- 25 minutos
 
 ## Instrucciones
 
 ### 1. Crear la red Docker
 
-Para que el contenedor pueda comunicarse con otros servicio en el futuro, crea una red virtual Docker.
+Para que el contenedor pueda comunicarse con otros servicio en el futuro, crear una red virtual Docker.
 
 ```cdm
-# Verifica las redes creadas
+# Verificar las redes creadas.
 docker network ls
 
-# Crear una nueva red
+# Crear una nueva red.
 docker network create dki-network
 
 # Una forma más explicita de creación, esta forma es opcional, solo queda así para documentación.
@@ -26,7 +27,7 @@ docker network create dki-network
 # configuraciones más complejas.
 docker network create --driver bridge dk-network
 
-# Verificar la creación
+# Verificar la creación.
 docker network ls
 
 ```
@@ -35,7 +36,7 @@ docker network ls
 
 ### 2. Crear el volumen Docker para persistencia
 
-Recuerda que esto asegura que los datos se mantendrán aunque el contenedor sea eliminado
+Recuerda que esto asegura que los datos se mantendrán aunque el contenedor sea eliminado.
 
 ```cdm
 docker volume create dki-volume
@@ -46,7 +47,7 @@ docker volume create dki-volume
 
 ### 3. Crear el contenedor para Oracle
 
-Verifica las imagenes que aparacen en tu entorno de curso, y utiliza la imagen Orace que tienes en tu ambbiente para crear un contenedor Oracle Database.
+Verificar las imagenes que aparacen en el entorno del curso, y utilizar la imagen Oracle que tienes en el ambiente para crear un contenedor Oracle Database.
 
 ```cdm
 docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --volume dki-volume:/opt/oracle/oradata -p 1521:1521 -p 5500:5500 container-registry.oracle.com/database/express:21.3.0-xe
@@ -57,7 +58,7 @@ docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --v
 
 ### 4. Verificar la creación del contenedor
 
-Asegúrate que el contenedor se está ejecutando correctamente
+Asegúrate que el contenedor se está ejecutando correctamente.
 
 ```cdm
 # Desde Docker CLI
@@ -73,13 +74,13 @@ netstat -ano | <findstr|grep> 1521
 
 ### 5. Conexión desde SQL Developer
 
-1. Iniciar SQL-Developer
+1. Iniciar SQL-Developer.
 
 ![sql-developer](../images/u1_4_1.png)
 
 <br/>
 
-2. Crear una nueva conexión
+2. Crear una nueva conexión.
 
     - Nombre de la conexión: dba-sys
     - Ususario: sys
@@ -89,9 +90,9 @@ netstat -ano | <findstr|grep> 1521
     - Puerto: 1521
     - SID: xe
 
-3. Probar conexión
+3. Probar conexión.
 
-Si a conexión es exitosa, guárdala.
+Si la conexión es exitosa, guardarla.
 
 ![sql-developer](../images/u1_4_2.png)
 
@@ -99,7 +100,7 @@ Si a conexión es exitosa, guárdala.
 
 ### 6. Analizar y ejecutar el script SQL
 
-1. Copia el siguiente contenido en la hoja de trabajo en SQL Developer.
+1. Copiar el siguiente contenido en la hoja de trabajo en SQL Developer.
 
 ```sql
 
@@ -151,11 +152,11 @@ SELECT NAME FROM V$SERVICES;
 
 2. Ejecutar el script en SQL Developer.
 
-    - Corre el script instrucción por instrucción o todas las instrucciones. 
+    - Correr el script instrucción por instrucción o todas las instrucciones. 
 
-3. Analiza la salida de la ejecución de las instrucciones SQL, para asegurarte que no haya errores en la ejecución.
+3. Analizar la salida de la ejecución de las instrucciones SQL, para asegurarte que no haya errores en la ejecución.
 
-4. Crea una nueva conexión en SQL Developer
+4. Crear una nueva conexión en SQL Developer.
 
     - Nombre de la conexión: dkuser
     - Ususario: dkuser
@@ -169,9 +170,9 @@ SELECT NAME FROM V$SERVICES;
 <br/>
 
 
-3. Probar conexión
+3. Probar conexión.
 
-Si a conexión es exitosa, guárdala y conectate a una hoja de trabajo.
+Si la conexión es exitosa, guárdala y conectate a una hoja de trabajo.
 
 ![sqldeveloper](../images/u1_4_3.png)
 
@@ -180,14 +181,14 @@ Si a conexión es exitosa, guárdala y conectate a una hoja de trabajo.
 
 ### 7. Varificar la estructura y componenetes creados
 
-1. En SQL Developer, expande las siguientes secciones bajo la conexión:
+1. En SQL Developer, expandir las siguientes secciones bajo la conexión:
 
-- **Tablas**: verifica que las tablas definidas en el script hayan sido creadas.
+- **Tablas**: verificar que las tablas definidas en el script hayan sido creadas.
 
-- **Vistas, índices y procedimiento almacenos** (si los hay): revisa que estén disponibles
+- **Vistas, índices y procedimiento almacenos** (si los hay): revisar que estén disponibles
 
 ```sql
-# Consulta las tablas creadas para el usuario dkuser
+# Consultar las tablas creadas para el usuario dkuser.
 desc user_tables;
 select table_name from user_tables;
 
@@ -202,13 +203,13 @@ select table_name from user_tables;
 
 ### 8. Verificar que el contenedor esté asociado a la red.
 
-Ejecuta el siguiente comando para inspeccionar la red `dki-network`y confirmar que el contenedor `dki-oradb`está asociado
+Ejecutar el siguiente comando para inspeccionar la red `dki-network`y confirmar que el contenedor `dki-oradb`está asociado.
 
 ```cdm
 docker network inspect dki-network
 ```
 
-Busca en la salida un bloque como el siguiente:
+Buscar en la salida un bloque como el siguiente:
 
 ```json
 "Containers": {
