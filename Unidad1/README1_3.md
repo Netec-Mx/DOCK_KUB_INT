@@ -5,7 +5,7 @@ Al finalizar la práctica, serás capaz de:
 - Utilizar volúmenes en Docker para gestionar datos persistentes, configurarlos en contenedores y verificar que la información persiste aunque los contenedores sean eliminados.
 
 ## Duración aproximada:
-25 minutos
+- 25 minutos.
 
 ## Instrucciones
 
@@ -89,7 +89,7 @@ Eliminar el contenedor sin borrar el volumen.
 ```cmd
 docker rm -f dki_nginx
 
-# Verifica
+# Verificar
 docker ps -a
 ```
 
@@ -140,7 +140,7 @@ docker logs <nombre_contenedor>
 
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra la creación del volumen, la creación del contenedor Docker y altera el valor de un archivo.
 
