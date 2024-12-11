@@ -1,6 +1,6 @@
 # **Plataforma de Laboratorios**
 
-Bienvenido a la **Plataforma de Laboratorios** del curso **Docker y Kubernetes Intermedio**. Aquí podrás explorar diferentes tecnologías a través de prácticas guiadas. ¡Desarrolla tus habilidades y lleva tus conocimientos al siguiente nivel!
+## Bienvenido a la **Plataforma de Laboratorios** del curso **Docker y Kubernetes Intermedio**. Aquí podrás explorar diferentes tecnologías a través de prácticas guiadas. ¡Desarrolla tus habilidades y lleva tus conocimientos al siguiente nivel!
 
 ---
 
