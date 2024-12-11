@@ -1,12 +1,11 @@
-# Práctica 3.1 Verificación del Clúster
+# Práctica 3.1. Verificación del clúster
 
-## Objetivo
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
+- Realizar una validación completa de un clúster de Kubernetes para asegurar que está configurado correctamente y es funcional, comprobando que puede gestionar recursos esenciales como Deployments, ConfigMaps y Servicios.
 
-Al finalizar esta práctica, serás capaz de realizar una validación completa de un clúster de Kubernetes para asegurar que está configurado correctamente y es funcional, comprobando que puede gestionar recursos esenciales como Deployments, ConfigMaps y Servicios.
-
-## Duración
-
-30 minutos
+## Duración aproximada:
+- 30 minutos
 
 <br/>
 
@@ -14,7 +13,7 @@ Al finalizar esta práctica, serás capaz de realizar una validación completa d
 
 ### 1. Verificar que los nodos estén listos
 
-Ejecuta el comando:
+Ejecutar el comando:
 
 ```bash
 kubectl get nodes
@@ -26,13 +25,13 @@ Asegúrate de que todos los nodos están en estado `Ready`.
 
 ### 2. Validar que los componentes del clúster estén funcionando
 
-Ejecuta el comando:
+Ejecutar el comando:
 
 ```bash
 kubectl get pods -n kube-system
 ```
 
-Verifica que los Pods en el espacio de nombres `kube-system` están en estado Running o Completed, especialmente:
+Verificar que los Pods en el espacio de nombres `kube-system` están en estado Running o Completed, especialmente:
 
 - kube-apiserver
 - kube-controller-manager
@@ -44,13 +43,13 @@ Verifica que los Pods en el espacio de nombres `kube-system` están en estado Ru
 
 ### 3. Crear y probar un Deployment
 
-Crea un Deployment mínimo como prueba:
+Crear un Deployment mínimo como prueba:
 
 ```bash
 kubectl create deployment nginx --image=nginx
 ```
 
-Verifica que el Deployment se creó correctamente:
+Verificar que el Deployment se creó correctamente:
 
 ```bash
 kubectl get deployments
@@ -63,13 +62,13 @@ Asegúrate de que el Pod asociado al Deployment está en estado Running.
 
 ### 4. Probar ConfigMaps
 
-Crea un ConfigMap de prueba:
+Crear un ConfigMap de prueba:
 
 ```bash
 kubectl create configmap test-config --from-literal=key1=value1
 ```
 
-Verifica que el ConfigMap fue creado:
+Verificar que el ConfigMap fue creado:
 
 ```bash
 kubectl get configmaps
@@ -80,13 +79,13 @@ kubectl describe configmap test-config
 
 ### 5. Probar Servicios
 
-Crea un servicio expuesto en ClusterIP para el Deployment de nginx:
+Crear un servicio expuesto en ClusterIP para el Deployment de nginx:
 
 ```bash
 kubectl expose deployment nginx --port=80 --target-port=80
 ```
 
-Verifica el servicio:
+Verificar el servicio:
 
 ```bash
 kubectl get services
@@ -98,7 +97,7 @@ Opcionalmente, prueba el acceso al servicio dentro del clúster usando `kubectl`
 
 ### 6. Verificar que los recursos están funcionando juntos
 
-Prueba acceder al Deployment usando el servicio creado:
+Probar el acceso al Deployment usando el servicio creado:
 
 ```bash
 kubectl run curl-test --image=curlimages/curl -it --rm -- curl nginx
@@ -111,7 +110,7 @@ Esto debería devolver una respuesta válida del servidor Nginx.
 
 ### 7. Verificar logs en caso de problemas
 
-Si encuentras errores, inspecciona los eventos y logs:
+Si encuentras errores, inspeccionar los eventos y logs:
 
 ```bash
  
@@ -127,27 +126,27 @@ kubectl logs <nombre-del-pod>
 Para asegurar que Oracle Database está correctamente desplegada en un clúster de Kubernetes, debes verificar los siguientes objetos de Kubernetes relacionados:
 
 #### 1. **Pods**
-   - Verifica que el Pod (o Pods) de Oracle Database esté corriendo.
+   - Verificar que el Pod (o Pods) de Oracle Database esté corriendo.
 
    ```bash
    kubectl get pods 
    ```
    
    - Si no hay un namespace asociados pudes no usar -n <namespace>, en este y los demás comandos.
-   - Si el Pod no está funcionando, utiliza el comando `kubectl describe pod <pod-name> -n <namespace>` o `kubectl logs <pod-name> -n <namespace>` para diagnosticar problemas.
+   - Si el Pod no está funcionando, utilizar el comando `kubectl describe pod <pod-name> -n <namespace>` o `kubectl logs <pod-name> -n <namespace>` para diagnosticar problemas.
 
 
 #### 2. **Services**
-   - Comprueba que haya un **Service** configurado para exponer Oracle Database (por ejemplo, `ClusterIP`, `NodePort` o `LoadBalancer`).
+   - Comprobar que haya un **Service** configurado para exponer Oracle Database (por ejemplo, `ClusterIP`, `NodePort` o `LoadBalancer`).
    
    ```bash
    kubectl get services  
    ```
-   - Verifica que los puertos expuestos sean correctos para Oracle DB, como el puerto 1521 por defecto.
+   - Verificar que los puertos expuestos sean correctos para Oracle DB, como el puerto 1521 por defecto.
 
 
 #### 3. **PersistentVolume (PV) y PersistentVolumeClaim (PVC)**
-   - Verifica que los **PersistentVolumes** y **PersistentVolumeClaims** estén correctamente ligados y en estado "Bound".
+   - Verificar que los **PersistentVolumes** y **PersistentVolumeClaims** estén correctamente ligados y en estado "Bound".
 
    ```bash
    kubectl get pv
@@ -162,7 +161,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    ```
 
 #### 5. **Logs**
-   - Verifica los logs del Pod para identificar cualquier error durante el inicio o ejecución.
+   - Verificar los logs del Pod para identificar cualquier error durante el inicio o ejecución.
 
    ```bash
    kubectl logs <pod-name>  
@@ -170,9 +169,9 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    
 
 ### 6. **Docker Image**
-   - Comprueba que la imagen de Docker utilizada para Oracle DB sea correcta y compatible con Kubernetes, recuerda que en el ambiente proporcionado usas containerd, en lugar de Docker.
+   - Comprobar que la imagen de Docker utilizada para Oracle DB sea correcta y compatible con Kubernetes, recuerda que en el ambiente proporcionado usas containerd, en lugar de Docker.
 
-   - Conectate con ssh a tu nodo worker y aplica el siguiente comando
+   - Conectate con ssh al nodo worker y aplicar el siguiente comando:
 
   ```bash
    sudo crictl images 2>/dev/null | grep -i oracle
@@ -188,9 +187,9 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 ### 9. Instrucciones para Verificar Conexiones a Oracle usando SQL Developer
 
 #### Requisitos Previos:
-1. **SQL Developer instalado:** Asegúrate de tener instalado Oracle SQL Developer en tu máquina Windows.
+1. **SQL Developer instalado:** Asegúrate de tener instalado Oracle SQL Developer en la máquina Windows.
 
-2. **Datos de conexión:** Verifica que tienes la siguiente información:
+2. **Datos de conexión:** Verificar que tienes la siguiente información:
    - **Usuario 1:** `dkuser`
      - Contraseña: `dkpassword`
 
@@ -198,7 +197,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
      - Contraseña: `dkpasswords`
      - Tipo de autenticación: **SYSDBA**
 
-   - **Hostname**: Dirección IP o nombre de tu servidor Oracle.
+   - **Hostname**: Dirección IP o nombre del servidor Oracle.
 
    - **Servicio**: `XEPDB1`.
 
@@ -208,11 +207,11 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 <br/>
 
 #### Paso 1. Iniciar SQL Developer
-1. Abre SQL Developer.
+1. Abrir SQL Developer.
 
-    - Verifica si ya tienes las conexiciones hacia la base de datos Oracle, en caso contrario, agregada dos conexiones una para el usuario dkuser y otra para sys con el rol de dba.
+    - Verificar si ya tienes las conexiones hacia la base de datos Oracle, en caso contrario, agregar dos conexiones, una para el usuario dkuser y otra para sys con el rol de dba.
 
-2. Haz clic en el botón de conexión **+** para crear una nueva conexión.
+2. Hacer clic en el botón de conexión **+** para crear una nueva conexión.
 
 <br/>
 
@@ -226,15 +225,15 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    - **Puerto:** `<puerto expuesto por servicio de Kubernetes>`
    - **SID/Servicio:** `XEPDB1` (elige "Servicio" en el tipo de conexión).
 
-2. Haz clic en **Probar conexión**.
+2. Hacer clic en **Probar conexión**.
 
-3. Si la conexión es exitosa, guarda los detalles haciendo clic en **Conectar**.
+3. Si la conexión es exitosa, guardar los detalles haciendo clic en **Conectar**.
 
 <br/>
 
 #### Paso 3: Configurar la Conexión para el Usuario `sys`
 
-1. Crea una nueva conexión similar a la anterior con los siguientes detalles:
+1. Crear una nueva conexión similar a la anterior con los siguientes detalles:
    - **Nombre de la conexión:** `dki-sys`
    - **Usuario:** `sys`
    - **Contraseña:** `dkpassword`
@@ -243,18 +242,18 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    - **SID/Servicio:** `XE`
    - **Rol:** Selecciona **SYSDBA**.
 
-2. Haz clic en **Probar conexión**.
+2. Hacer clic en **Probar conexión**.
 
-3. Si la conexión es exitosa, guarda los detalles haciendo clic en **Conectar**.
+3. Si la conexión es exitosa, guardar los detalles haciendo clic en **Conectar**.
 
 <br/>
 
 #### Verificaciones SQL para el Usuario `dkuser`
 
-Conecta a la base de datos usando la conexión `dkuser` y realiza las siguientes operaciones para verificar las capacidades del usuario.
+Conectar a la base de datos usando la conexión `dkuser` y realizar las siguientes operaciones para verificar las capacidades del usuario.
 
 ##### 1. **Conexión a la Base de Datos**
-Ejecuta el siguiente comando para asegurarte de que estás conectado:
+Ejecutar el siguiente comando para asegurarte de que estás conectado:
 
 ```sql
 SELECT SYS_CONTEXT('USERENV', 'SESSION_USER') AS CURRENT_USER FROM DUAL;
@@ -265,7 +264,7 @@ SELECT SYS_CONTEXT('USERENV', 'SESSION_USER') AS CURRENT_USER FROM DUAL;
 
 ##### 2. **Crear una Tabla**
 
-Crea una tabla llamada `TEST_TABLE`:
+Crear una tabla llamada `TEST_TABLE`:
 
 ```sql
 CREATE TABLE TEST_TABLE (
@@ -279,7 +278,7 @@ CREATE TABLE TEST_TABLE (
 
 ##### 3. **Insertar un Registro**
 
-Inserta un registro en la tabla:
+Insertar un registro en la tabla:
 
 ```sql
 INSERT INTO TEST_TABLE (ID, NAME) VALUES (1, 'Test User');
@@ -290,7 +289,7 @@ COMMIT;
 
 ##### 4. **Realizar una Búsqueda**
 
-Realiza una consulta para verificar que el registro fue insertado:
+Realizar una consulta para verificar que el registro fue insertado:
 
 ```sql
 SELECT * FROM TEST_TABLE;
@@ -300,7 +299,7 @@ SELECT * FROM TEST_TABLE;
 
 ##### 5. **Eliminar la Tabla**
 
-Elimina la tabla para limpiar el entorno:
+Eliminar la tabla para limpiar el entorno:
 
 ```sql
 DROP TABLE TEST_TABLE;
