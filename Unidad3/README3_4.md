@@ -1,23 +1,16 @@
+# Práctica 3.4. Configuración con ConfigMaps y Secrets
 
-# Práctica 3.4 Configuración con ConfigMaps y Secrets
+## Objetivos de las prácticas:
+Al finalizar esta práctica, serás capaz de:
+- Crear manifiestos YAML para configurar ConfigMaps y Secrets en Kubernetes.
+- Aplicar esta configuración para gestionar información sensible y específica de la aplicación, desplegando los microservicios `ms-productos` y `ms-deseos` con estas configuraciones y probando su funcionamiento.
 
-<br/>
+## Duración aproximada:
+- 30 minutos
 
-## Objetivo
-
-- Al finalizar esta práctica, serás capaz de crear manifiestos YAML para configurar ConfigMaps y Secrets en Kubernetes. Aplicarás esta configuración para gestionar información sensible y específica de la aplicación, desplegando los microservicios `ms-productos` y `ms-deseos` con estas configuraciones y probando su funcionamiento.
-
-<br/>
-
-## Objetivo Visual
+## Objetivo visual
 
 ![Caso de Estudio](../images/u3_2_1.png)
-
-<br/>
-
-## Duración
-
-30 minutos
 
 <br/>
 
@@ -112,7 +105,7 @@ kubectl get configmap <nombre-del-configmap> -n <namespace> -o yaml
 
 ### **3. Crear Deployments para los microservicios**
 
-Verifica que tengas a la mano el TAG de la imagen Docker correspondiente al microservicio `ms-productos`, registrada en tu repositorio de Docker Hub. Este TAG será indispensable para reemplazar el valor del atributo `image` en el siguiente archivo YAML de deployment.
+Verificar que tengas a la mano el TAG de la imagen Docker correspondiente al microservicio `ms-productos`, registrada en tu repositorio de Docker Hub. Este TAG será indispensable para reemplazar el valor del atributo `image` en el siguiente archivo YAML de deployment.
 
 
 **Archivo `deployment-ms-productos.yaml`:**
@@ -187,7 +180,7 @@ spec:
 
 <br/>
 
-Verifica que tengas a la mano el TAG de la imagen Docker correspondiente al microservicio `ms-deseos`, registrada en tu repositorio de Docker Hub. Este TAG será indispensable para reemplazar el valor del atributo `image` en el siguiente archivo YAML de deployment.
+Verificar que tengas a la mano el TAG de la imagen Docker correspondiente al microservicio `ms-deseos`, registrada en tu repositorio de Docker Hub. Este TAG será indispensable para reemplazar el valor del atributo `image` en el siguiente archivo YAML de deployment.
 
 **Archivo `deployment-ms-deseos.yaml`:**
 ```yaml
@@ -338,14 +331,14 @@ Esto mostrará los servicios con sus puertos configurados, incluyendo los `NodeP
 
 3. **Realizar una prueba con `curl`:**
 
-   Accede a los servicios a través de la IP del nodo y los puertos configurados (`30081` para `ms-productos` y `30084` para `ms-deseos`).
+   Acceder a los servicios a través de la IP del nodo y los puertos configurados (`30081` para `ms-productos` y `30084` para `ms-deseos`).
 
    ```bash
    curl http://192.168.49.2:30081/endpoint-de-prueba
    curl http://192.168.49.2:30084/endpoint-de-prueba
    ```
 
-   **Nota:** Reemplaza `192.168.49.2` con la IP real de tu nodo.
+   **Nota:** Reemplazar `192.168.49.2` con la IP real del nodo.
 
 <br/>
 
@@ -394,12 +387,12 @@ Aquí tienes una tabla que resume los endpoints de cada microservicio (`ms-produ
 ### **Notas importantes:**
 
 1. **IP y Puertos:** 
-   - Reemplaza `<IP>` con la IP del nodo del clúster.
+   - Reemplazar `<IP>` con la IP del nodo del clúster.
    - `30081` es el puerto NodePort para `ms-productos`.
    - `30084` es el puerto NodePort para `ms-deseos`.
 
 2. **Formato del payload:** Asegúrate de enviar el JSON correcto para las operaciones `POST` y `PUT`. 
-   - Para `ms-productos`, usa el esquema de la entidad `Producto` para las solicitudes.
+   - Para `ms-productos`, usar el esquema de la entidad `Producto` para las solicitudes.
 
 3. **Pruebas:** Puedes usar `curl` o Postman para probar los endpoints con los ejemplos proporcionados.
 
