@@ -5,7 +5,7 @@ Al finalizar esta práctica, serás capaz de:
 - Crear y utilizar un contenedor Docker utilitario con un cliente ligero para conectarte a la base de datos del microservicio ms-productos utilizando SQL*Plus.
 
 ## Duración aproximada:
-- 25 minutos
+- 25 minutos.
 
 ## Instrucciones
 
@@ -23,7 +23,7 @@ docker ps
 
 <br/>
 
-### Paso 2. Crear un contenedor utilitario con sqlplus
+### Paso 2. Crear un contenedor utilitario con SQL*Plus
 
 Vamos a usar una imagen ligera de Oracle Instant Client para conectarnos a la base de datos.
 
@@ -80,7 +80,7 @@ exit
 
 <br/>
 
-### Paso 4. Crear un contenedor utilitario con SQLPlus
+### Paso 4. Crear un contenedor utilitario con SQL*Plus
 
 Vamos a usar una imagen ligera de Oracle Instant Client para conectarnos a la base de datos.
 
@@ -136,7 +136,7 @@ exit
 
 <br/> <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra que el contenedor con la base de datos Oracle está en ejecución y correctamente configurado.
 
