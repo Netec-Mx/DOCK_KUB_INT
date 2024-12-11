@@ -1,12 +1,11 @@
-# Práctica 3.2 Customización de Propiedades
+# Práctica 3.2. Customización de propiedades
 
-## Objetivo
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
+- Retomar los microservicios desarrollados anteriormente (ms-productos y ms-deseos), ajustando su configuración mediante la definición de propiedades en archivos application.properties y variables de ambiente para su despliegue en un entorno basado en contenedores.
 
-Al finalizar esta práctica, serás capaz de retomar los microservicios desarrollados anteriormente (ms-productos y ms-deseos), ajustando su configuración mediante la definición de propiedades en archivos application.properties y variables de ambiente para su despliegue en un entorno basado en contenedores
-
-## Duración
-
-20 minutos
+## Duración aproximada:
+- 20 minutos
 
 ## Objetivo Visual
 
@@ -19,16 +18,16 @@ Al finalizar esta práctica, serás capaz de retomar los microservicios desarrol
 
 ### 1. **Preparación del Entorno**  
 
-- **Configura los microservicios:** Asegúrate de que los microservicios `ms-productos` y `ms-deseos` están correctamente configurados y listos para ejecutarse en tu entorno de desarrollo **Spring Tool Suite (STS)**.
+- **Configurar los microservicios:** Asegúrate de que los microservicios `ms-productos` y `ms-deseos` están correctamente configurados y listos para ejecutarse en el entorno de desarrollo **Spring Tool Suite (STS)**.
 
-- **Confirma la base de datos:** Verifica que el contenedor de Oracle Database (`oracle-db`) está correctamente desplegado, funcionando y accesible en el **espacio de nombres por defecto** de tu clúster de Kubernetes.
+- **Confirmar la base de datos:** Verificar que el contenedor de Oracle Database (`oracle-db`) está correctamente desplegado, funcionando y accesible en el **espacio de nombres por defecto** del clúster de Kubernetes.
 
 <br/>
 
 ### 2. **Archivos de Configuración (`application.properties`)**  
 
 #### **Microservicio `ms-productos`**  
-Edita el archivo `application.properties` en el directorio de configuración del microservicio `ms-productos` con las siguientes propiedades básicas:
+Editar el archivo `application.properties` en el directorio de configuración del microservicio `ms-productos` con las siguientes propiedades básicas:
 
 ```properties
 # Configuración del nombre de la aplicación
@@ -50,7 +49,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
 ```
 
 #### **Microservicio `ms-deseos`**  
-Edita el archivo `application.properties` en el directorio de configuración del microservicio `ms-deseos` con las siguientes propiedades básicas:
+Editar el archivo `application.properties` en el directorio de configuración del microservicio `ms-deseos` con las siguientes propiedades básicas:
 
 ```properties
 # Configuración del nombre de la aplicación
@@ -64,7 +63,7 @@ server.port=9084
 
 ### 3. **Actualizar Configuraciones Usando Variables de Entorno**  
 
-Reemplaza el contenido de los archivos `application.properties` en ambos microservicios con las siguientes configuraciones que utilizan variables de entorno:
+Reemplazar el contenido de los archivos `application.properties` en ambos microservicios con las siguientes configuraciones que utilizan variables de entorno:
 
 #### **Archivo `application.properties` para `ms-productos`:**
 
@@ -104,7 +103,7 @@ productos.service.url=${PRODUCTOS_SERVICE_URL:http://ms-productos:9081}
 
 ### 4. **Validación en el Código Fuente**
 
-Revisa el código fuente del microservicio `ms-deseos` para verificar la anotación utilizada en la interfaz que define el cliente Feign para el consumo del microservicio `ms-productos`.
+Revisar el código fuente del microservicio `ms-deseos` para verificar la anotación utilizada en la interfaz que define el cliente Feign para el consumo del microservicio `ms-productos`.
 
 - **Anotación actual:**
   
@@ -115,7 +114,7 @@ Revisa el código fuente del microservicio `ms-deseos` para verificar la anotaci
   }
   ```
 
-- **Cambios necesarios:** Modifica el valor de `url` para utilizar la variable configurada en el archivo `application.properties`:
+- **Cambios necesarios:** Modificar el valor de `url` para utilizar la variable configurada en el archivo `application.properties`:
   
   ```java
   @FeignClient(name = "ms-productos", url = "${productos.service.url}")
@@ -130,7 +129,7 @@ Este cambio asegura que la URL se cargue desde las propiedades configuradas, hac
 
 ### 5. **Construcción de Artefactos**
 
-Genera los archivos JAR para cada microservicio ejecutando los siguientes comandos en la raíz de cada proyecto:
+Generar los archivos JAR para cada microservicio ejecutando los siguientes comandos en la raíz de cada proyecto:
 
 - Si estás utilizando Maven:
  
@@ -151,33 +150,33 @@ El argumento `-Dmaven.test.skip=true` permite omitir la ejecución de pruebas un
 
 ### 6. **Verificación de Artefactos**
 
-Confirma que se generaron los archivos JAR en el directorio `target` de cada microservicio. Los nombres de los archivos deberían ser similares a los siguientes:
+Confirmar que se generaron los archivos JAR en el directorio `target` de cada microservicio. Los nombres de los archivos deberían ser similares a los siguientes:
 
 - Para `ms-productos`: `ms-productos-0.0.1-SNAPSHOT.jar`
 
 - Para `ms-deseos`: `ms-deseos-0.0.1-SNAPSHOT.jar`
 
-Si los archivos no se generaron correctamente, verifica los mensajes de error en el log de Maven y corrige cualquier problema antes de continuar.
+Si los archivos no se generaron correctamente, verificar los mensajes de error en el log de Maven y corregir cualquier problema antes de continuar.
 
 
 <br/>
 <br/>
 
-## Resultados Esperados
+## Resultados esperados
 
-### **Resultados Esperados de la Práctica**
+### **Resultados esperados de la práctica**
 
-1. **Configuración Correcta de Propiedades**
+1. **Configuración correcta de propiedades**
    - Los archivos `application.properties` de ambos microservicios (`ms-productos` y `ms-deseos`) estarán correctamente actualizados con valores dinámicos utilizando variables de entorno.
 
    - Se habrán definido valores por defecto en las propiedades para asegurar su funcionamiento en entornos sin configuración adicional.
 
-2. **Cliente Feign Actualizado**
+2. **Cliente Feign actualizado**
    - El cliente Feign en el microservicio `ms-deseos` estará correctamente configurado para consumir el microservicio `ms-productos` utilizando la propiedad `${productos.service.url}` en lugar de una URL fija.
    
    - Este cambio permitirá una mayor flexibilidad para adaptarse a diferentes entornos.
 
-3. **Construcción de Artefactos**
+3. **Construcción de artefactos**
    - Los archivos JAR para cada microservicio (`ms-productos` y `ms-deseos`) se habrán generado correctamente y estarán disponibles en el directorio `target` de sus respectivos proyectos.
    
    - Ejemplo:
