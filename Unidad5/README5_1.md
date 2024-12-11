@@ -1,13 +1,12 @@
-# Práctica 5.1 Spring Cloud Gateway
+# Práctica 5.1. Spring Cloud Gateway
 
-## Objetivo
+## Objetivos de las prácticas:
+Al finalizar esta práctica, serás capaz de:
 
-- Al finalizar esta práctica, serás capaz de implementar y configurar un servicio de Spring Cloud Gateway en un clúster de Kubernetes. Esto incluye la creación y configuración del servicio, el enrutamiento de microservicios a través del Gateway utilizando `application.properties` y `application.yml`, la dockerización del Gateway, y el despliegue mediante Deployment y Service en Kubernetes, verificando su funcionalidad a través de Curl o Postman.
+- Implementar y configurar un servicio de Spring Cloud Gateway en un clúster de Kubernetes. Esto incluye la creación y configuración del servicio, el enrutamiento de microservicios a través del Gateway utilizando `application.properties` y `application.yml`, la dockerización del Gateway y el despliegue mediante Deployment y Service en Kubernetes, verificando su funcionalidad a través de Curl o Postman.
  
-
-## Duración
-
-180 minutos
+## Duración aproximada
+- 180 minutos
 
 <br/>
 
@@ -24,9 +23,9 @@
 
 #### 1. Crear el proyecto en Spring Tool Suite (STS)
 
-- Crea un nuevo proyecto Maven llamado **ms-gateway**.
+- Crear un nuevo proyecto Maven llamado **ms-gateway**.
 
-- Configura las opciones:
+- Configurar las opciones:
   - Lenguaje: Java 21.
   - Tipo de empaquetado: JAR.
   - Tipo: Maven
@@ -35,13 +34,13 @@
 
 #### 2. Agregar dependencia de Spring Cloud Gateway
 
-- Incluye el **Spring Cloud Routing - Reactive Gateway** al crear el proyecto o agrégalo manualmente al archivo `pom.xml`.
+- Incluir el **Spring Cloud Routing - Reactive Gateway** al crear el proyecto o agregar manualmente al archivo `pom.xml`.
 
 <br/>
 
 #### 3. Añadir inicializadores necesarios al archivo `pom.xml`
 
-- Agrega las siguientes dependencias en el `pom.xml`:
+- Agregar las siguientes dependencias en el `pom.xml`:
 
 ```xml
 
@@ -64,13 +63,13 @@
 
 ```
 
-- **Nota:** Verifica la compatibilidad de las versiones de Spring Cloud con la versión de Spring Boot de tu proyecto. Consulta [Spring Cloud Compatibility Matrix](https://spring.io/projects/spring-cloud#overview).
+- **Nota:** Verificar la compatibilidad de las versiones de Spring Cloud con la versión de Spring Boot del proyecto. Consultar [Spring Cloud Compatibility Matrix](https://spring.io/projects/spring-cloud#overview).
 
 <br/>
 
 #### 4. Habilitar cliente de descubrimiento
 
-- En la clase principal `MsGatewayApplication`, añade la anotación `@EnableDiscoveryClient`:
+- En la clase principal `MsGatewayApplication`, añadir la anotación `@EnableDiscoveryClient`:
 
 ```java
 
@@ -91,7 +90,7 @@ public class MsGatewayApplication {
 
 #### 5. Configurar el archivo `application.properties`
 
-- Agrega las siguientes propiedades básicas:
+- Agregar las siguientes propiedades básicas:
 
 ```properties
 spring.application.name=ms-gateway
@@ -102,7 +101,7 @@ server.port=9099
 
 #### 6. Configurar rutas con `application.yml`
 
-- Crea un archivo `application.yml` para definir las rutas necesarias:
+- Crear un archivo `application.yml` para definir las rutas necesarias:
   
 ```yaml
 spring:
@@ -127,13 +126,13 @@ spring:
 
 #### 7. Decidir el formato de configuración
 
-- Decide si prefieres utilizar únicamente `application.properties` o `application.yml` para todas las configuraciones del proyecto. Elimina el archivo que no se usará para evitar conflictos.
+- Decidir si prefieres utilizar únicamente `application.properties` o `application.yml` para todas las configuraciones del proyecto. Eliminar el archivo que no se usará para evitar conflictos.
 
 <br/>
 
 #### 8. Crear el artefacto JAR
 
-- Genera el artefacto JAR del microservicio ejecutando el siguiente comando en la raíz del proyecto:
+- Generar el artefacto JAR del microservicio ejecutando el siguiente comando en la raíz del proyecto:
 
 ```bash
 .\mvnw clean package
@@ -143,7 +142,7 @@ spring:
 
 #### 9. Crear el Dockerfile
 
-- Escribe un archivo `Dockerfile` para dockerizar el microservicio:
+- Escribir un archivo `Dockerfile` para dockerizar el microservicio:
 
 ```dockerfile
 # 1. Imagen base
@@ -168,13 +167,13 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
 #### 10. Construir, etiquetar y registrar la imagen Docker
 
-- Construye la imagen Docker:
+- Construir la imagen Docker:
 
 ```bash
 docker build -t ms-gateway:<tu_version> .
 ```
 
-- Etiqueta y sube la imagen a Docker Hub:
+- Etiquetar y subir la imagen a Docker Hub:
 
 ```bash
 docker login
@@ -195,7 +194,7 @@ docker push <tu_usuario_dockerhub>/ms-gateway:<tu_version>
 docker pull <tu_usuario_dockerhub>/ms-gateway:<tu_version>
 ``` 
 
-Con estos paso finalizado, tendrás tu microservicio **ms-gateway** listo para desplegar en Kubernetes.
+Con estos pasos finalizados, tendrás tu microservicio **ms-gateway** listo para desplegar en Kubernetes.
 
 <br/>
 <br/>
@@ -205,15 +204,15 @@ Con estos paso finalizado, tendrás tu microservicio **ms-gateway** listo para d
 
 #### 1. Crear el manifiesto YAML para el despliegue del microservicio
 
-- Escribe un manifiesto YAML que incluya:
+- Escribir un manifiesto YAML que incluya:
 
   - Un **Deployment** que utilice la imagen Docker creada en el Paso 1 como base para el contenedor.
 
-  - Configura un número adecuado de réplicas según las necesidades del servicio.
+  - Configurar un número adecuado de réplicas según las necesidades del servicio.
 
-  - Opcionalemente define las siguientes características opcionales (recomendadas):
+  - Optativo, definir las siguientes características opcionales (recomendadas):
     - **Resources**: límites y solicitudes de CPU y memoria para optimizar el uso de recursos del clúster.
-    - **Probes**: añade `livenessProbe` y `readinessProbe` para garantizar la disponibilidad del servicio y evitar tráfico hacia Pods no saludables.
+    - **Probes**: añadir `livenessProbe` y `readinessProbe` para garantizar la disponibilidad del servicio y evitar tráfico hacia Pods no saludables.
     - Recuerda que, si utilizas **Probes**, es importante añadir `livenessProbe` y `readinessProbe` para garantizar la disponibilidad del servicio y evitar el enrutamiento de tráfico hacia Pods no saludables. Asegúrate de que tu imagen registrada en Docker Hub esté configurada correctamente para los actuators necesarios.
  
   - Asegúrate de incluir los puertos necesarios para el contenedor.
@@ -222,16 +221,16 @@ Con estos paso finalizado, tendrás tu microservicio **ms-gateway** listo para d
 
 #### 2. Crear el manifiesto YAML para el Service
 
-- Define un **Service** en Kubernetes para exponer el microservicio **ms-gateway**:
+- Definir un **Service** en Kubernetes para exponer el microservicio **ms-gateway**:
   - Tipo de servicio: `LoadBalancer` (para exponer el servicio externamente y permitir el acceso desde fuera del clúster).
-  - Configura el puerto externo y el puerto del contenedor de acuerdo con la configuración del microservicio (e.g., puerto 9099).
-  - Incluye las etiquetas necesarias para asociar el Service con los Pods del Deployment.
+  - Configurar el puerto externo y el puerto del contenedor de acuerdo con la configuración del microservicio (e.g., puerto 9099).
+  - Incluir las etiquetas necesarias para asociar el Service con los Pods del Deployment.
 
 <br/>
 
 #### 3. Aplicar los manifiestos YAML al clúster
 
-- Aplica los manifiestos al clúster con el siguiente comando:
+- Aplicar los manifiestos al clúster con el siguiente comando:
 
 ```bash
 kubectl apply -f <nombre-del-archivo-deployment>.yaml
@@ -241,7 +240,7 @@ kubectl apply -f <nombre-del-archivo-service>.yaml
 <br/>
 
 #### 4. Inspeccionar los componentes de Kubernetes
-- Verifica que los Pods, Deployment y Service se hayan creado correctamente utilizando los comandos:
+- Verificar que los Pods, Deployment y Service se hayan creado correctamente utilizando los comandos:
 
 ```bash
 kubectl get pods
@@ -258,15 +257,15 @@ kubectl get service ms-gateway -o wide
 
 #### 1. Verificar la dirección IP y el puerto del servicio
 
-- Identifica la dirección IP y el puerto expuesto por el **Service** de Kubernetes para **ms-gateway**. 
+- Identificar la dirección IP y el puerto expuesto por el **Service** de Kubernetes para **ms-gateway**. 
 
-  - Si usaste un `LoadBalancer`, utiliza el siguiente comando para obtener la dirección IP externa:
+  - Si usaste un `LoadBalancer`, utilizar el siguiente comando para obtener la dirección IP externa:
 
     ```bash
     kubectl get services -o wide
     ```
 
-- Anota la dirección IP y el puerto asignados.
+- Anotar la dirección IP y el puerto asignados.
 
 <br/>
 
@@ -274,20 +273,20 @@ kubectl get service ms-gateway -o wide
 
 - Asegúrate de que los microservicios **ms-productos** y **ms-deseos** estén en un estado saludable y listos para ser consumidos por **ms-gateway**.
 
-  - Ejecuta el siguiente comando para verificar su estado:
+  - Ejecutar el siguiente comando para verificar su estado:
 
     ```bash
     kubectl get pods
     kubectl get services -o wide
     ```
 
-- Realiza una prueba básica para cada microservicio directamente, usando **Postman** o `curl`, para confirmar que están respondiendo correctamente.
+- Realizar una prueba básica para cada microservicio directamente, usando **Postman** o `curl`, para confirmar que están respondiendo correctamente.
 
 <br/>
 
 #### 3. Probar la conectividad hacia **ms-productos** a través de **ms-gateway**
 
-- Utiliza **Postman** o `curl` para consumir las rutas configuradas en **ms-gateway** que se redirigen a **ms-productos**. Por ejemplo:
+- Utilizar **Postman** o `curl` para consumir las rutas configuradas en **ms-gateway** que se redirigen a **ms-productos**. Por ejemplo:
 
     ```bash
     curl http://<IP_DEL_GATEWAY>:<PUERTO>/api1/productos
@@ -300,7 +299,7 @@ kubectl get service ms-gateway -o wide
 
 #### 4. Agregar un nuevo producto a través de **ms-gateway**
 
-- Envía una solicitud POST con los datos de un nuevo producto utilizando la ruta de **ms-gateway** que redirige a **ms-productos**. Ejemplo con `curl`:
+- Enviar una solicitud POST con los datos de un nuevo producto utilizando la ruta de **ms-gateway** que redirige a **ms-productos**. Ejemplo con `curl`:
 
     ```bash
   curl -X POST http://<IP_DEL_GATEWAY>:<PUERTO>/productos \
@@ -315,19 +314,19 @@ kubectl get service ms-gateway -o wide
 
     ```
 
-- Confirma que la solicitud fue aceptada.
+- Confirmar que la solicitud fue aceptada.
 
 <br/>
 
 #### 5. Verificar la creación del producto
 
-- Usa la ruta de consulta configurada en **ms-gateway** para verificar que el nuevo producto aparece en la lista de productos de **ms-productos**:
+- Usar la ruta de consulta configurada en **ms-gateway** para verificar que el nuevo producto aparece en la lista de productos de **ms-productos**:
 
     ```bash
     curl http://<IP_DEL_GATEWAY>:<PUERTO>/api/productos
     ```
 
-- Usa la ruta de consulta configurada en **ms-gateway** para verificar que el puedes consumir el nuevo producto desde **ms-deseos**:
+- Usar la ruta de consulta configurada en **ms-gateway** para verificar que puedes consumir el nuevo producto desde **ms-deseos**:
 
     ```bash
     curl -s -X POST http://<IP_DEL_GATEWAY>:<PUERTO>/api/deseos/2
@@ -336,12 +335,12 @@ kubectl get service ms-gateway -o wide
     ```
 <br/>
 
-Con estos pasos, habrás comprobado la funcionalidad del **ms-gateway**, la interacción con los microservicios dependientes, y la correcta propagación de solicitudes entre los servicios.
+Con estos pasos, habrás comprobado la funcionalidad del **ms-gateway**, la interacción con los microservicios dependientes y la correcta propagación de solicitudes entre los servicios.
 
 <br/>
 <br/>
 
-## Resultados Esperados
+## Resultados esperados
 
 Al finalizar la práctica, se espera que el participante haya logrado:
 
@@ -355,26 +354,26 @@ Al finalizar la práctica, se espera que el participante haya logrado:
 
 3. **Despliegue en Kubernetes**:
    - Desplegar el microservicio **ms-gateway** en Kubernetes utilizando un Deployment y un Service.
-   - Configurar correctamente los manifiestos YAML para incluir recursos, probes (`livenessProbe` y `readinessProbe`), y un Service de tipo `LoadBalancer` para exponer el Gateway externamente.
+   - Configurar correctamente los manifiestos YAML para incluir recursos, probes (`livenessProbe` y `readinessProbe`) y un Service de tipo `LoadBalancer` para exponer el Gateway externamente.
 
-4. **Verificación de Componentes**:
+4. **Verificación de componentes**:
    - Validar que los Pods asociados al Deployment estén en estado `Running`.
    - Verificar que el Service de Kubernetes expone correctamente el microservicio, obteniendo la dirección IP y el puerto asignados.
 
-5. **Consumo de Microservicios a través del Gateway**:
+5. **Consumo de microservicios a través del Gateway**:
    - Realizar pruebas exitosas con **Postman** o `curl` para:
      - Consultar datos de **ms-productos** a través de las rutas configuradas en **ms-gateway**.
      - Agregar nuevos productos a **ms-productos** mediante el Gateway.
      - Consumir datos de la lista de deseos de **ms-deseos** y verificar su interacción con **ms-productos**.
 
-6. **Pruebas de Integración**:
+6. **Pruebas de integración**:
    - Confirmar que las solicitudes se enrutan correctamente desde el Gateway hacia los microservicios dependientes.
    - Verificar que las respuestas obtenidas a través del Gateway son consistentes con las respuestas directas de los microservicios.
 
 <br/>
 <br/>
 
-## Resultados Esperados - Visualmente
+## Resultados esperados - Visualmente
 
 1. Captura de pantalla que evidencia el registro exitoso de la imagen `1.0.0` en Docker Hub. Durante el despliegue, se presentó un inconveniente debido a la omisión del archivo YAML que define las rutas necesarias, lo que impidió el correcto enrutamiento inicial.
 
