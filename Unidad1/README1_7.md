@@ -1,10 +1,11 @@
-# Práctica 1.7. Consumo de microservicios - Caso de Estudio
+# Práctica 1.7. Consumo de microservicios - Caso de estudio
 
-## Objetivo
-Al finalizar esta práctica, serás capaz de consumir microservicios mediante el uso de herramientas como Postman o implementaciones en código.  
+## Objetivos de las prácticas:
+Al finalizar esta práctica, serás capaz de:
+- Consumir microservicios mediante el uso de herramientas como Postman o implementaciones en código.  
 
-## Duración
-25 minutos
+## Duración aproximada:
+- 25 minutos.
 
 <br/>
 
@@ -26,7 +27,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 - Método HTTP: GET
 - URL: http://localhost:9081/productos
-- Descripción: Recupera una lista de todos los productos disponibles.
+- Descripción: Recuperar una lista de todos los productos disponibles.
 - Paso en Postman:
     1. Crear una nueva solicitud en la colección ms-productos con el método GET y la URL especificada.
     2. Ejecutar la solicitud y verificar que se devuelva una lista en formato JSON.
@@ -36,8 +37,8 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 ### 2. Obtener un producto por ID
 - Método HTTP: GET
 - URL: http://localhost:9081/productos/{id}
-- Reemplaza {id} con el ID de un producto existente, por ejemplo, 1.
-- Descripción: Recupera los detalles de un producto específico por su ID.
+- Reemplazar {id} con el ID de un producto existente, por ejemplo, 1.
+- Descripción: Recuperar los detalles de un producto específico por su ID.
 - Paso en Postman:
     1. Crear una nueva solicitud con el método GET y la URL especificada.
     2. Probar con un ID existente y verificar los detalles del producto en la respuesta.
@@ -125,7 +126,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 - Método HTTP: POST
 - URL: http://localhost:9084/deseos/{idProducto}
-- Reemplaza {idProducto} con el ID de un producto existente (por ejemplo, 1).
+- Reemplazar {idProducto} con el ID de un producto existente (por ejemplo, 1).
 - Descripción: Agregar un producto a la lista de deseos usando su ID.
 - Paso en Postman:
     1. Crear una nueva solicitud con el método POST y la URL especificada.
@@ -137,7 +138,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 - Método HTTP: DELETE
 - URL: http://localhost:9084/deseos/{idProducto}
-- Reemplaza {idProducto} con el ID de un producto existente en la lista de deseos (por ejemplo, 1).
+- Reemplazar {idProducto} con el ID de un producto existente en la lista de deseos (por ejemplo, 1).
 - Descripción: Eliminar un producto específico de la lista de deseos utilizando su ID.
 - Paso en Postman:
     1. Crear una nueva solicitud con el método DELETE y la URL especificada.
@@ -149,7 +150,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 - Probar cada uno de los endpoints utilizando Postman.
 
-- Documentar las respuestas obtenidas, incluyendo los códigos de estado HTTP (200, 201, 204, 404, etc.).
+- Documentar las respuestas obtenidas, incluyendo los códigos de estado HTTP (200, 201, 204, 404, etc.)
 
 - Verificar que las operaciones cumplan con los objetivos definidos para la práctica.
 
@@ -165,7 +166,7 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra los contenedores involucrados en la preparación de la prática 1.7.
 
@@ -233,13 +234,13 @@ Al finalizar esta práctica, serás capaz de consumir microservicios mediante el
 
 <br/>
 
-- Captura de pantalla que muestra la eliminación de un deseo, HTTP 204 No Content
+- Captura de pantalla que muestra la eliminación de un deseo, HTTP 204 No Content.
 
 ![Postman](../images/u1_7_10.png)
 
 <br/>
 
-- Captura de pantalla que muestra el estado actual de la lista de deseos, HTTP 200 OK
+- Captura de pantalla que muestra el estado actual de la lista de deseos, HTTP 200 OK.
 
 ![Postman](../images/u1_7_11.png)
 
