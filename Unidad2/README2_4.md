@@ -1,4 +1,4 @@
-# 2.4 Integración de Microservicios en Docker Compose
+# 2.4. Integración de microservicios en Docker Compose
 
 ## Objetivo
 Al finalizar esta práctica, serás capaz de:
