@@ -1,17 +1,16 @@
-# Práctica 1.1 Verificación de Entorno de Curso
+# Práctica 1.1. Verificación de entorno de curso
 
-## Objetivo
+## Objetivos de la práctica:
+Al finalizar la práctica serás capaz de:
 
-Al finalizar esta práctica, serás capaz de verificar y preparar el entorno necesario para el curso, asegurándote de que Docker y las herramientas complementarias estén correctamente instaladas y configuradas para el desarrollo de actividades posteriores.
+- Verificar y preparar el entorno necesario para el curso, asegurándote de que Docker y las herramientas complementarias estén correctamente instaladas y configuradas para el desarrollo de actividades posteriores.
 
-## Duración
-
-25 minutos
-
+## Duración aproximada:
+25 minutos.
 
 ## Instrucciones
 
-1. Sigue atentamente las indicaciones del instructor para conectarse al ambiente asignado y asegurate de que todo esté correctamente configurado.
+1. Seguir atentamente las indicaciones del instructor para conectarse al ambiente asignado y asegurarse de que todo esté correctamente configurado.
 
 <br/>
 
@@ -22,13 +21,13 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
     docker --version
     ```
 
-    Confirma que Docker está instalado y muestra la versión.
+    Confirmar que Docker está instalado y muestra la versión.
 
 <br/>
 
 3. Vericar Java SDK
 
-    Ejecuta los siguiente comandos:
+    Ejecutar los siguiente comandos:
 
     ```cmd
     javac --version
@@ -48,19 +47,19 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
     git config --global user.email "tu_correo"
     git config --list
     ```
-    La configuración de tu nombre y correo son opcionales, pero si tu instructor te pidiera subir algo algún repositorio es ahí cuando serían necesarias.
+    La configuración de tu nombre y correo son opcionales, pero si tu instructor te solicita subir algo en algún repositorio, ahí cuando seran necesarias.
 
 <br/>
 
 5. Verificar Spring Tool Suite (STS):
 
-    Abre STS desde su acceso directo y verifica que cargue correctamente.
+    Abrir STS desde su acceso directo y verificar que cargue correctamente.
 
 <br/>
 
 6. Verificar la imagen de Oracle DB en Docker:
 
-    En la terminal, ejecuta:
+    En la terminal, ejecutar:
 
     ```cmd
     docker images
@@ -70,9 +69,9 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
 
 7. Veriricar Postman, Insomnia y Curl CLI.
 
-    - Abre Postman e Insomia desde sus accesos directos y verifica que ambos funcionen correctamente.
+    - Abrir Postman e Insomia desde sus accesos directos y verificar que ambos funcionen correctamente.
 
-    - En la terminal, ejecuta:
+    - En la terminal, ejecutar:
 
     ```cmd
     curl --version
@@ -82,13 +81,13 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
 
 8. Verificar Visual Studio Code & Nodepad++
 
-    Abre ambos programas desde sus accesos directos y asegúrate de que se carguen sin problemas. No actualices las versiones si lo solicita.
+    Abrir ambos programas desde sus accesos directos y asegúrate de que se carguen sin problemas. No actualizar las versiones si lo solicita.
 
 <br/>
 
 9. Verificar conexión SSH a los nodos:
 
-    - Accede a cada nodo utilizando SSH y confirma que puedes conectarte correctamente.
+    - Acceder a cada nodo utilizando SSH y confirmar que puedes conectarte correctamente.
 
     - Por ejemplo:
 
@@ -102,20 +101,20 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
 
 10. Registrar las IPs de los nodos:
 
-    Usa el comando siguiente en cada nodo para identificar su dirección IP
+    Usar el comando siguiente en cada nodo para identificar su dirección IP
 
     ```bash
 
     ip addr show
     ```
 
-    Anota las IPs y confirma que están dentro de la misma red.
+    Anotar las IPs y confirmar que están dentro de la misma red.
 
 <br/>
 
 11. Verificar Kubernetes (nodo maestro y worker)
 
-    - En la terminal del nodo maestro, ejecuta:
+    - En la terminal del nodo maestro, ejecutar:
 
     ```cmd
     kubectl version
@@ -123,7 +122,7 @@ Al finalizar esta práctica, serás capaz de verificar y preparar el entorno nec
     kubectl get nodes
     ```
 
-    Confirma que ambos nodos están visible y en estado `Ready`
+    Confirmar que ambos nodos están visibles y en estado `Ready`
 
 <br/>
 
