@@ -1,9 +1,10 @@
-# Práctica 1.3 Docker Volume
+# Práctica 1.3. Docker Volume
 
-## Objetivo
-Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para gestionar datos persistentes, configurarlos en contenedores, y verificar que la información persiste aunque los contenedores sean eliminados.
+## Objetivos de la práctica:
+Al finalizar la práctica, serás capaz de:
+- Utilizar volúmenes en Docker para gestionar datos persistentes, configurarlos en contenedores y verificar que la información persiste aunque los contenedores sean eliminados.
 
-## Duración
+## Duración aproximada:
 25 minutos
 
 ## Instrucciones
@@ -12,7 +13,7 @@ Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para 
 
 - Asegúrate de tener Docker Desktop instalado y corriendo.
 
-- Verifica que no haya contenedores ni voúmenes activos que puedan interferir usando:
+- Verificar que no haya contenedores ni voúmenes activos que puedan interferir usando:
 
     ```cmd
     docker ps -a | findstr dki
@@ -22,13 +23,13 @@ Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para 
 
 #### 2. **Creación de un volume DOcker**
 
-- Crea un volumen llamado dk-volumen
+- Crear un volumen llamado `dk-volumen`.
 
     ```cmd
     docker volume create dki-volume
     ```
 
-- Verifica que el volumen ha sido creado:
+- Verificar que el volumen ha sido creado:
 
     ```cmd
     docker volume ls
@@ -38,32 +39,32 @@ Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para 
 
 #### 3. **Ejecución de un contenedor con el volumen**
 
-- Lanza un contenedor basado en la imagen oficial de nginx, adjuntando el volumen dk-volumen al directorio /usr/share/nginx/html
+- Lanzar un contenedor basado en la imagen oficial de nginx, adjuntando el volumen dk-volumen al directorio `/usr/share/nginx/html`.
 
     ```cmd
     docker run -d --name dki_nginx -v dki-volume:/usr/share/nginx/html -p 8888:80 nginx
 
     ```
 
-- Confirma que el contenedor esta ejecutandose en el puerto expuerto 8888.
+- Confirmar que el contenedor esta ejecutandose en el puerto expuerto 8888.
 
 <br/>
 
 #### 4. **Crear un archivo dentro de volumen**
 
-- Ingresa al contendor para interacturar con el volumen
+- Ingresar al contendor para interacturar con el volumen.
 
     ```cmd
     docker exec -it dki_nginx bash
     ```
 
-- Dentro del contenedor, crea un archivo de ejemplo en el directorio donde está montado el volumen:
+- Dentro del contenedor, crear un archivo de ejemplo en el directorio donde está montado el volumen:
 
     ```bash
     echo "<H2>Hola Curso Docker Kubernetes Intermedio </H2>" > /usr/share/nginx/html/index.html
     ```
 
-- Sal del contenedor
+- Salir del contenedor.
 
     ```bash
     exit
@@ -73,7 +74,7 @@ Al finalizar esta actividad, serás capaz de utilizar volúmenes en Docker para 
 
 #### 5. **Probar el acceso al archivo**
 
-Abre un navegador web y visita http://localhost:8888. Deberías ver el mensaje:
+Abrir un navegador web y visitar http://localhost:8888. Deberías ver el mensaje:
 
 ```html
     Hola Curso Docker Kubernetes Intermedio
@@ -83,7 +84,7 @@ Abre un navegador web y visita http://localhost:8888. Deberías ver el mensaje:
 
 #### 6. **Eliminar el contenedor**
 
-Elimina el contenedor sin borrar el volumen
+Eliminar el contenedor sin borrar el volumen.
 
 ```cmd
 docker rm -f dki_nginx
@@ -96,23 +97,23 @@ docker ps -a
 
 #### 7. **Verificar la persistencia de datos**
 
-- Crea un nuevo contenedor y monta nuevamente el volumen
+- Crear un nuevo contenedor y montar nuevamente el volumen.
 
     ```cmd
     docker run -d --name nuevo_nginx -v dki_volume:/usr/share/nginx/html -p 9999:80 nginx
 
-    # Verifica
+    # Verificar
     docker ps 
 
     ```
 
-- Repite el paso de prueba de acceso al archvio `http://localhost:9999. El mensaje persistente debería seguir disponible.
+- Repetir el paso de prueba de acceso al archvio `http://localhost:9999. El mensaje persistente debería seguir disponible.
 
 <br/>
 
 #### 8. **Limpieza**
 
-Al finalizar, elimina el contenedor dk_nginx y el volumen dk_volume
+Al finalizar, eliminar el contenedor `dk_nginx` y el volumen `dk_volume`.
 
 ```cmd
 docker rm -f nuevo_nginx
@@ -123,7 +124,7 @@ docker volume rm dki_volume
 
 #### 9. **Errores  comunes**
 
-- Si el archvio no aparece en el navegador, verifica que el volumen esté correctamente montado y revisa los logs del contenedor
+- Si el archvio no aparece en el navegador, verificar que el volumen esté correctamente montado y revisar los logs del contenedor.
 
 ```cmd
 docker logs <nombre_contenedor>
@@ -147,7 +148,7 @@ docker logs <nombre_contenedor>
 
 <br/>
 
-- Captura de pantalla que muestra la salida en el navegador del archivo `index.html` en el contenedor
+- Captura de pantalla que muestra la salida en el navegador del archivo `index.html` en el contenedor.
 
 ![docker](../images/u1_3_2.png)
 
