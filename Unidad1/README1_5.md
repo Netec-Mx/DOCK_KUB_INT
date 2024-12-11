@@ -1,10 +1,11 @@
-# Práctica 1.5 Caso de Estudio (ms-productos & ms-deseos)
+# Práctica 1.5. Caso de estudio (ms-productos & ms-deseos)
 
-## Objetivo
-Al finalizar esta práctica, serás capaz de implementar y consumir microservicios en una arquitectura basada en comunicación HTTP, utilizando Spring Boot y Feign como cliente declarativo, para resolver casos de estudio prácticos. 
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
+- Implementar y consumir microservicios en una arquitectura basada en comunicación HTTP, utilizando Spring Boot y Feign como cliente declarativo, para resolver casos de estudio prácticos. 
 
-## Duración
-80 minutos
+## Duración aproximada:
+- 80 minutos
 
 ## Objetivo Visual
 
@@ -58,19 +59,19 @@ Al finalizar esta práctica, serás capaz de implementar y consumir microservici
 
 ### Paso 2. Configurar el àpplication.properties`
 
-Configura la conexión a la base de datos y el puerto, 9081
+Configurar la conexión a la base de datos y el puerto, 9081.
 
 ```properties
 spring.application.name=ms-productos
 server.port=9081
 
-# Configuracion de la base de datos
+# Configuracion de la base de datos.
 spring.datasource.url=jdbc:oracle:thin:@dki-oradb:1521/XEPDB1
 spring.datasource.username=dkuser
 spring.datasource.password=dkpassword
 spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 
-# Configuracion de JPA e Hibernate
+# Configuracion de JPA e Hibernate.
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
@@ -79,9 +80,9 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
 
 <b/>
 
-### Paso 3. Crear la entidad Producto.
+### Paso 3. Crear la entidad Producto
 
-- Crear el paquete entities y copia el codigo siguiente:
+- Crear el paquete entities y copiar el código siguiente:
 
 ```java
 package com.netec.app.entities;
@@ -155,7 +156,7 @@ public class Producto {
 
 ### Paso 4. Crear el repositorio
 
-- Crea el paquete repository y agregar la siguiente interface
+- Crear el paquete repository y agregar la siguiente interface.
 
 
 ```java
@@ -175,7 +176,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
 ### Paso 5. Crear el servicio
 
-- Crea el paquete service y agrega la interface siguiente:
+- Crear el paquete service y agregar la interface siguiente:
 
 ```java
 package com.netec.app.service;
@@ -196,7 +197,7 @@ public interface IProductoService {
 ```
 <br/>
 
-- Crea la clase que implemente la interface ÌProductoService`
+- Crear la clase que implemente la interface ÌProductoService`.
 
 ```java
 package com.netec.app.service;
@@ -259,7 +260,7 @@ public class ProductoServiceImpl implements IProductoService {
 
 ### Paso 6. Crear el controlador
 
-- Crea el paquete controller y agrega la clase `ProductoController`
+- Crear el paquete controller y agregar la clase `ProductoController`.
 
 ```java
 
@@ -322,7 +323,7 @@ public class ProductoController {
 
 ### Paso 7. Compila y empaqueta (JAR)
 
-1. Empaqueta la aplicación usando lo siguiente:
+1. Empaquetar la aplicación usando lo siguiente:
 
 ```cmd 
 cd <carpeta del proyecto ms-productos>
@@ -344,11 +345,11 @@ cd <carpeta del proyecto ms-productos>
 
 1. Configuración inicial
 
-- Crea un nuevo proyecto con la siguiente configuración inicial
+- Crear un nuevo proyecto con la siguiente configuración inicial.
 
 ![Spring Boot](../images/u1_5_5.png)
 
-- Agrega las dependencias: Spring Web, Spring Boot OpenFeign
+- Agregar las dependencias: Spring Web, Spring Boot OpenFeign.
 
 ![Spring Boot](../images/u1_5_6.png)
 
@@ -357,7 +358,7 @@ cd <carpeta del proyecto ms-productos>
 
 ### Paso 2. Configurar las propiedades de la aplicación
 
-- Configura el archivo `application.properties` para que Feign pueda realizar las solicitudes a ms-productos
+- Configurar el archivo `application.properties` para que Feign pueda realizar las solicitudes a ms-productos.
 
 ```properties
 spring.application.name=ms-deseos
@@ -369,7 +370,7 @@ server.port=9084
 
 ### Paso 3. Crear la entidad para la lista de Deseos
 
-- Crea el paquete entities y agrega la case `Deseo`
+- Crear el paquete entities y agrega la case `Deseo`.
 
 ```java
 package com.netec.app.entities;
@@ -435,7 +436,7 @@ public class Deseo {
 
 ### Paso 4. Crear el cliente Feign
 
-- Crea el paquete feign y agrega la siguiente interface
+- Crear el paquete feign y agregar la siguiente interface.
 
 ```java
 package com.netec.app.feign;
@@ -444,7 +445,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-// Observa como la url apunta ya al microservicio contenedorizado
+// Observar como la URL apunta ya al microservicio contenedorizado
 @FeignClient(name = "ms-productos", url = "http://ms-productos:9081")
 public interface ProductoFeignClient {
 
@@ -508,7 +509,7 @@ public interface ProductoFeignClient {
 
 ### Paso 5. Crear el servicio
 
-- Crea la interface IDeseoService y copia el siguiente código:
+- Crear la interface IDeseoService y copiar el siguiente código:
 
 ```java
 package com.netec.app.service;
@@ -527,7 +528,7 @@ public interface IDeseoService {
 
 ```
 
-- Crea la clase IDeseoServiceImpl con la implementación del servicio.
+- Crear la clase IDeseoServiceImpl con la implementación del servicio.
 
 ```java
 
@@ -578,7 +579,7 @@ public class DeseoServiceImpl implements IDeseoService {
 
 ### Paso 6. Crear el controlador
 
-Crea el paquete controller y crea la clase DeseoController con el siguiente código:
+Crear el paquete controller y crear la clase DeseoController con el siguiente código:
 
 ```java
 package com.netec.app.controller;
@@ -629,7 +630,7 @@ public class DeseoController {
 
 ### Paso 7. Configura la clase principal
 
-- Habilita Feign declarando `@EnableFeignClients` en la clase principal
+- Habilitar Feign declarando `@EnableFeignClients` en la clase principal.
 
 ```java
 package com.netec.app;
@@ -654,18 +655,18 @@ public class MsDeseosApplication {
 
 ### Paso 8. Compila y empaqueta (JAR)
 
-1. Empaqueta la aplicación usando lo siguiente
+1. Empaquetar la aplicación usando lo siguiente:
 
 ```cmd 
 cd <carpeta del proyecto ms-deseos>
 
-# Genera el JAR
+# Generar el JAR.
 
 .\mvnw clean install  
 
 ```
 
-2. Este microservicio puede iniciarse pero solo puedes consultar hasta este momento los productos deseados.
+2. Este microservicio puede iniciarse, pero solo puedes consultar hasta este momento los productos deseados.
 
 <br/>
 
@@ -688,20 +689,20 @@ cd <carpeta del proyecto ms-deseos>
 
 ## Resultado Esperado
 
-- Captura de pantalla que muestra la construcción exitosa de ms-productos
+- Captura de pantalla que muestra la construcción exitosa de ms-productos.
 
 ![mvnw clean install](../images/u1_5_3.png)
 
 <br/>
 
-- Captura de pantalla que muestra la estructura del proyecto ms-productos, además muestra el contenido del archivo `application.properties`
+- Captura de pantalla que muestra la estructura del proyecto ms-productos, además muestra el contenido del archivo `application.properties`.
 
 
 ![mvnw clean install](../images/u1_5_4.png)
 
 <br/>
 
-- Captura de pantalla que muestra la construcción, el empaquetamiento y ejecución de `ms-deseos`
+- Captura de pantalla que muestra la construcción, el empaquetamiento y ejecución de `ms-deseos`.
 
 
 ![mvnw clean install](../images/u1_5_7.png)
