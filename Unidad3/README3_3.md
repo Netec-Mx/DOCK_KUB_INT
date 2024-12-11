@@ -1,38 +1,36 @@
-# Práctica 3.3 Docker Registry
+# Práctica 3.3. Docker Registry
 
-## Objetivo
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
 
-- Al finalizar esta práctica, serás capaz de crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
+- Crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
+
+## Duración aproximada:
+- 25 minutos
 
 <br/>
 
-## Objetivo Visual
+## Objetivo visual
 
 ![Docker Image](../images/u3_3_3.png)
-
-<br/>
-
-## Duración
-
-25 minutos
 
 <br/>
 
 ## Instrucciones
 
 ### **1. Verificar el estado del Docker Daemon**
-Asegúrate de que Docker esté ejecutándose en tu máquina de desarrollo Windows, en el entorno de curso.
+Asegúrate de que Docker esté ejecutándose en la máquina de desarrollo Windows, en el entorno de curso.
 
 ```bash
 docker info
 ```
-Si Docker está corriendo correctamente, verás información del sistema. Si no, inicia Docker.
+Si Docker está corriendo correctamente, verás información del sistema. Si no, iniciar Docker.
 
 <br/>
 
 ### **2. Construir la imagen del microservicio**
 
-1. Accede al directorio de cada microservicio (por ejemplo, `ms-productos`).
+1. Acceder al directorio de cada microservicio (por ejemplo, `ms-productos`).
 
    ```bash
    cd /ruta/a/ms-productos
@@ -40,7 +38,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
    
 <br/>
 
-2. Construye la imagen Docker desde el archivo `Dockerfile`:
+2. Construir la imagen Docker desde el archivo `Dockerfile`:
 
    ```bash
    docker build -t ms-productos:1.0 .
@@ -54,7 +52,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 <br/>
 
-3. Repite el proceso para el segundo microservicio (`ms-deseos`):
+3. Repetir el proceso para el segundo microservicio (`ms-deseos`):
 
    ```bash
    cd /ruta/a/ms-deseos
@@ -65,7 +63,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 ### **3. Verificar las imágenes construidas**
 
-Lista las imágenes locales para confirmar que las imágenes han sido creadas correctamente:
+Listar las imágenes locales para confirmar que las imágenes han sido creadas correctamente:
 
 ```bash
 docker images
@@ -83,12 +81,12 @@ ms-deseos        1.0       <IMAGE_ID>     X seconds ago    X MB
 
 ### **4. Iniciar sesión en Docker Hub**
 
-Inicia sesión con tu cuenta de Docker Hub:
+Iniciar sesión con tu cuenta de Docker Hub:
 ```bash
 docker login
 ```
 
-Ingresa tu nombre de usuario y contraseña de Docker Hub cuando se solicite. Si la autenticación es exitosa:
+Ingresar tu nombre de usuario y contraseña de Docker Hub cuando se solicite. Si la autenticación es exitosa:
 
 ```
 Login Succeeded
@@ -98,7 +96,7 @@ Login Succeeded
 
 ### **5. Etiquetar las imágenes para Docker Hub**
 
-Asigna etiquetas a las imágenes con el formato adecuado para Docker Hub. Reemplaza `TU_USUARIO` por tu nombre de usuario en Docker Hub.
+Asignar etiquetas a las imágenes con el formato adecuado para Docker Hub. Reemplazar `TU_USUARIO` por tu nombre de usuario en Docker Hub.
 
 1. Para `ms-productos`:
 
@@ -116,7 +114,7 @@ Asigna etiquetas a las imágenes con el formato adecuado para Docker Hub. Reempl
 
 ### **6. Publicar las imágenes en Docker Hub**
 
-Sube las imágenes al Docker Registry:
+Subir las imágenes al Docker Registry:
 
 1. Para `ms-productos`:
 
@@ -147,7 +145,7 @@ Sube las imágenes al Docker Registry:
 
 ### **7. Verificar las imágenes en Docker Hub**
 
-Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
+Utilizar el comando `docker search` para buscar las imágenes en Docker Hub:
 
 1. Para `ms-productos`:
    ```bash
@@ -179,11 +177,11 @@ Utiliza el comando `docker search` para buscar tus imágenes en Docker Hub:
 
 ### Recomendadiones
 
-1. Utiliza etiquetas descriptivas y versiones en las imágenes (`:1.0`, `:1.1`, `:latest`).
+1. Utilizar etiquetas descriptivas y versiones en las imágenes (`:1.0`, `:1.1`, `:latest`).
 
-2. Repite el proceso para cada versión nueva del microservicio, asegurándote de incrementar las versiones de las etiquetas.
+2. Repetir el proceso para cada versión nueva del microservicio, asegurándote de incrementar las versiones de las etiquetas.
 
-3. Documenta los pasos realizados y los comandos utilizados en un archivo `README` en los repositorios de los microservicios.
+3. Documentar los pasos realizados y los comandos utilizados en un archivo `README` en los repositorios de los microservicios.
 
 <br/>
 <br/>
