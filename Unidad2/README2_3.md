@@ -1,16 +1,14 @@
 
-# Práctica 2.3 Configuración de un Contenedor Oracle DB con Docker Compose.
+# Práctica 2.3. Configuración de un contenedor Oracle DB con Docker Compose
 
-## Objetivo
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
+- Definir un contenedor de Oracle Database en un archivo docker-compose.yml, configurando variables de entorno, volúmenes y redes personalizadas.
 
-Al finalizar esta práctica, serás capaz de definir un contenedor de Oracle Database en un archivo docker-compose.yml, configurando variables de entorno, volúmenes y redes personalizadas.
+## Duración aproximada:
+- 25 minutos
 
-## Duración
-
-25 minutos
-
-
-## Material Necesario
+## Material necesario
 
 - Docker y Docker Compose instalados.
 
@@ -25,20 +23,20 @@ Al finalizar esta práctica, serás capaz de definir un contenedor de Oracle Dat
 
 ## Paso 1. Preparar el entorno
 
-1. Crea un directorio de trabajo para esta práctica:
+1. Crear un directorio de trabajo para esta práctica:
 
 ```cmd
 mkdir practica_2_3
 cd practica_2_3
 ```
 
-2. Crea un archivo vacío llamado `docker-compose.yml`:
+2. Crear un archivo vacío llamado `docker-compose.yml`:
 
 ```cmd
 touch docker-compose.yml
 ```
 
-3. Crea una carpeta local llamada `scripts` en el mismo directorio donde está el archivo ```docker-compose.yml``` y coloca ahí el archivo ```init_schema.sql```:
+3. Crear una carpeta local llamada `scripts` en el mismo directorio donde está el archivo ```docker-compose.yml``` y colocar ahí el archivo ```init_schema.sql```:
 
 ```cmd
 mkdir scripts
@@ -47,7 +45,7 @@ touch init_schema.sql
 code init_schema.sql
 ```
 
-4. Copia el siguiente contenido a tu archivo SQL.
+4. Copiar el siguiente contenido a tu archivo SQL.
 
 ```sql
 -- Cambiamos de sesión
@@ -57,7 +55,7 @@ ALTER SESSION SET CONTAINER = XEPDB1;
 CREATE USER dkuser IDENTIFIED BY dkpassword;
 GRANT CONNECT, RESOURCE TO dkuser;
 
--- Espacio ilimitado en el tablespace users.
+-- Espacio ilimitado en el tablespace users
 ALTER USER dkuser QUOTA UNLIMITED ON users;
 
 -- Crear una tabla en el esquema
@@ -80,7 +78,7 @@ COMMIT;
 
 ## Paso 2. Crear el archivo `docker-compose.yml`
 
-Abre el archivo en tu editor de texto y escribe la siguiente configuración:
+Abrir el archivo en el editor de texto y escribir la siguiente configuración:
 
 ```yaml
 version: "3.9"
@@ -134,7 +132,7 @@ networks:
 
 ## Paso 4. Validar el archivo YAML
 
-Valida la sintaxis del archivo antes de ejecutarlo:
+Validar la sintaxis del archivo antes de ejecutarlo:
 
 ```cmd
 docker-compose config
@@ -143,7 +141,7 @@ docker-compose config
 
 ## Paso 5. Levantar el contendor
 
-Ejecuta el comando para iniciar el contenedor
+Ejecutar el comando para iniciar el contenedor.
 
 ```cmd
 docker-compose up -d
@@ -153,25 +151,25 @@ docker-compose up -d
 
 ## Paso 6. Verificar que Oracle Database está funcionando
 
-1. Consultar la bitácora del contenedor
+1. Consultar la bitácora del contenedor.
 
 ```cmd
 docker logs dki-oracle-container
 ```
 
-Busca la línea que indique que la base de datos está lista.
+Buscar la línea que indique que la base de datos está lista.
 
 2. Conectar a Oracle con SQL*Plus
 
-Abre una terminal y conecta al contenedor usando `docker exec`
+Abrir una terminal y conectar al contenedor usando `docker exec`.
 
 ```cmd
 docker exec -it dki-oracle-container sqlplus system/Netec_123@localhost:1521/XEPDB1
 ```
 
-3. Consulta el estado de la base de datos
+3. Consultar el estado de la base de datos.
 
-Ejecuta el siguiente comando en SQL*Plus:
+Ejecutar el siguiente comando en SQL*Plus:
 
 ```cmd
 SELECT name, open_mode FROM v$pdbs;
@@ -183,7 +181,7 @@ SELECT * FROM dkuser.products;
 
 ## Paso 7. Detén y elimina el contenedor
 
-Cuando termines, detén y elimina todos los recursos creados:
+Cuando termines, detener y eliminar todos los recursos creados:
 
 ```cmd
 docker-compose down --volumes
@@ -200,7 +198,7 @@ docker-compose down --volumes
 <br/>
 <br/>
 
-## Resultados Esperados
+## Resultados esperados
 
 - Crear un archivo `docker-compose.yml` funcional que define un contenedor de Oracle Database.
 
