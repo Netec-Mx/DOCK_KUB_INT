@@ -1,11 +1,11 @@
-# Práctica 1.8 Contenedor Utilitario
+# Práctica 1.8. Contenedor utilitario
 
-## Objetivo
-Al finalizar esta práctica, serás capaz de crear y utilizar un contenedor Docker utilitario con un cliente ligero para conectarte a la base de datos del microservicio ms-productos utilizando sqlplus.
+## Objetivos de la práctica:
+Al finalizar esta práctica, serás capaz de:
+- Crear y utilizar un contenedor Docker utilitario con un cliente ligero para conectarte a la base de datos del microservicio ms-productos utilizando SQL*Plus.
 
-## Duración
-
-25 minutos
+## Duración aproximada:
+- 25 minutos
 
 ## Instrucciones
 
@@ -13,13 +13,13 @@ Al finalizar esta práctica, serás capaz de crear y utilizar un contenedor Dock
 
 Antes de proceder, asegúrate de que el contenedor Oracle llamado `dki-oradb` está en ejecución y accesible. 
 
-1. Lista los contenedores activos:
+1. Listar los contenedores activos:
 
 ```cmd
 docker ps
 ```
 
-2. Verifica que el contenedor `dki-oradb` está en la lista con el puerto mapeado, por ejemplo, 1521 para Oracle DB.
+2. Verificar que el contenedor `dki-oradb` está en la lista con el puerto mapeado, por ejemplo, 1521 para Oracle DB.
 
 <br/>
 
@@ -27,7 +27,7 @@ docker ps
 
 Vamos a usar una imagen ligera de Oracle Instant Client para conectarnos a la base de datos.
 
-1. Ejecuta el siguiente comando para lanzar un contenedor interactivo:
+1. Ejecutar el siguiente comando para lanzar un contenedor interactivo:
 
 
 ```cmd
@@ -36,22 +36,22 @@ docker run -it --rm --network=dki-network ghcr.io/oracle/oraclelinux8-instantcli
 
 **Nota**: 
 
-    1. Solo por curiosidad puedes verificar que version de Linux tienes en ese contenedor.
+    1. Solo por curiosidad, puedes verificar que version de Linux tienes en ese contenedor.
 
 
 <br/>
 
 ### Paso 3. Verificar SQL*Plus
 
-Dentro del contenedor interactivo, ejecuta los siguientes comandos:
+Dentro del contenedor interactivo, ejecutar los siguientes comandos:
 
-1. Verifica que sqlplus está instalado:
+1. Verificar que SQL*Plus está instalado:
 
 ```cmd
 sqlplus -version
 ```
 
-2. Conecta usando el siguiente comando, ajustando los valores según tu configuración (usuario, contraseña y servicio):
+2. Conectar usando el siguiente comando, ajustando los valores según tu configuración (usuario, contraseña y servicio):
 
 ```cmd
 sqlplus USERNAME/PASSWORD@HOST:PORT/SERVICENAME
@@ -63,7 +63,7 @@ Ejemplo (ajustar según sea necesario):
 sqlplus system/Netec_123@dki-oradb:1521/XE
 ```
 
-3. Puedes verificar las PDBs configuradas hasta este momento
+3. Puedes verificar las PDBs configuradas hasta este momento.
 
 ```sql
 column name format a15
@@ -72,7 +72,7 @@ exit
 
 ```
 
-4. Desconectate del contenedor utilitario
+4. Desconectarse del contenedor utilitario.
 
 ```cmd
 exit
@@ -84,7 +84,7 @@ exit
 
 Vamos a usar una imagen ligera de Oracle Instant Client para conectarnos a la base de datos.
 
-1. Ejecuta el siguiente comando para lanzar un contenedor interactivo:
+1. Ejecutar el siguiente comando para lanzar un contenedor interactivo:
 
 ```cmd
 docker run -it --rm --network=dki-network ghcr.io/oracle/oraclelinux8-instantclient:19 sqlplus SYSTEM/Netec_123@//dki-oradb:1521/XE
@@ -130,7 +130,7 @@ exit
 
 ### Notas
 
-- Si necesitas un alias para simplificar la conexión con sqlplus, puedes configurarlo en el archivo **tnsnames.ora**. Esto puede hacerse en un paso avanzado si decides persistir la configuración del contenedor utilitario.
+- Si necesitas un alias para simplificar la conexión con SQL*Plus, puedes configurarlo en el archivo **tnsnames.ora**. Esto puede hacerse en un paso avanzado si decides persistir la configuración del contenedor utilitario.
 
 - Asegúrate de revisar que los puertos y credenciales sean los correctos antes de intentar conectarte.
 
