@@ -5,9 +5,9 @@ Al finalizar esta práctica, serás capaz de:
 - Implementar y consumir microservicios en una arquitectura basada en comunicación HTTP, utilizando Spring Boot y Feign como cliente declarativo, para resolver casos de estudio prácticos. 
 
 ## Duración aproximada:
-- 80 minutos
+- 80 minutos.
 
-## Objetivo Visual
+## Objetivo visual
 
 ![Microservicio Caso de Estudio ](../images/u1_5_8.png)
 <br/>
@@ -32,11 +32,7 @@ Al finalizar esta práctica, serás capaz de:
 
     - Esta parte se encuentra en la siguiente práctica.
 
-
 <br/>
-
-<br/>
-
 
 ## Instrucciones para el microservicio: ms-productos
 
@@ -46,7 +42,7 @@ Al finalizar esta práctica, serás capaz de:
 
 2. Configuración inicial:
 
-    - Maven Project, Java 21, empaquetado JAR
+    - Maven Project, Java 21, empaquetado JAR.
 
     ![Spring](../images/u1_5_1.png)
 
@@ -197,7 +193,7 @@ public interface IProductoService {
 ```
 <br/>
 
-- Crear la clase que implemente la interface ÌProductoService`.
+- Crear la clase que implemente la interface `IProductoService`.
 
 ```java
 package com.netec.app.service;
@@ -321,14 +317,14 @@ public class ProductoController {
 ```
 <br/>
 
-### Paso 7. Compila y empaqueta (JAR)
+### Paso 7. Compilar y empaquetar (JAR)
 
 1. Empaquetar la aplicación usando lo siguiente:
 
 ```cmd 
 cd <carpeta del proyecto ms-productos>
 
-# Genera el JAR
+# Genera el JAR.
 
 .\mvnw clean install -Dmaven.test.skip=true
 
@@ -370,7 +366,7 @@ server.port=9084
 
 ### Paso 3. Crear la entidad para la lista de Deseos
 
-- Crear el paquete entities y agrega la case `Deseo`.
+- Crear el paquete entities y agregar la case `Deseo`.
 
 ```java
 package com.netec.app.entities;
@@ -434,7 +430,7 @@ public class Deseo {
 
 <br/>
 
-### Paso 4. Crear el cliente Feign
+### Paso 4. Crear el cliente feign
 
 - Crear el paquete feign y agregar la siguiente interface.
 
@@ -628,7 +624,7 @@ public class DeseoController {
 
 <br/>
 
-### Paso 7. Configura la clase principal
+### Paso 7. Configurar la clase principal
 
 - Habilitar Feign declarando `@EnableFeignClients` en la clase principal.
 
@@ -653,7 +649,7 @@ public class MsDeseosApplication {
 
 <br/>
 
-### Paso 8. Compila y empaqueta (JAR)
+### Paso 8. Compilar y empaquetar (JAR)
 
 1. Empaquetar la aplicación usando lo siguiente:
 
@@ -687,7 +683,7 @@ cd <carpeta del proyecto ms-deseos>
 
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra la construcción exitosa de ms-productos.
 
