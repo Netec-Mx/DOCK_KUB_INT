@@ -5,18 +5,17 @@ Al finalizar esta práctica, serás capaz de:
 - Analizar y comprender la estructura y función de un archivo docker-compose.yml, identificando sus componentes principales.
 
 ## Duración aproximada:
-- 25 minutos
+- 25 minutos.
 
 ## Material necesario
 
 - Docker compose instalado y funcionando.
 
-
 <br/>
 
 ## Instrucciones
 
-### Paso 1. Verificar la instación de Docker Compose
+### Paso 1. Verificar la instalación de Docker Compose
 
 1. Abrir una terminal o consola.
 
@@ -57,7 +56,7 @@ services:
     ports:
       - "8888:80"
     networks:
-      - dki-app-network  # Nombre de la red personalizada
+      - dki-app-network  # Nombre de la red personalizada.
   db:
     container_name: dki-mysql-container  # Nombre del contenedor para el servicio de base de datos.
     image: mysql:5.7
@@ -65,9 +64,9 @@ services:
       MYSQL_ROOT_PASSWORD: Netec_123
       MYSQL_DATABASE: dki-database
     volumes:
-      - dki-db-volume:/var/lib/mysql  # Nombre del volumen personalizado
+      - dki-db-volume:/var/lib/mysql  # Nombre del volumen personalizado.
     networks:
-      - dki-app-network  # Nombre de la red personalizada
+      - dki-app-network  # Nombre de la red personalizada.
 
 volumes:
   dki-db-volume:  # Volumen personalizado para almacenar los datos de MySQL.
@@ -109,7 +108,7 @@ networks:
 
 <br/>
 
-### Paso 5. Ejecutar el Archivo Docker Compose
+### Paso 5. Ejecutar el archivo Docker Compose
 
 1. Abrir una terminal en la misma carpeta donde se encuentra el archivo `docker-compose.yml`.
 
@@ -155,13 +154,13 @@ show tables;
 ```cmd 
 docker-compose down
 
-# Eliminar al mismo tiempo los volúmenes
+# Eliminar al mismo tiempo los volúmenes.
 docker-compose down --volumes
 
 
 ```
 
-7. Verificar los contenedores, volumenes, y red que se eliminaron.
+7. Verificar los contenedores, volumenes y red que se eliminaron.
 
 ```cmd
 docker ps
@@ -175,7 +174,7 @@ docker network ls
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - La siguente captura de pantalla muestra el uso básico de docker-compose (la versión, ayuda, etc.)
 
