@@ -1,4 +1,4 @@
-# Práctica 1.7 Consumo de Microservicios - Caso de Estudio
+# Práctica 1.7. Consumo de microservicios - Caso de Estudio
 
 ## Objetivo
 Al finalizar esta práctica, serás capaz de consumir microservicios mediante el uso de herramientas como Postman o implementaciones en código.  
