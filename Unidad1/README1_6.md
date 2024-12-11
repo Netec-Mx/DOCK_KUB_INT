@@ -1,12 +1,13 @@
-# Práctica 1.6 Contenedores Docker - Caso de Estudio
+# Práctica 1.6. Contenedores Docker - Caso de estudio
 
-## Objetivo
+## Objetivos de la práctica:
 
-Al finalizar esta actividad, serás capaz de crear contenedores Docker para dos microservicios existentes a partir de sus archivos JAR, configurar una red Docker para habilitar la comunicación entre ellos y utilizar la persistencia con Oracle DB mediante volúmenes Docker.
+Al finalizar esta actividad, serás capaz de:
+- Crear contenedores Docker para dos microservicios existentes a partir de sus archivos JAR.
+- Configurar una red Docker para habilitar la comunicación entre ellos y utilizar la persistencia con Oracle DB mediante volúmenes Docker.
 
-## Duración
-
-25 minutos 
+## Duración aproximada
+- 25 minutos 
 
 <br/>
 
@@ -14,11 +15,11 @@ Al finalizar esta actividad, serás capaz de crear contenedores Docker para dos 
 
 ### Paso 1. Crear Dockerfile para `ms-productos`
 
-1. Navega al directorio/carpeta donde se encuentra el proyecto `ms-productos`.
+1. Navegar al directorio/carpeta donde se encuentra el proyecto `ms-productos`.
 
-2. Verifica que tengas el JAR del microservicio
+2. Verificar que tengas el JAR del microservicio.
 
-3. Crea un archivo `Dockerfile` con el siguiente contenido:
+3. Crear un archivo `Dockerfile` con el siguiente contenido:
 
 ```Dockerfile
 FROM openjdk:21-jdk-slim
@@ -28,18 +29,18 @@ EXPOSE 9081
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
-4. Guarda el archivo.
+4. Guardar el archivo.
 
 
 <br/>
 
 ### Paso 2. Crear el Dockerfile para `ms-deseos`
 
-1. Navega al directorio/carpeta donde se encuentra el proyecto `ms-deseos`.
+1. Navegar al directorio/carpeta donde se encuentra el proyecto `ms-deseos`.
 
-2. Verifica que tengas el JAR del microservicio
+2. Verificar que tengas el JAR del microservicio.
 
-3. Crea un archivo `Dockerfile` con el siguiente contenido:
+3. Crear un archivo `Dockerfile` con el siguiente contenido:
 
 ```Dockerfile
 FROM openjdk:21-jdk-slim
@@ -49,31 +50,31 @@ EXPOSE 9084
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
-4. Guarda el archivo.
+4. Guardar el archivo.
 
 <br/> 
 
 ### Paso 3. Crear las imágenes Docker
 
-1. Abre una terminal de comandos y navega al directorio donde se encuentra el `Dockerfile` del microservicio `ms-productos`.
+1. Abrir una terminal de comandos y navegar al directorio donde se encuentra el `Dockerfile` del microservicio `ms-productos`.
 
-2. Construye la imagen de ms-productos con el siguiente comando:
+2. Construir la imagen de ms-productos con el siguiente comando:
 
 ```cmd
 docker build -t ms-productos:1.0 .
 
-# Verifica la creación de la imagen
+# Verificar la creación de la imagen.
 docker image ls
 ```
 
-3. Navega al directorio donde se encuentra el `Dockerfile` del microservicio `ms-deseos`.
+3. Navegar al directorio donde se encuentra el `Dockerfile` del microservicio `ms-deseos`.
 
-4. Construye la imagen de ms-deseos con el siguiente comando:
+4. Construir la imagen de ms-deseos con el siguiente comando:
 
 ```cmd
 docker build -t ms-deseos:1.0 .
 
-# Verifica la creación de la imagen
+# Verificar la creación de la imagen.
 docker images
 ```
 
@@ -81,13 +82,13 @@ docker images
 
 ### Paso 4. Crear y levantar los contenedores
 
-1. Crea el contenedor para `ms-productos` y conéctalo a la red dki-network.
+1. Crear el contenedor para `ms-productos` y conectarlo a la red dki-network.
 
 ```cmd
 docker run -d --name ms-productos --network dki-network -p 9081:9081 ms-productos:1.0
 ```
 
-2. Crea el contenedro para `ms-deseos` y conéctalo a la red dki-network
+2. Crear el contenedor para `ms-deseos` y conectarlo a la red `dki-network`.
 
 ```cmd
 docker run -d --name ms-deseos --network dki-network -p 9084:9084 ms-deseos:1.0
@@ -98,7 +99,7 @@ docker run -d --name ms-deseos --network dki-network -p 9084:9084 ms-deseos:1.0
 
 ### Paso 5. Verificar los contenedores
 
-1. Lista los contenedores en ejecución para confirmar que ambos están activos.
+1. Listar los contenedores en ejecución para confirmar que ambos están activos.
 
 ```cmd
 docker ps
@@ -121,7 +122,7 @@ docker ps --filter volume=dki-volume
 
 ```
 
-- Si necesitas revisar los logs de algún contenedor para depuración, usa:
+- Si necesitas revisar los logs de algún contenedor para depuración, usar:
 
 ```cmd
 docker logs <nombre_del_contenedor>
@@ -145,7 +146,7 @@ docker logs <nombre_del_contenedor>
 <br/>
 
 
-- Captua de pantalla que muestra, la verificación del JAR para el microservicio ms-deseos y el contenido del Dockerfile
+- Captura de pantalla que muestra la verificación del JAR para el microservicio ms-deseos y el contenido del Dockerfile.
 
 
 ![cmd](../images/u1_6_2.png)
@@ -186,7 +187,7 @@ docker logs <nombre_del_contenedor>
 
 <br/>
 
-- Captura de pantalla que muesta algunos reportes y verificaciones adicionales sobre la práctica.
+- Captura de pantalla que muestra algunos reportes y verificaciones adicionales sobre la práctica.
 
 ![cmd](../images/u1_6_12.png)
 
