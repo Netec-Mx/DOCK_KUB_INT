@@ -5,7 +5,7 @@ Al finalizar la práctica serás capaz de:
 - Crear y configurar redes en Docker, permitiendo la comunicación eficiente entre contenedores para el correcto funcionamiento de aplicaciones distribuidas.
 
 ## Duración aproximada:
-25 minutos
+- 25 minutos.
 
 ## Instrucciones
 
@@ -39,7 +39,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-#### 4. Crar dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
+#### 4. Crear dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
 
     ```cmd
     docker run -dit --name container1 --network ms-curso alpine sh
@@ -50,7 +50,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 5. Inspeccionar la red creada
 
-    - Usar el comando para inspeccionar detalles de la red ms-curso y verificar sy configuración.
+    - Usar el comando para inspeccionar detalles de la red ms-curso y verificar su configuración.
 
     ```cmd
     docker network inspect ms-curso
@@ -59,7 +59,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 6. Probar la comunicación entre los contenedores
 
-    - Acceder al contenedor container1
+    - Acceder al contenedor `container1`.
 
     ```cmd
     docker exec -it container1 sh
@@ -123,7 +123,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - La siguiente captura de pantalla muestra el antes y después de la creación la de red especificada en el práctica.
 
