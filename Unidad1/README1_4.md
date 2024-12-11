@@ -7,7 +7,7 @@ Al finalizar la práctica, serás capaz de:
 - Validar la correcta operación de la base de datos mediante SQL Developer, ejecutando scripts SQL para crear y analizar su estructura y verificando la integración del contenedor con la red configurada en Docker.
 
 ## Duración aproximada:
-- 25 minutos
+- 25 minutos.
 
 ## Instrucciones
 
@@ -47,7 +47,7 @@ docker volume create dki-volume
 
 ### 3. Crear el contenedor para Oracle
 
-Verificar las imagenes que aparacen en el entorno del curso, y utilizar la imagen Oracle que tienes en el ambiente para crear un contenedor Oracle Database.
+Verificar las imagenes que aparacen en el entorno del curso y utilizar la imagen Oracle que tienes en el ambiente para crear un contenedor Oracle Database.
 
 ```cdm
 docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --volume dki-volume:/opt/oracle/oradata -p 1521:1521 -p 5500:5500 container-registry.oracle.com/database/express:21.3.0-xe
@@ -172,7 +172,7 @@ SELECT NAME FROM V$SERVICES;
 
 3. Probar conexión.
 
-Si la conexión es exitosa, guárdala y conectate a una hoja de trabajo.
+Si la conexión es exitosa, guardar y conectarse a una hoja de trabajo.
 
 ![sqldeveloper](../images/u1_4_3.png)
 
@@ -243,7 +243,7 @@ Una vez realizados los pasos anteriores, tendrás:
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra la verificación de la red, la creación y verificación del volumen. Además muestra la creación del contenedor con el servidor de base de datos Oracle.
 
