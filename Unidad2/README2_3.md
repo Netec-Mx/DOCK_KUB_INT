@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de:
 - Definir un contenedor de Oracle Database en un archivo docker-compose.yml, configurando variables de entorno, volúmenes y redes personalizadas.
 
 ## Duración aproximada:
-- 25 minutos
+- 25 minutos.
 
 ## Material necesario
 
@@ -179,7 +179,7 @@ SELECT * FROM dkuser.products;
 ```
 <br/>
 
-## Paso 7. Detén y elimina el contenedor
+## Paso 7. Detener y eliminar el contenedor
 
 Cuando termines, detener y eliminar todos los recursos creados:
 
