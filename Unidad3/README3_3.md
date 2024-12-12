@@ -6,10 +6,8 @@ Al finalizar esta práctica, serás capaz de:
 - Crear una imagen Docker a partir del código de los microservicios y publicarla en Docker Hub, utilizando buenas prácticas para el etiquetado y manejo de versiones.
 
 ## Duración aproximada:
-- 25 minutos
-
+- 25 minutos.
 <br/>
-
 ## Objetivo visual
 
 ![Docker Image](../images/u3_3_3.png)
@@ -202,7 +200,7 @@ Utilizar el comando `docker search` para buscar las imágenes en Docker Hub:
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 - Captura de pantalla que muestra si Docker esta corriendo correctamente.
 
