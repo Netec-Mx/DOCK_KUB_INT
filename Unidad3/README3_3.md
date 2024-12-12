@@ -8,6 +8,7 @@ Al finalizar esta práctica, serás capaz de:
 ## Duración aproximada:
 - 25 minutos.
 <br/>
+
 ## Objetivo visual
 
 ![Docker Image](../images/u3_3_3.png)
