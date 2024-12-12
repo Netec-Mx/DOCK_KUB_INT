@@ -48,7 +48,7 @@ docker rm -f ms-productos ms-deseos oracle-db
 
 - Abrir una terminal o consola y navegar al directorio de las prácticas del curso.
 
-- Crear una nueva carpeta llamada practica_2_4 y copia el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
+- Crear una nueva carpeta llamada practica_2_4 y copiar el archivo `docker-compose.yml` desde la carpeta practica_2_3.  
 
 
 ```cmd
@@ -57,7 +57,7 @@ cp practica_2_3\docker-compose.yml practica_2_4
 cd practica_2_4
 ```
 
-- **Nota**: También puedes ir al README2_3 y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
+- **Nota**: También puedes ir al [README2_3.](./Unidad2/README2_3.md) y copiar el contenido del `docker-compose.yml` de la práctica_2_3.
 
 <br/>
 
