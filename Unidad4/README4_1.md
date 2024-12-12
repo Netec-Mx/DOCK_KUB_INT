@@ -5,7 +5,7 @@ Al finalizar esta práctica, serás capaz de:
 - Integrar y aplicar todos los conocimientos adquiridos en la unidad 4 para configurar, desplegar y probar microservicios Spring Boot en un clúster de Kubernetes, utilizando Spring Cloud Kubernetes, ConfigMaps, configuración de entornos, probes de liveness y readiness, y ajustes de recursos para contenedores, validando la implementación mediante herramientas como Postman y observando el comportamiento del LoadBalancer y metadata de los Pods.
 
 ## Duración aproximada:
-- 180 minutos
+- 180 minutos.
 
 ## Objetivo visual
 
@@ -244,7 +244,7 @@ Agregar las propiedades necesarias para habilitar la integración con Spring Clo
 
 - Asegúrate de que el código fuente de cada microservicio (`ms-productos` y `ms-deseos`) esté actualizado y sin errores en el entorno de desarrollo.
 
-- Usae la herramienta de construcción (**Maven**) para compilar el proyecto y generar los artefactos JAR correspondientes.
+- Usar la herramienta de construcción (**Maven**) para compilar el proyecto y generar los artefactos JAR correspondientes.
 
 - Verificar que los archivos JAR generados estén en la carpeta `target` de cada microservicio. Los artefactos deben tener nombres como:
 
