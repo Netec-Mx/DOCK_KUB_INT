@@ -6,11 +6,11 @@ Al finalizar esta práctica, serás capaz de:
 - Implementar y configurar un servicio de Spring Cloud Gateway en un clúster de Kubernetes. Esto incluye la creación y configuración del servicio, el enrutamiento de microservicios a través del Gateway utilizando `application.properties` y `application.yml`, la dockerización del Gateway y el despliegue mediante Deployment y Service en Kubernetes, verificando su funcionalidad a través de Curl o Postman.
  
 ## Duración aproximada
-- 180 minutos
+- 180 minutos.
 
 <br/>
 
-## Objetivo Visual
+## Objetivo visual
 
 ![Spring Cloud Gateway / Kubernetes](../images/u5_1_1.png)
 
@@ -145,19 +145,19 @@ spring:
 - Escribir un archivo `Dockerfile` para dockerizar el microservicio:
 
 ```dockerfile
-# 1. Imagen base
+# 1. Imagen base.
 FROM openjdk:21-jdk-slim
 
-# 2. Establecer el directorio de trabajo
+# 2. Establecer el directorio de trabajo.
 WORKDIR /app
 
-# 3. Copiar el archivo JAR generado
+# 3. Copiar el archivo JAR generado.
 COPY target/ms-gateway-0.0.1-SNAPSHOT.jar app.jar
 
-# 4. Exponer el puerto utilizado por el microservicio
+# 4. Exponer el puerto utilizado por el microservicio.
 EXPOSE 9099
 
-# 5. Comando de inicio
+# 5. Comando de inicio.
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
@@ -436,8 +436,6 @@ En la captura se evidencia que, inicialmente, no hay ningún objeto asociado al 
 ![docker](../images/u5_1_10.png)
 
 <br/>
-
-
 
 10. Captura de pantalla que muestra el resultado de la consulta de todos los productos, donde se observa un producto con `id:1` y otro con `id:22`, en lugar del esperado `id:2`. 
 
