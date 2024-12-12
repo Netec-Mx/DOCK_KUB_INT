@@ -5,18 +5,16 @@ Al finalizar esta práctica, serás capaz de:
 - Retomar los microservicios desarrollados anteriormente (ms-productos y ms-deseos), ajustando su configuración mediante la definición de propiedades en archivos application.properties y variables de ambiente para su despliegue en un entorno basado en contenedores.
 
 ## Duración aproximada:
-- 20 minutos
+- 20 minutos.
 
-## Objetivo Visual
+## Objetivo visual
 
 ![Caso de Estudio](../images/u3_2_2.png)
-
 <br/>
-
 ## Instrucciones
 
 
-### 1. **Preparación del Entorno**  
+### 1. **Preparación del entorno**  
 
 - **Configurar los microservicios:** Asegúrate de que los microservicios `ms-productos` y `ms-deseos` están correctamente configurados y listos para ejecutarse en el entorno de desarrollo **Spring Tool Suite (STS)**.
 
@@ -24,25 +22,25 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 2. **Archivos de Configuración (`application.properties`)**  
+### 2. **Archivos de configuración (`application.properties`)**  
 
 #### **Microservicio `ms-productos`**  
 Editar el archivo `application.properties` en el directorio de configuración del microservicio `ms-productos` con las siguientes propiedades básicas:
 
 ```properties
-# Configuración del nombre de la aplicación
+# Configuración del nombre de la aplicación.
 spring.application.name=ms-productos
 
-# Configuración del puerto del servidor
+# Configuración del puerto del servidor.
 server.port=9081
 
-# Configuración de la base de datos
+# Configuración de la base de datos.
 spring.datasource.url=jdbc:oracle:thin:@dki-oradb:1521/XEPDB1
 spring.datasource.username=dkuser
 spring.datasource.password=dkpassword
 spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 
-# Configuración de JPA e Hibernate
+# Configuración de JPA e Hibernate.
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
@@ -52,35 +50,34 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
 Editar el archivo `application.properties` en el directorio de configuración del microservicio `ms-deseos` con las siguientes propiedades básicas:
 
 ```properties
-# Configuración del nombre de la aplicación
+# Configuración del nombre de la aplicación.
 spring.application.name=ms-deseos
 
-# Configuración del puerto del servidor
+# Configuración del puerto del servidor.
 server.port=9084
 ```
-
 <br/>
 
-### 3. **Actualizar Configuraciones Usando Variables de Entorno**  
+### 3. **Actualizar configuraciones usando variables de entorno**  
 
 Reemplazar el contenido de los archivos `application.properties` en ambos microservicios con las siguientes configuraciones que utilizan variables de entorno:
 
 #### **Archivo `application.properties` para `ms-productos`:**
 
 ```properties
-# Configuración del nombre de la aplicación
+# Configuración del nombre de la aplicación.
 spring.application.name=${APP_NAME:ms-productos}
 
-# Configuración del puerto del servidor
+# Configuración del puerto del servidor.
 server.port=${SERVER_PORT:9081}
 
-# Configuración de la base de datos
+# Configuración de la base de datos.
 spring.datasource.url=${DB_URL:jdbc:oracle:thin:@oracle-db:1521/XPDB1}
 spring.datasource.username=${DB_USERNAME:dkuser}
 spring.datasource.password=${DB_PASSWORD:dkpassword}
 spring.datasource.driver-class-name=${DB_DRIVER:oracle.jdbc.OracleDriver}
 
-# Configuración de JPA e Hibernate
+# Configuración de JPA e Hibernate.
 spring.jpa.hibernate.ddl-auto=${JPA_DDL_AUTO:update}
 spring.jpa.show-sql=${JPA_SHOW_SQL:true}
 spring.jpa.properties.hibernate.dialect=${HIBERNATE_DIALECT:org.hibernate.dialect.OracleDialect}
@@ -89,19 +86,19 @@ spring.jpa.properties.hibernate.dialect=${HIBERNATE_DIALECT:org.hibernate.dialec
 #### **Archivo `application.properties` para `ms-deseos`:**
 
 ```properties
-# Configuración del nombre de la aplicación
+# Configuración del nombre de la aplicación.
 spring.application.name=${APP_NAME:ms-deseos}
 
-# Configuración del puerto del servidor
+# Configuración del puerto del servidor.
 server.port=${SERVER_PORT:9084}
 
-# URL del microservicio ms-productos
+# URL del microservicio ms-productos.
 productos.service.url=${PRODUCTOS_SERVICE_URL:http://ms-productos:9081}
 ```
 
 <br/>
 
-### 4. **Validación en el Código Fuente**
+### 4. **Validación en el código fuente**
 
 Revisar el código fuente del microservicio `ms-deseos` para verificar la anotación utilizada en la interfaz que define el cliente Feign para el consumo del microservicio `ms-productos`.
 
@@ -127,7 +124,7 @@ Este cambio asegura que la URL se cargue desde las propiedades configuradas, hac
 
 <br/>
 
-### 5. **Construcción de Artefactos**
+### 5. **Construcción de artefactos**
 
 Generar los archivos JAR para cada microservicio ejecutando los siguientes comandos en la raíz de cada proyecto:
 
@@ -148,7 +145,7 @@ El argumento `-Dmaven.test.skip=true` permite omitir la ejecución de pruebas un
 
 <br/>
 
-### 6. **Verificación de Artefactos**
+### 6. **Verificación de artefactos**
 
 Confirmar que se generaron los archivos JAR en el directorio `target` de cada microservicio. Los nombres de los archivos deberían ser similares a los siguientes:
 
