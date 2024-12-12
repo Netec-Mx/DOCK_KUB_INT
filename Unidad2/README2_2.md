@@ -9,7 +9,7 @@ Al finalizar esta práctica, serás capaz de:
 2. Un servicio MongoDB con persistencia de datos mediante volúmenes.
 
 ## Duración aproximada:
-- 25 minutos
+- 25 minutos.
 
 ## Material Necesario
 
@@ -61,7 +61,7 @@ Abrir el archivo en el editor de texto de tu preferencia y escribir las instrucc
 
 ### Paso 3. Validar el archivo
 
-Antes de ejecutar el archivo, validar su sintáxis con el comando:
+Antes de ejecutar el archivo, validar su sintaxis con el comando:
 
 ```cmd
 docker-compose config
