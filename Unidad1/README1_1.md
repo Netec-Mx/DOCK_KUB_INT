@@ -67,7 +67,7 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-7. Veriricar Postman, Insomnia y Curl CLI.
+7. Verificar Postman, Insomnia y Curl CLI.
 
     - Abrir Postman e Insomia desde sus accesos directos y verificar que ambos funcionen correctamente.
 
