@@ -9,7 +9,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-## Objetivo Visual
+## Objetivo visual
 
 ![Microservicios Caso Estudio](../images/u2_4_7.png)
 
@@ -109,7 +109,7 @@ ALTER USER dkuser QUOTA UNLIMITED ON users;
 <br/>
 
 
-### 5. Verificar y Crear la Red Externa dki-network
+### 5. Verificar y crear la red externa dki-network
 
 Antes de ejecutar la configuración con Docker Compose, asegúrate de que la red externa dki-network esté creada. Sigue estos pasos:
 
@@ -131,7 +131,7 @@ docker network create dki-network
 
 <br/>
 
-### 6. Configurar y Verificar los Microservicios
+### 6. Configurar y verificar los microservicios
 
 1. Verificar las propiedades de configuración de los microservicios:
 
@@ -145,13 +145,13 @@ docker network create dki-network
         spring.application.name=ms-productos
         server.port=9081
 
-        # Configuracion de la base de datos
+        # Configuracion de la base de datos.
         spring.datasource.url=jdbc:oracle:thin:@dki-oradb:1521/XEPDB1
         spring.datasource.username=dkuser
         spring.datasource.password=dkpassword
         spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 
-        # Configuracion de JPA e Hibernate
+        # Configuracion de JPA e Hibernate.
         spring.jpa.hibernate.ddl-auto=update
         spring.jpa.show-sql=true
         spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
@@ -389,7 +389,7 @@ docker-compose down --volumes
 <br/>
 
 
-## Resultado Esperado:
+## Resultado esperado:
 
 - Los microservicios `ms-productos` y `ms-deseos` deben estar funcionando correctamente, conectados entre sí y a la base de datos Oracle, a través de la red `dki-network`.
 
