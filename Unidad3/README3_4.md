@@ -6,7 +6,7 @@ Al finalizar esta práctica, serás capaz de:
 - Aplicar esta configuración para gestionar información sensible y específica de la aplicación, desplegando los microservicios `ms-productos` y `ms-deseos` con estas configuraciones y probando su funcionamiento.
 
 ## Duración aproximada:
-- 30 minutos
+- 30 minutos.
 
 ## Objetivo visual
 
@@ -50,7 +50,6 @@ kubectl get secret <nombre-del-secret> -n <namespace> -o yaml
 echo <valor-codificado-base64> | base64 --decode
 
 ```
-
 <br/>
 
 ### **2. Crear ConfigMaps para propiedades de los microservicios**
@@ -353,7 +352,7 @@ Esto mostrará los servicios con sus puertos configurados, incluyendo los `NodeP
 <br/>
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 Aquí tienes una tabla que resume los endpoints de cada microservicio (`ms-productos` y `ms-deseos`) con detalles sobre sus métodos HTTP, rutas, y descripciones.
 
@@ -386,7 +385,7 @@ Aquí tienes una tabla que resume los endpoints de cada microservicio (`ms-produ
 
 ### **Notas importantes:**
 
-1. **IP y Puertos:** 
+1. **IP y puertos:** 
    - Reemplazar `<IP>` con la IP del nodo del clúster.
    - `30081` es el puerto NodePort para `ms-productos`.
    - `30084` es el puerto NodePort para `ms-deseos`.
