@@ -5,10 +5,8 @@ Al finalizar esta práctica, serás capaz de:
 - Realizar una validación completa de un clúster de Kubernetes para asegurar que está configurado correctamente y es funcional, comprobando que puede gestionar recursos esenciales como Deployments, ConfigMaps y Servicios.
 
 ## Duración aproximada:
-- 30 minutos
-
+- 30 minutos.
 <br/>
-
 ## Instrucciones
 
 ### 1. Verificar que los nodos estén listos
@@ -77,7 +75,7 @@ kubectl describe configmap test-config
 
 <br/>
 
-### 5. Probar Servicios
+### 5. Probar servicios
 
 Crear un servicio expuesto en ClusterIP para el Deployment de nginx:
 
@@ -121,7 +119,7 @@ kubectl logs <nombre-del-pod>
 
 <br/>
 
-### 8. Verifica los objetos Kubenetes asociados a Oracle Database
+### 8. Verificar los objetos Kubernetes asociados a Oracle Database
 
 Para asegurar que Oracle Database está correctamente desplegada en un clúster de Kubernetes, debes verificar los siguientes objetos de Kubernetes relacionados:
 
@@ -184,9 +182,9 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 
 <br/>
 
-### 9. Instrucciones para Verificar Conexiones a Oracle usando SQL Developer
+### 9. Instrucciones para verificar conexiones a Oracle usando SQL Developer
 
-#### Requisitos Previos:
+#### Requisitos previos:
 1. **SQL Developer instalado:** Asegúrate de tener instalado Oracle SQL Developer en la máquina Windows.
 
 2. **Datos de conexión:** Verificar que tienes la siguiente información:
@@ -215,7 +213,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 
 <br/>
 
-#### Paso 2: Configurar la Conexión para el Usuario `dkuser`
+#### Paso 2: Configurar la conexión para el usuario `dkuser`
 
 1. En la ventana de conexión, proporciona los siguientes detalles:
    - **Nombre de la conexión:** `dkuser-xepdb1`
@@ -231,7 +229,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 
 <br/>
 
-#### Paso 3: Configurar la Conexión para el Usuario `sys`
+#### Paso 3: Configurar la conexión para el usuario `sys`
 
 1. Crear una nueva conexión similar a la anterior con los siguientes detalles:
    - **Nombre de la conexión:** `dki-sys`
@@ -248,11 +246,11 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 
 <br/>
 
-#### Verificaciones SQL para el Usuario `dkuser`
+#### Verificaciones SQL para el usuario `dkuser`
 
 Conectar a la base de datos usando la conexión `dkuser` y realizar las siguientes operaciones para verificar las capacidades del usuario.
 
-##### 1. **Conexión a la Base de Datos**
+##### 1. **Conexión a la base de datos**
 Ejecutar el siguiente comando para asegurarte de que estás conectado:
 
 ```sql
@@ -262,7 +260,7 @@ SELECT SYS_CONTEXT('USERENV', 'SESSION_USER') AS CURRENT_USER FROM DUAL;
 
 <br/>
 
-##### 2. **Crear una Tabla**
+##### 2. **Crear una tabla**
 
 Crear una tabla llamada `TEST_TABLE`:
 
@@ -276,7 +274,7 @@ CREATE TABLE TEST_TABLE (
 <br/>
 
 
-##### 3. **Insertar un Registro**
+##### 3. **Insertar un registro**
 
 Insertar un registro en la tabla:
 
@@ -287,7 +285,7 @@ COMMIT;
 
 <br/>
 
-##### 4. **Realizar una Búsqueda**
+##### 4. **Realizar una búsqueda**
 
 Realizar una consulta para verificar que el registro fue insertado:
 
@@ -297,7 +295,7 @@ SELECT * FROM TEST_TABLE;
 
 <br/>
 
-##### 5. **Eliminar la Tabla**
+##### 5. **Eliminar la tabla**
 
 Eliminar la tabla para limpiar el entorno:
 
@@ -313,7 +311,7 @@ Estas instrucciones te ayudarán a verificar que el usuario `dkuser` puede reali
 <br/> 
 <br/>
 
-## Resultado Esperado
+## Resultado esperado
 
 
 - Captura de pantalla que muestra la versión de `kubectl`, el estado de los nodos en el clúster de Kubernetes, y el estado de los Pods en el namespace kube-system.
@@ -372,7 +370,7 @@ Esto indica que todos los recursos necesarios para el funcionamiento de Oracle D
 
  <br/>
 
-- Captura de pantalla que muestra el estado del Worker Node
+- Captura de pantalla que muestra el estado del Worker Node.
 
 1. **Imagen de Oracle Database**:
    - La imagen está correctamente descargada y almacenada en el nodo, con un tamaño de 3.75GB.
@@ -392,12 +390,12 @@ Esto indica que todos los recursos necesarios para el funcionamiento de Oracle D
 
  <br/>
 
-- Captura de pantalla muestra la configuración de una conexión en SQL Developer para el usuario sys, con rol de SYSDBA, en una base de datos Oracle. Es importante destacar que tanto la dirección IP como el puerto pueden variar dependiendo de la configuración del clúster o entorno en el que esté desplegado Oracle. En Kubernetes, el puerto típicamente estará dentro del rango de los treinta
+- Captura de pantalla muestra la configuración de una conexión en SQL Developer para el usuario sys, con rol de SYSDBA, en una base de datos Oracle. Es importante destacar que tanto la dirección IP como el puerto pueden variar dependiendo de la configuración del clúster o entorno en el que esté desplegado Oracle. En Kubernetes, el puerto típicamente estará dentro del rango de los treinta.
 
 ![kubectl](../images/u3_1_8.png)
 
 <br/>
 
-- La captura de pantalla muestra la ejecución exitosa de comandos SQL en Oracle SQL Developer, conectados con el usuario dkuser en el servicio XEPDB1
+- La captura de pantalla muestra la ejecución exitosa de comandos SQL en Oracle SQL Developer, conectados con el usuario dkuser en el servicio XEPDB1.
 
 ![kubectl](../images/u3_1_9.png)
