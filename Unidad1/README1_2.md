@@ -11,12 +11,11 @@ Al finalizar la práctica serás capaz de:
 
 #### 1. Revisar las redes existentes en Docker
 
-    Ejecutar el siguiente comando para listar las redes actuales.
+    Ejecutar el siguiente comando para listar las redes actuales:
 
-     ```
-        cmd
+    ```cmd
      docker network ls
-     ```
+    ```
 
 
 #### 2. Crear una red personalizada de tipo `bridge`
