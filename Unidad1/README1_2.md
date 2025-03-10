@@ -13,7 +13,8 @@ Al finalizar la práctica serás capaz de:
 
     Ejecutar el siguiente comando para listar las redes actuales.
 
-     ```cmd
+     ```
+        cmd
      docker network ls
      ```
 
