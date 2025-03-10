@@ -17,7 +17,6 @@ Al finalizar la práctica serás capaz de:
      docker network ls
      ```
 
-<br/>
 
 #### 2. Crear una red personalizada de tipo `bridge`
 
