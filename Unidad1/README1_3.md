@@ -100,7 +100,7 @@ docker ps -a
 - Crear un nuevo contenedor y montar nuevamente el volumen.
 
     ```cmd
-    docker run -d --name nuevo_nginx -v dki_volume:/usr/share/nginx/html -p 9999:80 nginx
+    docker run -d --name nuevo_nginx -v dki-volume:/usr/share/nginx/html -p 9999:80 nginx
 
     # Verificar
     docker ps 
