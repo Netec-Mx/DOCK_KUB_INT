@@ -167,7 +167,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
    ```
    
 
-### 6. **Docker Image**
+#### 6. **Docker Image**
    - Comprobar que la imagen de Docker utilizada para Oracle DB sea correcta y compatible con Kubernetes, recuerda que en el ambiente proporcionado usas containerd, en lugar de Docker.
 
    - Conectate con ssh al nodo worker y aplicar el siguiente comando:
