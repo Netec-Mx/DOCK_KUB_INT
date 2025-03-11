@@ -21,7 +21,7 @@ Al finalizar la práctica, serás capaz de:
     ```
 <br/>
 
-### Paso 2. **Creación de un volume DOcker**
+### Paso 2. **Creación de un volume Docker**
 
 - Crear un volumen llamado `dk-volumen`.
 
