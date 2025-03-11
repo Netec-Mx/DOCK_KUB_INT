@@ -16,7 +16,7 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Instrucciones
 
-### **1. Crear Secret para credenciales de la base de datos**
+### Paso 1. Crear Secret para credenciales de la base de datos
 
 El Secret almacenará las credenciales de `dkuser` y `dkpassword` para la base de datos Oracle.
 
@@ -52,7 +52,7 @@ echo <valor-codificado-base64> | base64 --decode
 ```
 <br/>
 
-### **2. Crear ConfigMaps para propiedades de los microservicios**
+### Paso 2. Crear ConfigMaps para propiedades de los microservicios
 
 **Archivo `configmap-ms-productos.yaml`:**
 
@@ -102,7 +102,7 @@ kubectl get configmap <nombre-del-configmap> -n <namespace> -o yaml
 
 <br/>
 
-### **3. Crear Deployments para los microservicios**
+### Paso 3. Crear Deployments para los microservicios
 
 Verificar que tengas a la mano el TAG de la imagen Docker correspondiente al microservicio `ms-productos`, registrada en tu repositorio de Docker Hub. Este TAG será indispensable para reemplazar el valor del atributo `image` en el siguiente archivo YAML de deployment.
 
@@ -247,7 +247,7 @@ kubectl logs <nombre-del-pod> -n <namespace>
 
 <br/>
 
-### **4. Crear Services para ambos microservicios**
+### Paso 4. Crear Services para ambos microservicios
 
 
 **Archivo `service-ms-productos.yaml`:**
@@ -304,7 +304,7 @@ kubectl get pods -o wide
 
 <br/>
 
-### **5. Probar el despliegue con `curl` o Postman**
+### Paso 5. Probar el despliegue con `curl` o Postman
 
 1. **Verificar los servicios están expuestos correctamente:**
 
