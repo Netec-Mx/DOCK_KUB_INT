@@ -14,7 +14,7 @@ Al finalizar esta práctica, serás capaz de:
 ## Instrucciones
 
 
-### 1. **Preparación del entorno**  
+### Paso 1. **Preparación del entorno**  
 
 - **Configurar los microservicios:** Asegúrate de que los microservicios `ms-productos` y `ms-deseos` están correctamente configurados y listos para ejecutarse en el entorno de desarrollo **Spring Tool Suite (STS)**.
 
@@ -22,7 +22,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 2. **Archivos de configuración (`application.properties`)**  
+### Paso 2. **Archivos de configuración (`application.properties`)**  
 
 #### **Microservicio `ms-productos`**  
 Editar el archivo `application.properties` en el directorio de configuración del microservicio `ms-productos` con las siguientes propiedades básicas:
@@ -58,7 +58,7 @@ server.port=9084
 ```
 <br/>
 
-### 3. **Actualizar configuraciones usando variables de entorno**  
+### Paso 3. **Actualizar configuraciones usando variables de entorno**  
 
 Reemplazar el contenido de los archivos `application.properties` en ambos microservicios con las siguientes configuraciones que utilizan variables de entorno:
 
@@ -98,7 +98,7 @@ productos.service.url=${PRODUCTOS_SERVICE_URL:http://ms-productos:9081}
 
 <br/>
 
-### 4. **Validación en el código fuente**
+### Paso 4. **Validación en el código fuente**
 
 Revisar el código fuente del microservicio `ms-deseos` para verificar la anotación utilizada en la interfaz que define el cliente Feign para el consumo del microservicio `ms-productos`.
 
@@ -124,7 +124,7 @@ Este cambio asegura que la URL se cargue desde las propiedades configuradas, hac
 
 <br/>
 
-### 5. **Construcción de artefactos**
+### Paso 5. **Construcción de artefactos**
 
 Generar los archivos JAR para cada microservicio ejecutando los siguientes comandos en la raíz de cada proyecto:
 
@@ -145,7 +145,7 @@ El argumento `-Dmaven.test.skip=true` permite omitir la ejecución de pruebas un
 
 <br/>
 
-### 6. **Verificación de artefactos**
+### Paso 6. **Verificación de artefactos**
 
 Confirmar que se generaron los archivos JAR en el directorio `target` de cada microservicio. Los nombres de los archivos deberían ser similares a los siguientes:
 
