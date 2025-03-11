@@ -14,7 +14,7 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Instrucciones
 
-### **Paso 1: Configuración de Spring Cloud Kubernetes en los Microservicios**
+### **Paso 1. Configuración de Spring Cloud Kubernetes en los microservicios**
 
 #### 1. **Agregar las dependencias necesarias en el archivo `pom.xml`** para cada microservicio:
 
@@ -276,9 +276,9 @@ Agregar las propiedades necesarias para habilitar la integración con Spring Clo
 <br/>
 
 
-### **Paso 2: Crear Role & RoleBinding**
+### Paso 2. Crear Role & RoleBinding
 
-#### 1. Crear un archivo YAML para configurar un Role**
+#### 1. Crear un archivo YAML para configurar un Role
 
 - Crear un archivo YAML llamado `role.yml`.
 
@@ -309,7 +309,7 @@ Agregar las propiedades necesarias para habilitar la integración con Spring Clo
 <br/>
 
 
-### **Paso 3: Crear ConfigMaps para las Configuraciones de los Microservicios**
+### Paso 3. Crear ConfigMaps para las configuraciones de los microservicios
 
 #### 1. **Codificar un archivo YAML para ConfigMap**:
    
@@ -337,7 +337,7 @@ Agregar las propiedades necesarias para habilitar la integración con Spring Clo
 <br/>
 <br/>
 
-### **Paso 4: Verificar los Secrets**
+### **Paso 4. Verificar los Secrets**
 
 #### 1. Asegúrate de tener configurados los **Secrets** que contienen el usuario y la contraseña de la base de datos, ambos codificados en **Base64**.  
 
@@ -353,7 +353,7 @@ Agregar las propiedades necesarias para habilitar la integración con Spring Clo
 <br/>
 <br/>
 
-### **Paso 5: Configurar los Deployments de Kubernetes**
+### Paso 5. Configurar los Deployments de Kubernetes
 
 Crear el YAML para los Deployments de cada microservicio que cumpla lo siguiente:
 
@@ -455,7 +455,7 @@ Crear el YAML para los Deployments de cada microservicio que cumpla lo siguiente
 <br/>
 
 
-### **Paso 9: Configurar los Services Kubernetes**
+### Paso 9. Configurar los Services Kubernetes
 
 #### 1. **Codificar el YAML para el servicio de tipo LoadBalancer**:
    
@@ -479,7 +479,7 @@ Crear el YAML para los Deployments de cada microservicio que cumpla lo siguiente
 <br/>
 <br/>
 
-### **Paso 10: Validación final con Postman o curl**
+### Paso 10. Validación final con Postman o curl
 
 #### 1. **Probar los Endpoints**
 
@@ -514,7 +514,7 @@ Con este último paso, garantizas que los microservicios y la infraestructura fu
 <br/>
 <br/>
 
-### **Paso 11: Observación de Pods y Logs**
+### Paso 11. Observación de Pods y Logs
 
 1. **Monitorear los Pods en ejecución**:
    ```bash
