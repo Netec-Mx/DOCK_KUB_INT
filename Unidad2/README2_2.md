@@ -11,7 +11,7 @@ Al finalizar esta práctica, serás capaz de:
 ## Duración aproximada:
 - 25 minutos.
 
-## Material Necesario
+## Material necesario
 
 - Docker y Docker Compose instalados y funcionando.
 
