@@ -110,7 +110,6 @@ Al finalizar la práctica serás capaz de:
       ```cmd
     docker rm -f container1 container2
     docker network rm ms-curso
-
     ```
 
 <br/>
