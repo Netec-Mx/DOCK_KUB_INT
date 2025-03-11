@@ -108,10 +108,10 @@ Al finalizar la práctica serás capaz de:
 
 - Detener y eliminar los contenedores y la red creada.
 
-      ```cmd
+ ```cmd
     docker rm -f container1 container2
     docker network rm ms-curso
-      ```
+ ```
 
 <br/>
 
