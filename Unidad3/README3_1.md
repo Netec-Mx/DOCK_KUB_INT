@@ -7,9 +7,10 @@ Al finalizar esta práctica, serás capaz de:
 ## Duración aproximada:
 - 30 minutos.
 <br/>
+
 ## Instrucciones
 
-### 1. Verificar que los nodos estén listos
+### Paso 1. Verificar que los nodos estén listos
 
 Ejecutar el comando:
 
@@ -21,7 +22,7 @@ Asegúrate de que todos los nodos están en estado `Ready`.
 
 <br/>
 
-### 2. Validar que los componentes del clúster estén funcionando
+### Paso 2. Validar que los componentes del clúster estén funcionando
 
 Ejecutar el comando:
 
@@ -39,7 +40,7 @@ Verificar que los Pods en el espacio de nombres `kube-system` están en estado R
 
 <br/>
 
-### 3. Crear y probar un Deployment
+### Paso 3. Crear y probar un Deployment
 
 Crear un Deployment mínimo como prueba:
 
@@ -58,7 +59,7 @@ Asegúrate de que el Pod asociado al Deployment está en estado Running.
 
 <br/>
 
-### 4. Probar ConfigMaps
+### Paso 4. Probar ConfigMaps
 
 Crear un ConfigMap de prueba:
 
@@ -75,7 +76,7 @@ kubectl describe configmap test-config
 
 <br/>
 
-### 5. Probar servicios
+### Paso 5. Probar servicios
 
 Crear un servicio expuesto en ClusterIP para el Deployment de nginx:
 
@@ -93,7 +94,7 @@ Opcionalmente, prueba el acceso al servicio dentro del clúster usando `kubectl`
 
 <br/>
 
-### 6. Verificar que los recursos están funcionando juntos
+### Paso 6. Verificar que los recursos están funcionando juntos
 
 Probar el acceso al Deployment usando el servicio creado:
 
@@ -106,7 +107,7 @@ Esto debería devolver una respuesta válida del servidor Nginx.
 
 <br/>
 
-### 7. Verificar logs en caso de problemas
+### Paso 7. Verificar logs en caso de problemas
 
 Si encuentras errores, inspeccionar los eventos y logs:
 
@@ -119,7 +120,7 @@ kubectl logs <nombre-del-pod>
 
 <br/>
 
-### 8. Verificar los objetos Kubernetes asociados a Oracle Database
+### Paso 8. Verificar los objetos Kubernetes asociados a Oracle Database
 
 Para asegurar que Oracle Database está correctamente desplegada en un clúster de Kubernetes, debes verificar los siguientes objetos de Kubernetes relacionados:
 
@@ -182,7 +183,7 @@ Para asegurar que Oracle Database está correctamente desplegada en un clúster 
 
 <br/>
 
-### 9. Instrucciones para verificar conexiones a Oracle usando SQL Developer
+### Paso 9. Instrucciones para verificar conexiones a Oracle usando SQL Developer
 
 #### Requisitos previos:
 1. **SQL Developer instalado:** Asegúrate de tener instalado Oracle SQL Developer en la máquina Windows.
