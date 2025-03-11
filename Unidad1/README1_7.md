@@ -23,7 +23,7 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Instrucciones 
 
-### 1. Obtener todos los productos
+### Paso 1. Obtener todos los productos
 
 - Método HTTP: GET
 - URL: http://localhost:9081/productos
@@ -34,7 +34,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 2. Obtener un producto por ID
+### Paso 2. Obtener un producto por ID
 - Método HTTP: GET
 - URL: http://localhost:9081/productos/{id}
 - Reemplazar {id} con el ID de un producto existente, por ejemplo, 1.
@@ -45,7 +45,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 3. Crear un nuevo producto
+### Paso 3. Crear un nuevo producto
 - Método HTTP: POST
 - URL: http://localhost:9081/productos
 - Cuerpo (Body):
@@ -66,7 +66,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 4. Actualizar un producto existente
+### Paso 4. Actualizar un producto existente
 - Método HTTP: PUT
 - URL: http://localhost:9081/productos/{id}
 - Reemplazar {id} con el ID de un producto existente, por ejemplo, 1.
@@ -89,7 +89,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 5. Eliminar un producto por ID
+### Paso 5. Eliminar un producto por ID
 - Método HTTP: DELETE
 - URL: http://localhost:9081/productos/{id}
 - Reemplazar {id} con el ID de un producto existente, por ejemplo, 1.
@@ -100,7 +100,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 6. Validación del microservcio ms-productos
+### Paso 6. Validación del microservcio ms-productos
 
 - Probar cada uno de los endpoints utilizando Postman.
 
@@ -111,7 +111,7 @@ Al finalizar esta práctica, serás capaz de:
 <br/>
 
 
-### 7. Listar todos los deseos
+### Paso 7. Listar todos los deseos
 
 - Método HTTP: GET
 - URL: http://localhost:9084/deseos
@@ -122,7 +122,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 8. Agregar un producto a la lista de deseos
+### Paso 8. Agregar un producto a la lista de deseos
 
 - Método HTTP: POST
 - URL: http://localhost:9084/deseos/{idProducto}
@@ -134,7 +134,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 9. Eliminar un producto de la lista de deseos
+### Paso 9. Eliminar un producto de la lista de deseos
 
 - Método HTTP: DELETE
 - URL: http://localhost:9084/deseos/{idProducto}
@@ -146,7 +146,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 10. Validación del microservcio ms-deseos
+### Paso 10. Validación del microservcio ms-deseos
 
 - Probar cada uno de los endpoints utilizando Postman.
 
@@ -156,7 +156,7 @@ Al finalizar esta práctica, serás capaz de:
 
 <br/>
 
-### 11. Notas adicionales
+### Paso 11. Notas adicionales
 
 - La lista de deseos no tiene persistencia; los datos se manejan en memoria. Por lo tanto, al reiniciar el microservicio, los datos se perderán.
 
