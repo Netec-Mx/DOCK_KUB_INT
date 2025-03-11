@@ -24,7 +24,7 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Instrucciones
 
-### 1. Verificar contenedores existentes
+### Paso 1. Verificar contenedores existentes
 
 - Verificar los contenedores y recursos actualmente configurados.
 
@@ -44,7 +44,7 @@ docker rm -f ms-productos ms-deseos oracle-db
 
 <br/>
 
-### 2. Crear la carpeta de trabajo para esta práctica
+### Paso 2. Crear la carpeta de trabajo para esta práctica
 
 - Abrir una terminal o consola y navegar al directorio de las prácticas del curso.
 
@@ -62,7 +62,7 @@ cd practica_2_4
 <br/>
 
 
-### 3. Crear la estructura para los scripts de Oracle
+### Paso 3. Crear la estructura para los scripts de Oracle
 
 - Los scripts deben de ejecutarse después del **setup** de Oracle Database.
 
@@ -78,7 +78,7 @@ code init_schema.sql
 <br/>
 
 
-### 4. Crear Scripts de Oracle para inicialización.
+### Paso 4. Crear Scripts de Oracle para inicialización.
 
 - Configurar un usuario llamado `dkuser` con la contraseña `dkpassword` en la base de datos. Asegúrate de otorgarle los permisos necesarios para:
 
@@ -109,7 +109,7 @@ ALTER USER dkuser QUOTA UNLIMITED ON users;
 <br/>
 
 
-### 5. Verificar y crear la red externa dki-network
+### Paso 5. Verificar y crear la red externa dki-network
 
 Antes de ejecutar la configuración con Docker Compose, asegúrate de que la red externa dki-network esté creada. Sigue estos pasos:
 
@@ -131,7 +131,7 @@ docker network create dki-network
 
 <br/>
 
-### 6. Configurar y verificar los microservicios
+### Paso 6. Configurar y verificar los microservicios
 
 1. Verificar las propiedades de configuración de los microservicios:
 
@@ -246,7 +246,7 @@ docker network create dki-network
 
 <br/>
 
-### 7. Actualizar el archivo docker-compose.yml para incluir los microservicios:
+### Paso 7. Actualizar el archivo docker-compose.yml para incluir los microservicios:
 
 - Añadir los servicios `ms-productos` y `ms-deseos` al archivo. Asegúrate de que cada servicio esté conectado a la red `dki-network` y que utilicen variables de entorno para la conexión con la base de datos Oracle.
 
@@ -326,7 +326,7 @@ networks:
 
 <br/>
 
-### 8. Levantar los contenedores con Docker Compose
+### Paso 8. Levantar los contenedores con Docker Compose
 
 - Ejecutar el siguiente comando para verificar la configuración.
 
@@ -341,7 +341,7 @@ docker-compose up -d
 ```
 <br/>
 
-### 9. Verificar que los contenedores están funcionando correctamente:
+### Paso 9. Verificar que los contenedores están funcionando correctamente:
 
 - Usar el comando `docker ps` para listar los contenedores en ejecución.
 
@@ -356,7 +356,7 @@ docker network ls
 
 <br/>
 
-### 10. Probar la conexión entre los servicios:
+### Paso 10. Probar la conexión entre los servicios:
 
 - Usar una herramienta como Postman o curl para enviar solicitudes a `ms-productos` en el puerto 9081 y a `ms-deseos` en el puerto 9084.
 
