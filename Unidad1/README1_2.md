@@ -19,9 +19,9 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-#### 2. Crear una red personalizada de tipo `bridge`
+#### Crear una red personalizada de tipo `bridge`
 
-    Usar el siguiente comando para crear una red personalizada:
+2. Usar el siguiente comando para crear una red personalizada:
 
     ```cmd
     docker network create --driver bridge ms-curso
