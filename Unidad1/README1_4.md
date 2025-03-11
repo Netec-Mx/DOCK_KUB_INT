@@ -11,7 +11,7 @@ Al finalizar la práctica, serás capaz de:
 
 ## Instrucciones
 
-### 1. Crear la red Docker
+### Paso 1. Crear la red Docker
 
 Para que el contenedor pueda comunicarse con otros servicio en el futuro, crear una red virtual Docker.
 
@@ -34,7 +34,7 @@ docker network ls
 
 <br/>
 
-### 2. Crear el volumen Docker para persistencia
+### Paso 2. Crear el volumen Docker para persistencia
 
 Recuerda que esto asegura que los datos se mantendrán aunque el contenedor sea eliminado.
 
@@ -45,7 +45,7 @@ docker volume create dki-volume
 <br/>
 
 
-### 3. Crear el contenedor para Oracle
+### Paso 3. Crear el contenedor para Oracle
 
 Verificar las imagenes que aparacen en el entorno del curso y utilizar la imagen Oracle que tienes en el ambiente para crear un contenedor Oracle Database.
 
@@ -56,7 +56,7 @@ docker run -d --name dki-oradb -e ORACLE_PWD=Netec_123 --network dki-network --v
 <br/>
 
 
-### 4. Verificar la creación del contenedor
+### Paso 4. Verificar la creación del contenedor
 
 Asegúrate que el contenedor se está ejecutando correctamente.
 
@@ -72,7 +72,7 @@ netstat -ano | <findstr|grep> 1521
 <br/>
 
 
-### 5. Conexión desde SQL Developer
+### Paso 5. Conexión desde SQL Developer
 
 1. Iniciar SQL-Developer.
 
@@ -98,7 +98,7 @@ Si la conexión es exitosa, guardarla.
 
 <br/>
 
-### 6. Analizar y ejecutar el script SQL
+### Paso 6. Analizar y ejecutar el script SQL
 
 1. Copiar el siguiente contenido en la hoja de trabajo en SQL Developer.
 
@@ -179,7 +179,7 @@ Si la conexión es exitosa, guardar y conectarse a una hoja de trabajo.
 <br/>
 
 
-### 7. Varificar la estructura y componenetes creados
+### Paso 7. Varificar la estructura y componenetes creados
 
 1. En SQL Developer, expandir las siguientes secciones bajo la conexión:
 
@@ -201,7 +201,7 @@ select table_name from user_tables;
 
 
 
-### 8. Verificar que el contenedor esté asociado a la red.
+### Paso 8. Verificar que el contenedor esté asociado a la red.
 
 Ejecutar el siguiente comando para inspeccionar la red `dki-network`y confirmar que el contenedor `dki-oradb`está asociado.
 
@@ -228,7 +228,7 @@ Si `dki-oradb`aparece, la red está correctamente configurada.
 
 <br/>
 
-### 9. Conclusión
+### Paso 9. Conclusión
 
 Una vez realizados los pasos anteriores, tendrás:
 
