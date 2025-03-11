@@ -9,9 +9,9 @@ Al finalizar la práctica serás capaz de:
 
 ## Instrucciones
 
-#### Revisar las redes existentes en Docker
+#### 1. Revisar las redes existentes en Docker
 
-1. Ejecutar el siguiente comando para listar las redes actuales:
+- Ejecutar el siguiente comando para listar las redes actuales:
 
     ```cmd
     docker network ls
@@ -19,9 +19,9 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-#### Crear una red personalizada de tipo `bridge`
+#### 2. Crear una red personalizada de tipo `bridge`
 
-2. Usar el siguiente comando para crear una red personalizada:
+- Usar el siguiente comando para crear una red personalizada:
 
     ```cmd
     docker network create --driver bridge ms-curso
@@ -29,9 +29,9 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-#### Verificar que la red se haya creado:
+#### 3. Verificar que la red se haya creado:
 
-3. Listar las redes nuevamente para confirmar la creación:
+- Listar las redes nuevamente para confirmar la creación:
 
     ```cmd
     docker network ls
