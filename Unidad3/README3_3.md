@@ -7,8 +7,8 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Duración aproximada:
 - 25 minutos.
-<br/>
 
+  
 ## Objetivo visual
 
 ![Docker Image](../images/u3_3_3.png)
@@ -17,7 +17,7 @@ Al finalizar esta práctica, serás capaz de:
 
 ## Instrucciones
 
-### **1. Verificar el estado del Docker Daemon**
+### Paso 1. Verificar el estado del Docker Daemon
 Asegúrate de que Docker esté ejecutándose en la máquina de desarrollo Windows, en el entorno de curso.
 
 ```bash
@@ -27,7 +27,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 <br/>
 
-### **2. Construir la imagen del microservicio**
+### Paso 2. Construir la imagen del microservicio
 
 1. Acceder al directorio de cada microservicio (por ejemplo, `ms-productos`).
 
@@ -60,7 +60,7 @@ Si Docker está corriendo correctamente, verás información del sistema. Si no,
 
 <br/>
 
-### **3. Verificar las imágenes construidas**
+### Paso 3. Verificar las imágenes construidas
 
 Listar las imágenes locales para confirmar que las imágenes han sido creadas correctamente:
 
@@ -78,7 +78,7 @@ ms-deseos        1.0       <IMAGE_ID>     X seconds ago    X MB
 <br/>
 
 
-### **4. Iniciar sesión en Docker Hub**
+### Paso 4. Iniciar sesión en Docker Hub
 
 Iniciar sesión con tu cuenta de Docker Hub:
 ```bash
@@ -93,7 +93,7 @@ Login Succeeded
 
 <br/>
 
-### **5. Etiquetar las imágenes para Docker Hub**
+### Paso 5. Etiquetar las imágenes para Docker Hub
 
 Asignar etiquetas a las imágenes con el formato adecuado para Docker Hub. Reemplazar `TU_USUARIO` por tu nombre de usuario en Docker Hub.
 
@@ -111,7 +111,7 @@ Asignar etiquetas a las imágenes con el formato adecuado para Docker Hub. Reemp
 
 <br/>
 
-### **6. Publicar las imágenes en Docker Hub**
+### Paso 6. Publicar las imágenes en Docker Hub
 
 Subir las imágenes al Docker Registry:
 
@@ -142,7 +142,7 @@ Subir las imágenes al Docker Registry:
 
 <br/>
 
-### **7. Verificar las imágenes en Docker Hub**
+### Paso 7. Verificar las imágenes en Docker Hub
 
 Utilizar el comando `docker search` para buscar las imágenes en Docker Hub:
 
