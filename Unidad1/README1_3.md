@@ -9,7 +9,7 @@ Al finalizar la práctica, serás capaz de:
 
 ## Instrucciones
 
-#### 1. **Preparación del entorno**
+### Paso 1. **Preparación del entorno**
 
 - Asegúrate de tener Docker Desktop instalado y corriendo.
 
@@ -21,7 +21,7 @@ Al finalizar la práctica, serás capaz de:
     ```
 <br/>
 
-#### 2. **Creación de un volume DOcker**
+### Paso 2. **Creación de un volume DOcker**
 
 - Crear un volumen llamado `dk-volumen`.
 
@@ -37,7 +37,7 @@ Al finalizar la práctica, serás capaz de:
 
 <br/>
 
-#### 3. **Ejecución de un contenedor con el volumen**
+### Paso 3. **Ejecución de un contenedor con el volumen**
 
 - Lanzar un contenedor basado en la imagen oficial de nginx, adjuntando el volumen dk-volumen al directorio `/usr/share/nginx/html`.
 
@@ -50,7 +50,7 @@ Al finalizar la práctica, serás capaz de:
 
 <br/>
 
-#### 4. **Crear un archivo dentro de volumen**
+### Paso 4. **Crear un archivo dentro de volumen**
 
 - Ingresar al contendor para interacturar con el volumen.
 
@@ -72,7 +72,7 @@ Al finalizar la práctica, serás capaz de:
 
 <br/>
 
-#### 5. **Probar el acceso al archivo**
+### Paso 5. **Probar el acceso al archivo**
 
 Abrir un navegador web y visitar http://localhost:8888. Deberías ver el mensaje:
 
@@ -82,7 +82,7 @@ Abrir un navegador web y visitar http://localhost:8888. Deberías ver el mensaje
 
 <br/>
 
-#### 6. **Eliminar el contenedor**
+### Paso 6. **Eliminar el contenedor**
 
 Eliminar el contenedor sin borrar el volumen.
 
@@ -95,7 +95,7 @@ docker ps -a
 
 <br/>
 
-#### 7. **Verificar la persistencia de datos**
+### Paso 7. **Verificar la persistencia de datos**
 
 - Crear un nuevo contenedor y montar nuevamente el volumen.
 
@@ -111,7 +111,7 @@ docker ps -a
 
 <br/>
 
-#### 8. **Limpieza**
+### Paso 8. **Limpieza**
 
 Al finalizar, eliminar el contenedor `dk_nginx` y el volumen `dk_volume`.
 
@@ -122,7 +122,7 @@ docker volume rm dki_volume
 
 <br/>
 
-#### 9. **Errores  comunes**
+### Paso 9. **Errores  comunes**
 
 - Si el archvio no aparece en el navegador, verificar que el volumen esté correctamente montado y revisar los logs del contenedor.
 
@@ -132,7 +132,7 @@ docker logs <nombre_contenedor>
 
 <br/>
 
-#### 10. **Conclusión**
+### Paso 10. **Conclusión**
 
 - Está práctica permite comprender cómo Docker gestiona datos persistentes mediante volúmenes, asegurando que la información persista independientemnte del ciclo de vida de los contenedores.
 
