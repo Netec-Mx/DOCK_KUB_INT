@@ -41,11 +41,10 @@ Al finalizar la práctica serás capaz de:
 
 #### 4. Crear dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
 
-
-    ```cmd
+ ```cmd
     docker run -dit --name container1 --network ms-curso alpine sh
     docker run -dit --name container2 --network ms-curso alpine sh
-    ```
+ ```
 
 <br/>
 
