@@ -41,8 +41,6 @@ Al finalizar la práctica serás capaz de:
 
 #### 4. Crear dos contenedores conectados a la nueva red usando la imagen `alpine` para pruebas:
 
-<br/>
-
     ```cmd
     docker run -dit --name container1 --network ms-curso alpine sh
     docker run -dit --name container2 --network ms-curso alpine sh
@@ -52,7 +50,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 5. Inspeccionar la red creada
 
-    - Usar el comando para inspeccionar detalles de la red ms-curso y verificar su configuración.
+- Usar el comando para inspeccionar detalles de la red ms-curso y verificar su configuración.
 
     ```cmd
     docker network inspect ms-curso
@@ -61,13 +59,13 @@ Al finalizar la práctica serás capaz de:
 
 #### 6. Probar la comunicación entre los contenedores
 
-    - Acceder al contenedor `container1`.
+- Acceder al contenedor `container1`.
 
     ```cmd
     docker exec -it container1 sh
     ```
 
-    - Dentro del contenedor, realizar un ping a `container2`.
+- Dentro del contenedor, realizar un ping a `container2`.
 
     ```sh
     ping container2
@@ -77,7 +75,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 7. Desconectar un contenedor de la red
 
-    - Para desconectar un conetenedor de la red.
+- Para desconectar un conetenedor de la red.
 
     ```cmd
     docker network disconnect ms-curso container1
@@ -87,7 +85,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 8. Verificar que el contenedor ya no puede comunicarse:
 
-    - Intentar hacer un ping desde container1 a container2 nuevamente.
+- Intentar hacer un ping desde container1 a container2 nuevamente.
 
     ```sh
     ping container2
@@ -97,7 +95,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 9. Reconectar el contenedor a la red
 
-    Reconectar `container1` a la red.
+- Reconectar `container1` a la red.
 
     ```cmd
     docker network connect ms-curso container1
@@ -107,7 +105,7 @@ Al finalizar la práctica serás capaz de:
 
 #### 10. Limpiar los recursos creados
 
-    Detener y eliminar los contenedores y la red creada.
+- Detener y eliminar los contenedores y la red creada.
 
       ```cmd
     docker rm -f container1 container2
