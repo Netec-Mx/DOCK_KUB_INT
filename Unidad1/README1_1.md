@@ -11,6 +11,7 @@ Al finalizar la práctica serás capaz de:
 ## Instrucciones
 
 1. Seguir atentamente las indicaciones del instructor para conectarse al ambiente asignado y asegurarse de que todo esté correctamente configurado.
+   El repositorio a utilizar es el siguiente: 
 
 <br/>
 
