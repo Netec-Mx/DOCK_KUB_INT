@@ -29,9 +29,9 @@ Al finalizar la práctica serás capaz de:
 
 <br/>
 
-#### 3. Verificar que la red se haya creado:
+#### Verificar que la red se haya creado:
 
-    Listar las redes nuevamente para confirmar la creación:
+3. Listar las redes nuevamente para confirmar la creación:
 
     ```cmd
     docker network ls
