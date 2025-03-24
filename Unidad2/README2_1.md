@@ -124,7 +124,7 @@ docker-compose up -d
 docker ps
 docker volume ls
 docker network ls
-docker network inspect dki-app-network
+docker network inspect labs_dki-app-network
 docker logs dki-mysql-container
 ```
 
@@ -135,7 +135,7 @@ docker exec -it dki-mysql-container bash
 ```
 
 ```bash
-mysql -uroot -proot -hdb
+mysql -u root -pNetec_123 -hdb
 ```
 
 ```sql
