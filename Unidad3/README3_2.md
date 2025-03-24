@@ -65,19 +65,16 @@ Reemplazar el contenido de los archivos `application.properties` en ambos micros
 #### **Archivo `application.properties` para `ms-productos`:**
 
 ```properties
-# Configuración del nombre de la aplicación.
 spring.application.name=${APP_NAME:ms-productos}
 
-# Configuración del puerto del servidor.
+
 server.port=${SERVER_PORT:9081}
 
-# Configuración de la base de datos.
-spring.datasource.url=${DB_URL:jdbc:oracle:thin:@oracle-db:1521/XPDB1}
+spring.datasource.url=${DB_URL:jdbc:oracle:thin:@oracle-db:1521/XEPDB1}
 spring.datasource.username=${DB_USERNAME:dkuser}
 spring.datasource.password=${DB_PASSWORD:dkpassword}
 spring.datasource.driver-class-name=${DB_DRIVER:oracle.jdbc.OracleDriver}
 
-# Configuración de JPA e Hibernate.
 spring.jpa.hibernate.ddl-auto=${JPA_DDL_AUTO:update}
 spring.jpa.show-sql=${JPA_SHOW_SQL:true}
 spring.jpa.properties.hibernate.dialect=${HIBERNATE_DIALECT:org.hibernate.dialect.OracleDialect}
@@ -86,13 +83,10 @@ spring.jpa.properties.hibernate.dialect=${HIBERNATE_DIALECT:org.hibernate.dialec
 #### **Archivo `application.properties` para `ms-deseos`:**
 
 ```properties
-# Configuración del nombre de la aplicación.
 spring.application.name=${APP_NAME:ms-deseos}
 
-# Configuración del puerto del servidor.
 server.port=${SERVER_PORT:9084}
 
-# URL del microservicio ms-productos.
 productos.service.url=${PRODUCTOS_SERVICE_URL:http://ms-productos:9081}
 ```
 
