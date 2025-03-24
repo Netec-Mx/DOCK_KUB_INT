@@ -174,7 +174,8 @@ Ejecutar el siguiente comando en SQL*Plus:
 ```cmd
 SELECT name, open_mode FROM v$pdbs;
 
-SELECT * FROM dkuser.products;
+SELECT * FROM dkuser.productos;
+
 
 ```
 <br/>
