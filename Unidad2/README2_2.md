@@ -29,8 +29,8 @@ Al finalizar esta práctica, serás capaz de:
 1. Crear una carpeta para almacenar los archvios de la práctica.
 
 ```cmd
-mkdir practica_2_3
-cd practica_2_3
+mkdir practica_2_2
+cd practica_2_2
 ```
 
 2. Crear un archivo vacío llamado `docker-compose.yml`.
