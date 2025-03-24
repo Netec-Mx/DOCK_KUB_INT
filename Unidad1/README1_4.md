@@ -65,7 +65,7 @@ Asegúrate que el contenedor se está ejecutando correctamente.
 docker ps
 
 # Desce S.O
-netstat -ano | <findstr|grep> 1521
+netstat -ano | grep 1521
 
 ```
 
