@@ -117,7 +117,7 @@ Al finalizar, eliminar el contenedor `dk_nginx` y el volumen `dk_volume`.
 
 ```cmd
 docker rm -f nuevo_nginx
-docker volume rm dki_volume
+docker volume rm dki-volume
 ```
 
 <br/>
