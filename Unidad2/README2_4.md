@@ -53,7 +53,7 @@ docker rm -f ms-productos ms-deseos oracle-db
 
 ```cmd
 mkdir practica_2_4
-cp practica_2_3\docker-compose.yml practica_2_4
+cp practica_2_3/docker-compose.yml practica_2_4/docker-compose.yml
 cd practica_2_4
 ```
 
@@ -363,13 +363,13 @@ docker network ls
 Ejemplo para verificar `ms-productos`:
 
 ```cmd
-curl http://localhost:9081/api/productos
+curl http://localhost:9081/productos
 ```
 
 Ejemplo para verificar ms-deseos:
 
 ```cmd
-curl http://localhost:9084/api/deseos
+curl http://localhost:9084/deseos
 ```
 
 
