@@ -64,7 +64,7 @@ metadata:
 data:
   APP_NAME: ms-productos
   SERVER_PORT: "9081"
-  DB_URL: jdbc:oracle:thin:@oracle-db:1521/XPDB1
+  DB_URL: jdbc:oracle:thin:@oracle-db:1521/XEPDB1
   DB_DRIVER: oracle.jdbc.OracleDriver
   JPA_DDL_AUTO: update
   JPA_SHOW_SQL: "true"
